@@ -1,5 +1,4 @@
-"use server"
-
+import { NextRequest, NextResponse } from "next/server"
 import fs from "fs/promises"
 import path from "path"
 
@@ -33,19 +32,22 @@ async function saveSubscribers(subscribers: any[]) {
   await fs.writeFile(DATA_FILE, JSON.stringify(subscribers, null, 2))
 }
 
-// Server action to handle subscription
-export async function subscribeEmail(formData: FormData) {
-  console.log("subscribeEmail called with formData:", formData)
-  const email = formData.get("email") as string
-  console.log("Email from formData:", email)
-
-  // Validate the email
-  if (!email || !isValidEmail(email)) {
-    console.log("Invalid email:", email)
-    return { success: false, message: "Please provide a valid email address." }
-  }
-
+export async function POST(request: NextRequest) {
   try {
+    const formData = await request.formData()
+    const email = formData.get("email") as string
+
+    console.log("API route called with email:", email)
+
+    // Validate the email
+    if (!email || !isValidEmail(email)) {
+      console.log("Invalid email:", email)
+      return NextResponse.json(
+        { success: false, message: "Please provide a valid email address." },
+        { status: 400 }
+      )
+    }
+
     // Get current subscribers
     console.log("Getting current subscribers")
     const subscribers = await getSubscribers()
@@ -55,7 +57,10 @@ export async function subscribeEmail(formData: FormData) {
     const exists = subscribers.some((sub: any) => sub.email === email)
     console.log("Email exists:", exists)
     if (exists) {
-      return { success: true, message: "You are already subscribed!" }
+      return NextResponse.json(
+        { success: true, message: "You are already subscribed!" },
+        { status: 200 }
+      )
     }
 
     // Add new subscriber
@@ -70,9 +75,15 @@ export async function subscribeEmail(formData: FormData) {
     await saveSubscribers(subscribers)
     console.log("Subscribers saved successfully")
 
-    return { success: true, message: "Thank you for subscribing! We'll notify you when we launch." }
+    return NextResponse.json(
+      { success: true, message: "Thank you for subscribing! We'll notify you when we launch." },
+      { status: 200 }
+    )
   } catch (error) {
     console.error("Error saving subscriber:", error)
-    return { success: false, message: "Something went wrong. Please try again later." }
+    return NextResponse.json(
+      { success: false, message: "Something went wrong. Please try again later." },
+      { status: 500 }
+    )
   }
-}
+} 

@@ -7,7 +7,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, ArrowRight, Loader2 } from "lucide-react"
-import { subscribeEmail } from "../actions/subscribe"
 import { useFormStatus } from "react-dom"
 
 // Form submit button with loading state
@@ -64,20 +63,36 @@ export default function ComingSoonPage() {
   }, [])
 
   // Handle form submission
-  async function handleSubscribe(formData: FormData) {
-    console.log("handleSubscribe called with formData:", formData)
-    const result = await subscribeEmail(formData)
-    console.log("Result from subscribeEmail:", result)
-
-    if (result.success) {
-      setMessage({ text: result.message, type: "success" })
-      // Reset form
-      const form = document.getElementById("subscribe-form") as HTMLFormElement
-      if (form) form.reset()
-    } else {
-      setMessage({ text: result.message, type: "error" })
+  async function handleSubscribe(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    console.log("Form submitted")
+    
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    console.log("Form data:", formData)
+    
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        body: formData,
+      })
+      
+      console.log("Response status:", response.status)
+      const result = await response.json()
+      console.log("Response data:", result)
+      
+      if (result.success) {
+        setMessage({ text: result.message, type: "success" })
+        // Reset form
+        form.reset()
+      } else {
+        setMessage({ text: result.message, type: "error" })
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setMessage({ text: "Something went wrong. Please try again later.", type: "error" })
     }
-
+    
     // Clear message after 5 seconds
     setTimeout(() => {
       setMessage(null)
@@ -131,7 +146,7 @@ export default function ComingSoonPage() {
               </div>
 
               {/* Subscription Form */}
-              <form action={handleSubscribe} id="subscribe-form" className="max-w-md mx-auto lg:mx-0">
+              <form onSubmit={handleSubscribe} id="subscribe-form" className="max-w-md mx-auto lg:mx-0">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Input
                     type="email"
@@ -140,7 +155,9 @@ export default function ComingSoonPage() {
                     required
                     className="border-gray-300 focus:border-[#293e72] focus:ring-[#293e72]"
                   />
-                  <SubmitButton />
+                  <Button type="submit" className="bg-[#293e72] hover:bg-[#1e2e57] text-white whitespace-nowrap">
+                    Notify Me <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </div>
                 <p className="text-sm text-gray-500 mt-2">We'll notify you when we launch. No spam, we promise!</p>
 
