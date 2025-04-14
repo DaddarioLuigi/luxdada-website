@@ -112,7 +112,7 @@ export default function ComingSoonPage() {
               </p>
 
               {/* Countdown Timer */}
-              <div className="grid grid-cols-4 gap-4 max-w-md mx-auto lg:mx-0 mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto lg:mx-0 mb-10">
                 {[
                   { label: "Days", value: countdown.days },
                   { label: "Hours", value: countdown.hours },
@@ -120,9 +120,9 @@ export default function ComingSoonPage() {
                   { label: "Seconds", value: countdown.seconds },
                 ].map((item, index) => (
                   <div key={index} className="text-center">
-                    <div className="bg-white rounded-lg shadow-md p-4">
-                      <div className="text-3xl md:text-4xl font-bold text-[#293e72]">{item.value}</div>
-                      <div className="text-sm text-gray-500">{item.label}</div>
+                    <div className="bg-white rounded-lg shadow-md p-2 sm:p-4">
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#293e72]">{item.value}</div>
+                      <div className="text-xs sm:text-sm text-gray-500">{item.label}</div>
                     </div>
                   </div>
                 ))}
