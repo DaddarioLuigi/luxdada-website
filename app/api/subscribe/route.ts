@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import mailchimp from "mailchimp-marketing"
+import mailchimp from "@mailchimp/mailchimp_marketing"
 
 // Initialize Mailchimp
 mailchimp.setConfig({
