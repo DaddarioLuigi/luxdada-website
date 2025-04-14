@@ -40,8 +40,7 @@ export default function Header() {
         <Image
             src="/logo_test.png" // Replace with your actual logo path
             alt="Luxdada Logo"
-            width={40}       // Adjust the size as needed
-            height={40}
+            width={150}       // Adjust the size as needed
           />
         </Link>
 
