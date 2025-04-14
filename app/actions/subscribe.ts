@@ -32,7 +32,7 @@ async function saveSubscribers(subscribers: any[]) {
   // Write data to file
   await fs.writeFile(DATA_FILE, JSON.stringify(subscribers, null, 2))
 }
-
+ 
 // Server action to handle subscription
 export async function subscribeEmail(formData: FormData) {
   console.log("subscribeEmail called with formData:", formData)
