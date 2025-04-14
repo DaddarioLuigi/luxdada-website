@@ -35,31 +35,40 @@ async function saveSubscribers(subscribers: any[]) {
 
 // Server action to handle subscription
 export async function subscribeEmail(formData: FormData) {
+  console.log("subscribeEmail called with formData:", formData)
   const email = formData.get("email") as string
+  console.log("Email from formData:", email)
 
   // Validate the email
   if (!email || !isValidEmail(email)) {
+    console.log("Invalid email:", email)
     return { success: false, message: "Please provide a valid email address." }
   }
 
   try {
     // Get current subscribers
+    console.log("Getting current subscribers")
     const subscribers = await getSubscribers()
+    console.log("Current subscribers:", subscribers)
 
     // Check if email already exists
     const exists = subscribers.some((sub: any) => sub.email === email)
+    console.log("Email exists:", exists)
     if (exists) {
       return { success: true, message: "You are already subscribed!" }
     }
 
     // Add new subscriber
+    console.log("Adding new subscriber")
     subscribers.push({
       email,
       subscribedAt: new Date().toISOString(),
     })
 
     // Save updated subscribers
+    console.log("Saving updated subscribers")
     await saveSubscribers(subscribers)
+    console.log("Subscribers saved successfully")
 
     return { success: true, message: "Thank you for subscribing! We'll notify you when we launch." }
   } catch (error) {

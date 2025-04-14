@@ -65,7 +65,9 @@ export default function ComingSoonPage() {
 
   // Handle form submission
   async function handleSubscribe(formData: FormData) {
+    console.log("handleSubscribe called with formData:", formData)
     const result = await subscribeEmail(formData)
+    console.log("Result from subscribeEmail:", result)
 
     if (result.success) {
       setMessage({ text: result.message, type: "success" })
@@ -200,23 +202,6 @@ export default function ComingSoonPage() {
       </main>
 
       {/* Footer */}
-      <footer className="py-6 px-4 border-t border-gray-100">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-600 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Luxdada. All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              <Link href="/privacy" className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
-                Terms of Service
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
