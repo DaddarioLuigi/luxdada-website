@@ -1,35 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
-import fs from "fs/promises"
-import path from "path"
 
-// Store data in a JSON file in the public directory which is writable
-const DATA_FILE = path.join(process.cwd(), "public", "subscribers.json")
+// In-memory storage for subscribers
+// Note: This will be reset when the server restarts
+let subscribers: { email: string; subscribedAt: string }[] = []
 
 // Function to validate email format
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
-}
-
-// Get current subscribers
-async function getSubscribers() {
-  try {
-    const data = await fs.readFile(DATA_FILE, "utf-8")
-    return JSON.parse(data)
-  } catch (error) {
-    // If file doesn't exist or has invalid JSON, return empty array
-    return []
-  }
-}
-
-// Save subscribers to file
-async function saveSubscribers(subscribers: any[]) {
-  // Create directory if it doesn't exist
-  const dir = path.dirname(DATA_FILE)
-  await fs.mkdir(dir, { recursive: true })
-
-  // Write data to file
-  await fs.writeFile(DATA_FILE, JSON.stringify(subscribers, null, 2))
 }
 
 export async function POST(request: NextRequest) {
@@ -48,13 +26,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get current subscribers
-    console.log("Getting current subscribers")
-    const subscribers = await getSubscribers()
-    console.log("Current subscribers:", subscribers)
-
     // Check if email already exists
-    const exists = subscribers.some((sub: any) => sub.email === email)
+    const exists = subscribers.some(sub => sub.email === email)
     console.log("Email exists:", exists)
     if (exists) {
       return NextResponse.json(
@@ -69,20 +42,21 @@ export async function POST(request: NextRequest) {
       email,
       subscribedAt: new Date().toISOString(),
     })
-
-    // Save updated subscribers
-    console.log("Saving updated subscribers")
-    await saveSubscribers(subscribers)
-    console.log("Subscribers saved successfully")
+    console.log("Current subscribers:", subscribers)
 
     return NextResponse.json(
       { success: true, message: "Thank you for subscribing! We'll notify you when we launch." },
       { status: 200 }
     )
   } catch (error) {
-    console.error("Error saving subscriber:", error)
+    console.error("Error in API route:", error)
+    // Return more detailed error information
     return NextResponse.json(
-      { success: false, message: "Something went wrong. Please try again later." },
+      { 
+        success: false, 
+        message: "Something went wrong. Please try again later.",
+        error: error instanceof Error ? error.message : String(error)
+      },
       { status: 500 }
     )
   }

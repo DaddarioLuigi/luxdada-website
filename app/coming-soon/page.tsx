@@ -86,11 +86,18 @@ export default function ComingSoonPage() {
         // Reset form
         form.reset()
       } else {
-        setMessage({ text: result.message, type: "error" })
+        // Display the error message, including the detailed error if available
+        const errorMessage = result.error 
+          ? `${result.message} (Error: ${result.error})` 
+          : result.message
+        setMessage({ text: errorMessage, type: "error" })
       }
     } catch (error) {
       console.error("Error submitting form:", error)
-      setMessage({ text: "Something went wrong. Please try again later.", type: "error" })
+      setMessage({ 
+        text: `Something went wrong. Please try again later. (Error: ${error instanceof Error ? error.message : String(error)})`, 
+        type: "error" 
+      })
     }
     
     // Clear message after 5 seconds
