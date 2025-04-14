@@ -9,7 +9,7 @@ const DATA_FILE = path.join(process.cwd(), "public", "subscribers.json")
 async function getSubscribers() {
   try {
     // Check if file exists
-    try {
+    try { 
       await fs.access(DATA_FILE)
     } catch (error) {
       // File doesn't exist
