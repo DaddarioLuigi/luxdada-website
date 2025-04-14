@@ -36,7 +36,12 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <span className="text-2xl font-bold text-[#293e72]">Luxdada</span>
+        <Image
+            src="/logo_test.png" // Replace with your actual logo path
+            alt="Luxdada Logo"
+            width={40}       // Adjust the size as needed
+            height={40}
+          />
         </Link>
 
         {/* Desktop Navigation */}
