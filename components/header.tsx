@@ -36,11 +36,11 @@ export default function Header() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/coming-soon" className="flex items-center">
         <Image
             src="/logo_test.png" // Replace with your actual logo path
             alt="Luxdada Logo"
-            width={150}       // Adjust the size as needed
+            width={135}       // Adjust the size as needed
           />
         </Link>
 
