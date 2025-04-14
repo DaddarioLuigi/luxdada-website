@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from "next/server"
 import mailchimp from "@mailchimp/mailchimp_marketing"
 
 // Initialize Mailchimp
+const apiKey = process.env.MAILCHIMP_API_KEY || "your-api-key-here"
+const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX || "us1"
+
+console.log("Initializing Mailchimp with API key:", apiKey ? "API key is set" : "API key is missing")
+console.log("Server prefix:", serverPrefix)
+
 mailchimp.setConfig({
-  apiKey: process.env.MAILCHIMP_API_KEY || "your-api-key-here",
-  server: process.env.MAILCHIMP_SERVER_PREFIX || "us1", // e.g., "us1" for US server
+  apiKey,
+  server: serverPrefix,
 })
 
 // Function to validate email format
@@ -31,6 +37,7 @@ export async function POST(request: NextRequest) {
 
     // Get the list ID from environment variables or use a default
     const listId = process.env.MAILCHIMP_LIST_ID || "your-list-id-here"
+    console.log("Using list ID:", listId ? "List ID is set" : "List ID is missing")
 
     try {
       // Add subscriber to Mailchimp
@@ -50,12 +57,18 @@ export async function POST(request: NextRequest) {
       
       // Check if the error is because the email is already subscribed
       if (mailchimpError.status === 400 && mailchimpError.response?.text) {
-        const errorData = JSON.parse(mailchimpError.response.text)
-        if (errorData.title === "Member Exists") {
-          return NextResponse.json(
-            { success: true, message: "You are already subscribed!" },
-            { status: 200 }
-          )
+        try {
+          const errorData = JSON.parse(mailchimpError.response.text)
+          console.log("Mailchimp error data:", errorData)
+          
+          if (errorData.title === "Member Exists") {
+            return NextResponse.json(
+              { success: true, message: "You are already subscribed!" },
+              { status: 200 }
+            )
+          }
+        } catch (parseError) {
+          console.error("Error parsing Mailchimp error response:", parseError)
         }
       }
       
@@ -64,7 +77,8 @@ export async function POST(request: NextRequest) {
         { 
           success: false, 
           message: "Failed to subscribe. Please try again later.",
-          error: mailchimpError.message || "Unknown error"
+          error: mailchimpError.message || "Unknown error",
+          details: mailchimpError.response?.text || "No additional details available"
         },
         { status: 500 }
       )

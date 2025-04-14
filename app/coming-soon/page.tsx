@@ -87,9 +87,14 @@ export default function ComingSoonPage() {
         form.reset()
       } else {
         // Display the error message, including the detailed error if available
-        const errorMessage = result.error 
-          ? `${result.message} (Error: ${result.error})` 
-          : result.message
+        let errorMessage = result.message
+        if (result.error) {
+          errorMessage += ` (Error: ${result.error})`
+        }
+        if (result.details) {
+          console.log("Error details:", result.details)
+          // Only show details in console to avoid exposing sensitive information to users
+        }
         setMessage({ text: errorMessage, type: "error" })
       }
     } catch (error) {
