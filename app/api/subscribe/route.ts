@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import mailchimp from "@mailchimp/mailchimp_marketing"
 
 // Initialize Mailchimp
-const apiKey = process.env.MAILCHIMP_API_KEY || "your-api-key-here"
+const apiKey = process.env.MAILCHIMP_API_KEY || "5fa61c66da7685753f5ebcda433a9c33-us18"
 const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX || "us1"
 
 console.log("Initializing Mailchimp with API key:", apiKey ? "API key is set" : "API key is missing")
