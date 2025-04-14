@@ -92,7 +92,7 @@ export default function Home() {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <p className="text-gray-500 font-medium">TRUSTED BY INDUSTRY LEADERS</p>
+            <p className="text-gray-500 font-medium">TRUSTED BY INDUSTRY LEADERS (Test)</p>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             {[1, 2, 3, 4, 5].map((i) => (
