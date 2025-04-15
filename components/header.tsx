@@ -13,7 +13,7 @@ const navItems = [
   { name: "About Us", href: "/about" },
   { name: "Solutions", href: "/solutions" },
   { name: "Case Studies", href: "/case-studies" },
-  { name: "Contact", href: "/contact" },
+  { name: "Contact", href: "/contact" }, 
 ]
 
 export default function Header() {
