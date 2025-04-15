@@ -33,22 +33,22 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/about" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/case-studies" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/contact" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Contact
                 </Link>
               </li>
