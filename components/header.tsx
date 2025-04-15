@@ -9,11 +9,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/" },
-  { name: "Solutions", href: "/" },
-  { name: "Case Studies", href: "/" },
-  { name: "Contact", href: "/" },
+  { name: "Home", href: "/coming-soon" },
+  { name: "About Us", href: "/coming-soon" },
+  { name: "Solutions", href: "/coming-soon" },
+  { name: "Case Studies", href: "/coming-soon" },
+  { name: "Contact", href: "/coming-soon" },
 ]
 
 export default function Header() {

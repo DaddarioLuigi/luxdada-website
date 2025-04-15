@@ -33,22 +33,22 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Contact
                 </Link>
               </li>
@@ -60,15 +60,15 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={18} className="text-[#293e72] mr-2 mt-1 flex-shrink-0" />
-                <span className="text-gray-600">123 Innovation Drive, Tech City, TC 10101</span>
+                <span className="text-gray-600">Trav. 19A di Via Napoli, Bari, BA 70127</span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="text-[#293e72] mr-2 flex-shrink-0" />
-                <span className="text-gray-600">+1 (555) 123-4567</span>
+                <span className="text-gray-600">+39 392 484 2124</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="text-[#293e72] mr-2 flex-shrink-0" />
-                <span className="text-gray-600">info@luxdada.com</span>
+                <span className="text-gray-600">info@luxdada.it</span>
               </li>
             </ul>
           </div>
