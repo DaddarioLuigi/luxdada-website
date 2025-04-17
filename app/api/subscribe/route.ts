@@ -37,10 +37,10 @@ if (apiKeyDatacenter !== serverPrefix) {
   throw new Error("Mailchimp server prefix does not match API key datacenter")
 }
 
-// Initialize Mailchimp with explicit configuration
 console.log("Initializing Mailchimp with:")
 console.log("- Server prefix:", serverPrefix)
 console.log("- List ID:", listId)
+console.log("- API Key (first 6 chars):", apiKey.substring(0, 6))
 
 mailchimp.setConfig({
   apiKey: apiKey,
@@ -55,15 +55,16 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
-    // Test Mailchimp configuration
+    // Test Mailchimp configuration with a simpler API call
     try {
-      const response = await mailchimp.lists.getList(listId as string)
+      const response = await mailchimp.ping.get()
       console.log("Mailchimp configuration verified successfully")
     } catch (error: any) {
       console.error("Failed to verify Mailchimp configuration:", {
         status: error.status,
         message: error.message,
-        response: error.response?.text
+        response: error.response?.text,
+        headers: error.response?.headers
       })
       throw new Error(`Failed to verify Mailchimp configuration: ${error.message}`)
     }
@@ -101,7 +102,8 @@ export async function POST(request: NextRequest) {
       console.error("Mailchimp error details:", {
         status: mailchimpError.status,
         message: mailchimpError.message,
-        response: mailchimpError.response?.text
+        response: mailchimpError.response?.text,
+        headers: mailchimpError.response?.headers
       })
       
       // Check if the error is because the email is already subscribed
