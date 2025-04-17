@@ -6,6 +6,11 @@ const apiKey = process.env.MAILCHIMP_API_KEY
 const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX
 const listId = process.env.MAILCHIMP_LIST_ID
 
+console.log("Environment variables check:")
+console.log("- MAILCHIMP_API_KEY exists:", !!apiKey)
+console.log("- MAILCHIMP_SERVER_PREFIX:", serverPrefix)
+console.log("- MAILCHIMP_LIST_ID:", listId)
+
 // Validate required environment variables
 if (!apiKey) {
   console.error("MAILCHIMP_API_KEY is not set")
@@ -24,6 +29,9 @@ if (!listId) {
 
 // Extract datacenter from API key to verify it matches server prefix
 const apiKeyDatacenter = apiKey.split('-')[1]
+console.log("API Key datacenter:", apiKeyDatacenter)
+console.log("Server prefix:", serverPrefix)
+
 if (apiKeyDatacenter !== serverPrefix) {
   console.error(`Server prefix mismatch: API key datacenter is ${apiKeyDatacenter} but server prefix is set to ${serverPrefix}`)
   throw new Error("Mailchimp server prefix does not match API key datacenter")
@@ -66,7 +74,10 @@ export async function POST(request: NextRequest) {
     try {
       // Add subscriber to Mailchimp
       console.log("Adding subscriber to Mailchimp:", email)
-      const response = await mailchimp.lists.addListMember(listId, {
+      console.log("Using list ID for subscription:", listId)
+      
+      // TypeScript fix: we know listId is string here because of the check above
+      const response = await mailchimp.lists.addListMember(listId as string, {
         email_address: email,
         status: "subscribed",
       })
