@@ -37,12 +37,13 @@ if (apiKeyDatacenter !== serverPrefix) {
   throw new Error("Mailchimp server prefix does not match API key datacenter")
 }
 
+// Initialize Mailchimp with explicit configuration
 console.log("Initializing Mailchimp with:")
 console.log("- Server prefix:", serverPrefix)
 console.log("- List ID:", listId)
 
 mailchimp.setConfig({
-  apiKey,
+  apiKey: apiKey,
   server: serverPrefix,
 })
 
@@ -54,6 +55,19 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // Test Mailchimp configuration
+    try {
+      const response = await mailchimp.lists.getList(listId as string)
+      console.log("Mailchimp configuration verified successfully")
+    } catch (error: any) {
+      console.error("Failed to verify Mailchimp configuration:", {
+        status: error.status,
+        message: error.message,
+        response: error.response?.text
+      })
+      throw new Error(`Failed to verify Mailchimp configuration: ${error.message}`)
+    }
+
     const formData = await request.formData()
     const email = formData.get("email") as string
 
@@ -68,15 +82,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get the list ID from environment variables
-    console.log("Using list ID:", listId)
-
     try {
       // Add subscriber to Mailchimp
       console.log("Adding subscriber to Mailchimp:", email)
       console.log("Using list ID for subscription:", listId)
       
-      // TypeScript fix: we know listId is string here because of the check above
       const response = await mailchimp.lists.addListMember(listId as string, {
         email_address: email,
         status: "subscribed",
@@ -88,7 +98,11 @@ export async function POST(request: NextRequest) {
         { status: 200 }
       )
     } catch (mailchimpError: any) {
-      console.error("Mailchimp error:", mailchimpError)
+      console.error("Mailchimp error details:", {
+        status: mailchimpError.status,
+        message: mailchimpError.message,
+        response: mailchimpError.response?.text
+      })
       
       // Check if the error is because the email is already subscribed
       if (mailchimpError.status === 400 && mailchimpError.response?.text) {
@@ -120,7 +134,6 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     console.error("Error in API route:", error)
-    // Return more detailed error information
     return NextResponse.json(
       { 
         success: false, 
