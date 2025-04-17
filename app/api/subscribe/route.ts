@@ -5,7 +5,7 @@ import mailchimp from "@mailchimp/mailchimp_marketing"
 const apiKey = process.env.MAILCHIMP_API_KEY
 const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX
 
-if (!apiKey) {
+if (!apiKey) { 
   throw new Error("MAILCHIMP_API_KEY environment variable is not set")
 }
 
