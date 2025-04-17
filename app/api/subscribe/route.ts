@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get the list ID from environment variables or use a default
-    const listId = process.env.MAILCHIMP_LIST_ID || "your-list-id-here"
+    const listId = process.env.MAILCHIMP_LIST_ID || "ae847891d4"
     console.log("Using list ID:", listId ? "List ID is set" : "List ID is missing")
 
     try {
