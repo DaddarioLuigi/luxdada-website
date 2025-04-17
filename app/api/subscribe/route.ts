@@ -4,16 +4,34 @@ import mailchimp from "@mailchimp/mailchimp_marketing"
 // Initialize Mailchimp
 const apiKey = process.env.MAILCHIMP_API_KEY
 const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX
+const listId = process.env.MAILCHIMP_LIST_ID
 
-if (!apiKey) { 
+// Validate required environment variables
+if (!apiKey) {
+  console.error("MAILCHIMP_API_KEY is not set")
   throw new Error("MAILCHIMP_API_KEY environment variable is not set")
 }
 
 if (!serverPrefix) {
+  console.error("MAILCHIMP_SERVER_PREFIX is not set")
   throw new Error("MAILCHIMP_SERVER_PREFIX environment variable is not set")
 }
 
-console.log("Initializing Mailchimp with server prefix:", serverPrefix)
+if (!listId) {
+  console.error("MAILCHIMP_LIST_ID is not set")
+  throw new Error("MAILCHIMP_LIST_ID environment variable is not set")
+}
+
+// Extract datacenter from API key to verify it matches server prefix
+const apiKeyDatacenter = apiKey.split('-')[1]
+if (apiKeyDatacenter !== serverPrefix) {
+  console.error(`Server prefix mismatch: API key datacenter is ${apiKeyDatacenter} but server prefix is set to ${serverPrefix}`)
+  throw new Error("Mailchimp server prefix does not match API key datacenter")
+}
+
+console.log("Initializing Mailchimp with:")
+console.log("- Server prefix:", serverPrefix)
+console.log("- List ID:", listId)
 
 mailchimp.setConfig({
   apiKey,
@@ -42,9 +60,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get the list ID from environment variables or use a default
-    const listId = process.env.MAILCHIMP_LIST_ID || "ae847891d4"
-    console.log("Using list ID:", listId ? "List ID is set" : "List ID is missing")
+    // Get the list ID from environment variables
+    console.log("Using list ID:", listId)
 
     try {
       // Add subscriber to Mailchimp
