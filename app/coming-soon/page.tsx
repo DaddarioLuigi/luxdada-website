@@ -37,16 +37,16 @@ export default function ComingSoonPage() {
     seconds: 0,
   })
 
-  // Set launch date to 30 days from now
+  // Set launch date to May 17, 2025
   useEffect(() => {
-    const launchDate = new Date()
-    launchDate.setDate(launchDate.getDate() + 30)
+    const launchDate = new Date('2025-05-17T00:00:00')
 
     const interval = setInterval(() => {
       const now = new Date()
       const difference = launchDate.getTime() - now.getTime()
 
       if (difference <= 0) {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 })
         clearInterval(interval)
         return
       }
