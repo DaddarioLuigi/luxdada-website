@@ -255,8 +255,8 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             {[
-              { value: "95%", label: "Client Satisfaction" },
-              { value: "40+", label: "Enterprise Clients" },
+              { value: "95%", label: "Innovation Impact" },
+              { value: "20+", label: "Clients" },
               { value: "150+", label: "Projects Completed" },
               { value: "30%", label: "Efficiency Improvement" },
             ].map((stat, index) => (
