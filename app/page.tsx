@@ -30,7 +30,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Driving Innovation with<span className="text-[#293e72]"> AI</span>, Respecting span className="text-[#293e72]">Humanity</span>
+              Driving Innovation with<span className="text-[#293e72]"> AI</span>, Respecting <span className="text-[#293e72]">Humanity</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-lg">
               Luxdada transforms your business processes through software and AI, always respecting ethics, honesty, and the human touch.
