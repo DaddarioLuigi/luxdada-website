@@ -30,11 +30,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Transforming Business Through <span className="text-[#293e72]">AI Innovation</span>
+              Driving Innovation <span className="text-[#293e72]">with AI, Respecting Humanity</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-lg">
-                Luxdada digitizes and optimizes your business processes with cutting-edge software and artificial
-                intelligence solutions.
+              Luxdada transforms your business processes through software and AI, always respecting ethics, honesty, and the human touch.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">Get Started</Button>
