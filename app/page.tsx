@@ -443,7 +443,7 @@ export default function Home() {
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   Schedule a Consultation
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg">
+                <Button variant="outline" className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   View Our Solutions
                 </Button>
               </div>
