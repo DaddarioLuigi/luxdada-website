@@ -57,30 +57,28 @@ export default function Header() {
               {item.name}
             </Link>
           ))}
-          <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">Get Started</Button>
-          
-          {/* Language Switcher */}
-          <div className="flex items-center bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full shadow-sm ml-4">
+          {/* Language Switcher - Desktop */}
+          <div className="flex items-center ml-4 mr-2">
             <button
+              aria-label="Switch to English"
               onClick={() => setLanguage('en')}
-              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition-colors ${
-                language === 'en' ? 'bg-[#293e72] text-white' : 'hover:bg-gray-100'
+              className={`w-9 h-9 flex items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] mx-0.5 ${
+                language === 'en' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
               }`}
             >
-              <span className="text-sm">🇬🇧</span>
-              <span className="text-xs font-medium">EN</span>
+              <span className="text-lg">🇬🇧</span>
             </button>
-            <div className="w-px h-4 bg-gray-200 mx-1"></div>
             <button
+              aria-label="Switch to Italian"
               onClick={() => setLanguage('it')}
-              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition-colors ${
-                language === 'it' ? 'bg-[#293e72] text-white' : 'hover:bg-gray-100'
+              className={`w-9 h-9 flex items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] mx-0.5 ${
+                language === 'it' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
               }`}
             >
-              <span className="text-sm">🇮🇹</span>
-              <span className="text-xs font-medium">IT</span>
+              <span className="text-lg">🇮🇹</span>
             </button>
           </div>
+          <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-2">Get Started</Button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -111,22 +109,23 @@ export default function Header() {
                 </Link>
               ))}
               <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">Get Started</Button>
-              
               {/* Mobile Language Switcher */}
               <div className="flex items-center justify-center gap-2 pt-2">
                 <button
+                  aria-label="Switch to English"
                   onClick={() => setLanguage('en')}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
-                    language === 'en' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] ${
+                    language === 'en' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
                   }`}
                 >
                   <span className="text-base">🇬🇧</span>
                   <span className="text-sm font-medium">English</span>
                 </button>
                 <button
+                  aria-label="Switch to Italian"
                   onClick={() => setLanguage('it')}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
-                    language === 'it' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] ${
+                    language === 'it' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
                   }`}
                 >
                   <span className="text-base">🇮🇹</span>
