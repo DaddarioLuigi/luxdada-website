@@ -152,22 +152,25 @@ export default function ComingSoonPage() {
             <span className="text-2xl font-bold text-[#293e72]"></span>
           </Link>
           {/* Language Switcher */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
             <button
               onClick={() => setLanguage('en')}
-              className={`p-2 rounded-md transition-colors ${
-                language === 'en' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
+                language === 'en' ? 'bg-[#293e72] text-white' : 'hover:bg-gray-100'
               }`}
             >
-              🇬🇧
+              <span className="text-lg">🇬🇧</span>
+              <span className="text-sm font-medium">English</span>
             </button>
+            <div className="w-px h-6 bg-gray-200"></div>
             <button
               onClick={() => setLanguage('it')}
-              className={`p-2 rounded-md transition-colors ${
-                language === 'it' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
+                language === 'it' ? 'bg-[#293e72] text-white' : 'hover:bg-gray-100'
               }`}
             >
-              🇮🇹
+              <span className="text-lg">🇮🇹</span>
+              <span className="text-sm font-medium">Italiano</span>
             </button>
           </div>
         </div>
