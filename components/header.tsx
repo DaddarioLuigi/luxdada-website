@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion"
+import { useLanguage } from "@/lib/language-context"
 
 const navItems = [
   { name: "Home", href: "/coming-soon" },
@@ -19,6 +20,7 @@ const navItems = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { language, setLanguage } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,6 +58,29 @@ export default function Header() {
             </Link>
           ))}
           <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">Get Started</Button>
+          
+          {/* Language Switcher */}
+          <div className="flex items-center bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full shadow-sm ml-4">
+            <button
+              onClick={() => setLanguage('en')}
+              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition-colors ${
+                language === 'en' ? 'bg-[#293e72] text-white' : 'hover:bg-gray-100'
+              }`}
+            >
+              <span className="text-sm">🇬🇧</span>
+              <span className="text-xs font-medium">EN</span>
+            </button>
+            <div className="w-px h-4 bg-gray-200 mx-1"></div>
+            <button
+              onClick={() => setLanguage('it')}
+              className={`flex items-center gap-1.5 px-2 py-1 rounded-full transition-colors ${
+                language === 'it' ? 'bg-[#293e72] text-white' : 'hover:bg-gray-100'
+              }`}
+            >
+              <span className="text-sm">🇮🇹</span>
+              <span className="text-xs font-medium">IT</span>
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -86,6 +111,28 @@ export default function Header() {
                 </Link>
               ))}
               <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">Get Started</Button>
+              
+              {/* Mobile Language Switcher */}
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
+                    language === 'en' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+                  }`}
+                >
+                  <span className="text-base">🇬🇧</span>
+                  <span className="text-sm font-medium">English</span>
+                </button>
+                <button
+                  onClick={() => setLanguage('it')}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors ${
+                    language === 'it' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+                  }`}
+                >
+                  <span className="text-base">🇮🇹</span>
+                  <span className="text-sm font-medium">Italiano</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, ArrowRight, Loader2 } from "lucide-react"
 import { useFormStatus } from "react-dom"
+import { useLanguage } from "@/lib/language-context"
 
 const translations = {
   en: {
@@ -41,8 +42,9 @@ const translations = {
 }
 
 // Form submit button with loading state
-function SubmitButton({ language }: { language: 'en' | 'it' }) {
+function SubmitButton() {
   const { pending } = useFormStatus()
+  const { language } = useLanguage()
 
   return (
     <Button type="submit" className="bg-[#293e72] hover:bg-[#1e2e57] text-white whitespace-nowrap" disabled={pending}>
@@ -60,7 +62,7 @@ function SubmitButton({ language }: { language: 'en' | 'it' }) {
 }
 
 export default function ComingSoonPage() {
-  const [language, setLanguage] = useState<'en' | 'it'>('en')
+  const { language } = useLanguage()
   const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null)
   const [countdown, setCountdown] = useState({
     days: 0,
@@ -220,7 +222,7 @@ export default function ComingSoonPage() {
                     required
                     className="border-gray-300 focus:border-[#293e72] focus:ring-[#293e72]"
                   />
-                  <SubmitButton language={language} />
+                  <SubmitButton />
                 </div>
                 <p className="text-sm text-gray-500 mt-2">{translations[language].emailNote}</p>
 
