@@ -9,19 +9,50 @@ import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, ArrowRight, Loader2 } from "lucide-react"
 import { useFormStatus } from "react-dom"
 
+const translations = {
+  en: {
+    title: "Something Amazing is Coming Soon",
+    subtitle: "We're working hard to bring you our new website. Stay tuned for a revolutionary approach to AI and digital transformation.",
+    days: "Days",
+    hours: "Hours",
+    minutes: "Minutes",
+    seconds: "Seconds",
+    emailPlaceholder: "Enter your email",
+    notifyMe: "Notify Me",
+    submitMessage: "Submitting",
+    emailNote: "We'll notify you when we launch. No spam, we promise!",
+    stayUpdated: "Stay Updated",
+    subscribeForLaunch: "Subscribe for launch"
+  },
+  it: {
+    title: "Qualcosa di Straordinario sta per Arrivare",
+    subtitle: "Stiamo lavorando duramente per portarvi il nostro nuovo sito web. Restate sintonizzati per un approccio rivoluzionario all'IA e alla trasformazione digitale.",
+    days: "Giorni",
+    hours: "Ore",
+    minutes: "Minuti",
+    seconds: "Secondi",
+    emailPlaceholder: "Inserisci la tua email",
+    notifyMe: "Notificami",
+    submitMessage: "Invio in corso",
+    emailNote: "Ti notificheremo al lancio. Niente spam, promesso!",
+    stayUpdated: "Resta Aggiornato",
+    subscribeForLaunch: "Iscriviti per il lancio"
+  }
+}
+
 // Form submit button with loading state
-function SubmitButton() {
+function SubmitButton({ language }: { language: 'en' | 'it' }) {
   const { pending } = useFormStatus()
 
   return (
     <Button type="submit" className="bg-[#293e72] hover:bg-[#1e2e57] text-white whitespace-nowrap" disabled={pending}>
       {pending ? (
         <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {translations[language].submitMessage}
         </>
       ) : (
         <>
-          Notify Me <ArrowRight className="ml-2 h-4 w-4" />
+          {translations[language].notifyMe} <ArrowRight className="ml-2 h-4 w-4" />
         </>
       )}
     </Button>
@@ -29,6 +60,7 @@ function SubmitButton() {
 }
 
 export default function ComingSoonPage() {
+  const [language, setLanguage] = useState<'en' | 'it'>('en')
   const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null)
   const [countdown, setCountdown] = useState({
     days: 0,
@@ -115,10 +147,29 @@ export default function ComingSoonPage() {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="py-6 px-4">
-        <div className="container mx-auto">
+        <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
             <span className="text-2xl font-bold text-[#293e72]"></span>
           </Link>
+          {/* Language Switcher */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => setLanguage('en')}
+              className={`p-2 rounded-md transition-colors ${
+                language === 'en' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+              }`}
+            >
+              🇬🇧
+            </button>
+            <button
+              onClick={() => setLanguage('it')}
+              className={`p-2 rounded-md transition-colors ${
+                language === 'it' ? 'bg-[#293e72] text-white' : 'bg-gray-100 hover:bg-gray-200'
+              }`}
+            >
+              🇮🇹
+            </button>
+          </div>
         </div>
       </header>
 
@@ -133,20 +184,19 @@ export default function ComingSoonPage() {
               className="text-center lg:text-left"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                Something <span className="text-[#293e72]">Amazing</span> is Coming Soon
+                {translations[language].title}
               </h1>
               <p className="text-xl text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0">
-                We're working hard to bring you our new website. Stay tuned for a revolutionary approach to AI and
-                digital transformation.
+                {translations[language].subtitle}
               </p>
 
               {/* Countdown Timer */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto lg:mx-0 mb-10">
                 {[
-                  { label: "Days", value: countdown.days },
-                  { label: "Hours", value: countdown.hours },
-                  { label: "Minutes", value: countdown.minutes },
-                  { label: "Seconds", value: countdown.seconds },
+                  { label: translations[language].days, value: countdown.days },
+                  { label: translations[language].hours, value: countdown.hours },
+                  { label: translations[language].minutes, value: countdown.minutes },
+                  { label: translations[language].seconds, value: countdown.seconds },
                 ].map((item, index) => (
                   <div key={index} className="text-center">
                     <div className="bg-white rounded-lg shadow-md p-2 sm:p-4">
@@ -163,15 +213,13 @@ export default function ComingSoonPage() {
                   <Input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={translations[language].emailPlaceholder}
                     required
                     className="border-gray-300 focus:border-[#293e72] focus:ring-[#293e72]"
                   />
-                  <Button type="submit" className="bg-[#293e72] hover:bg-[#1e2e57] text-white whitespace-nowrap">
-                    Notify Me <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <SubmitButton language={language} />
                 </div>
-                <p className="text-sm text-gray-500 mt-2">We'll notify you when we launch. No spam, we promise!</p>
+                <p className="text-sm text-gray-500 mt-2">{translations[language].emailNote}</p>
 
                 {/* Feedback Message */}
                 {message && (
@@ -220,8 +268,8 @@ export default function ComingSoonPage() {
                     <Mail className="h-6 w-6 text-[#293e72]" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Stay Updated</p>
-                    <p className="text-xs text-gray-500">Subscribe for launch</p>
+                    <p className="text-sm font-medium text-gray-900">{translations[language].stayUpdated}</p>
+                    <p className="text-xs text-gray-500">{translations[language].subscribeForLaunch}</p>
                   </div>
                 </div>
               </div>
@@ -229,8 +277,6 @@ export default function ComingSoonPage() {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
     </div>
   )
 }
