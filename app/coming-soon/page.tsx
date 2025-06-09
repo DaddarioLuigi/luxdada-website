@@ -73,7 +73,7 @@ export default function ComingSoonPage() {
 
   // Set launch date to May 17, 2025
   useEffect(() => {
-    const launchDate = new Date('2025-05-17T00:00:00')
+    const launchDate = new Date('2025-10-05T00:00:00')
 
     const interval = setInterval(() => {
       const now = new Date()
