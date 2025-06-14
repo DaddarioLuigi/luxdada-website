@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, ArrowRight, Loader2 } from "lucide-react"
 import { useFormStatus } from "react-dom"
 import { useLanguage } from "@/lib/language-context"
+import { AnimatedText } from "@/components/animated-text"
 
 const translations = {
   en: {
@@ -54,7 +55,10 @@ function SubmitButton() {
         </>
       ) : (
         <>
-          {translations[language].notifyMe} <ArrowRight className="ml-2 h-4 w-4" />
+          <AnimatedText key={`${language}-notify-me`}>
+            {translations[language].notifyMe}
+          </AnimatedText>
+          <ArrowRight className="ml-2 h-4 w-4" />
         </>
       )}
     </Button>
@@ -167,10 +171,14 @@ export default function ComingSoonPage() {
               className="text-center lg:text-left"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                {translations[language].title}
+                <AnimatedText key={`${language}-title`}>
+                  {translations[language].title}
+                </AnimatedText>
               </h1>
               <p className="text-xl text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0">
-                {translations[language].subtitle}
+                <AnimatedText key={`${language}-subtitle`}>
+                  {translations[language].subtitle}
+                </AnimatedText>
               </p>
 
               {/* Countdown Timer */}
@@ -183,8 +191,16 @@ export default function ComingSoonPage() {
                 ].map((item, index) => (
                   <div key={index} className="text-center">
                     <div className="bg-white rounded-lg shadow-md p-2 sm:p-4">
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#293e72]">{item.value}</div>
-                      <div className="text-xs sm:text-sm text-gray-500">{item.label}</div>
+                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#293e72]">
+                        <AnimatedText key={`${language}-countdown-${index}-value`}>
+                          {item.value}
+                        </AnimatedText>
+                      </div>
+                      <div className="text-xs sm:text-sm text-gray-500">
+                        <AnimatedText key={`${language}-countdown-${index}-label`}>
+                          {item.label}
+                        </AnimatedText>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -202,7 +218,11 @@ export default function ComingSoonPage() {
                   />
                   <SubmitButton />
                 </div>
-                <p className="text-sm text-gray-500 mt-2">{translations[language].emailNote}</p>
+                <p className="text-sm text-gray-500 mt-2">
+                  <AnimatedText key={`${language}-email-note`}>
+                    {translations[language].emailNote}
+                  </AnimatedText>
+                </p>
 
                 {/* Feedback Message */}
                 {message && (
@@ -214,7 +234,9 @@ export default function ComingSoonPage() {
                       message.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
                     }`}
                   >
-                    {message.text}
+                    <AnimatedText key={`${language}-message-${message.type}`}>
+                      {message.text}
+                    </AnimatedText>
                   </motion.div>
                 )}
               </form>

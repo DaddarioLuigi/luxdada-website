@@ -8,14 +8,24 @@ import { Menu, X } from "lucide-react"
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
+import { AnimatedText } from "./animated-text"
 
-const navItems = [
-  { name: "Home", href: "/coming-soon" },
-  { name: "About Us", href: "/coming-soon" },
-  { name: "Solutions", href: "/coming-soon" },
-  { name: "Case Studies", href: "/coming-soon" },
-  { name: "Contact", href: "/coming-soon" },   
-]
+const navItems = {
+  en: [
+    { name: "Home", href: "/coming-soon" },
+    { name: "About Us", href: "/coming-soon" },
+    { name: "Solutions", href: "/coming-soon" },
+    { name: "Case Studies", href: "/coming-soon" },
+    { name: "Contact", href: "/coming-soon" },
+  ],
+  it: [
+    { name: "Home", href: "/coming-soon" },
+    { name: "Chi Siamo", href: "/coming-soon" },
+    { name: "Soluzioni", href: "/coming-soon" },
+    { name: "Casi Studio", href: "/coming-soon" },
+    { name: "Contatti", href: "/coming-soon" },
+  ]
+}
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -39,22 +49,24 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/coming-soon" className="flex items-center">
-        <Image
-            src="/logo_uff.png" // Replace with your actual logo path
+          <Image
+            src="/logo_uff.png"
             alt="Luxdada Logo"
-            width={135}       // Adjust the size as needed
+            width={150}
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
+          {navItems[language].map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className="text-gray-700 hover:text-[#293e72] transition-colors font-medium"
             >
-              {item.name}
+              <AnimatedText key={`${language}-${item.name}`}>
+                {item.name}
+              </AnimatedText>
             </Link>
           ))}
           {/* Language Switcher - Desktop */}
@@ -78,7 +90,11 @@ export default function Header() {
               <span className="text-lg">🇮🇹</span>
             </button>
           </div>
-          <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-2">Get Started</Button>
+          <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-2">
+            <AnimatedText key={`${language}-get-started`}>
+              {language === 'en' ? 'Get Started' : 'Inizia Ora'}
+            </AnimatedText>
+          </Button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -98,17 +114,23 @@ export default function Header() {
             className="md:hidden bg-white w-full overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {navItems.map((item) => (
+              {navItems[language].map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className="text-gray-700 hover:text-[#293e72] py-2 transition-colors font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item.name}
+                  <AnimatedText key={`${language}-${item.name}`}>
+                    {item.name}
+                  </AnimatedText>
                 </Link>
               ))}
-              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">Get Started</Button>
+              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">
+                <AnimatedText key={`${language}-get-started-mobile`}>
+                  {language === 'en' ? 'Get Started' : 'Inizia Ora'}
+                </AnimatedText>
+              </Button>
               {/* Mobile Language Switcher */}
               <div className="flex items-center justify-center gap-2 pt-2">
                 <button
@@ -119,7 +141,9 @@ export default function Header() {
                   }`}
                 >
                   <span className="text-base">🇬🇧</span>
-                  <span className="text-sm font-medium">English</span>
+                  <AnimatedText key={`${language}-english`}>
+                    <span className="text-sm font-medium">English</span>
+                  </AnimatedText>
                 </button>
                 <button
                   aria-label="Switch to Italian"
@@ -129,7 +153,9 @@ export default function Header() {
                   }`}
                 >
                   <span className="text-base">🇮🇹</span>
-                  <span className="text-sm font-medium">Italiano</span>
+                  <AnimatedText key={`${language}-italian`}>
+                    <span className="text-sm font-medium">Italiano</span>
+                  </AnimatedText>
                 </button>
               </div>
             </div>
