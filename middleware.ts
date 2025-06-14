@@ -17,8 +17,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Redirect all other routes to coming soon
-  return NextResponse.redirect(new URL('/coming-soon', request.url))
+  // Only redirect the home page to coming soon
+  if (request.nextUrl.pathname === '/') {
+    return NextResponse.redirect(new URL('/coming-soon', request.url))
+  }
+
+  // Allow access to all other routes
+  return NextResponse.next()
 }
 
 export const config = {
