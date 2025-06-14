@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,6 +49,7 @@ body {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --font-sora: 'Sora', sans-serif;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -90,5 +93,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sora);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sora);
   }
 }
