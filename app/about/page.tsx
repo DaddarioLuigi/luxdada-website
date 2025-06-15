@@ -234,43 +234,37 @@ export default function AboutPage() {
                 name: "Alex Morgan",
                 title: "Chief Executive Officer",
                 bio: "With over 20 years of experience in technology leadership, Alex drives Luxdada's vision and strategic direction.",
-                image:
-                  "/placeholder.svg?height=400&width=400&query=professional headshot of male CEO in business attire",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of male CEO in business attire",
               },
               {
                 name: "Sophia Chen",
                 title: "Chief Technology Officer",
                 bio: "A pioneer in AI research and development, Sophia leads our technical innovation and product development.",
-                image:
-                  "/placeholder.svg?height=400&width=400&query=professional headshot of female CTO in business casual attire",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of female CTO in business casual attire",
               },
               {
                 name: "David Patel",
                 title: "Healthcare Solutions Director",
                 bio: "With a background in both healthcare and technology, David spearheads our specialized healthcare AI initiatives.",
-                image:
-                  "/placeholder.svg?height=400&width=400&query=professional headshot of male healthcare director in business attire",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of male healthcare director in business attire",
               },
               {
                 name: "Maria Rodriguez",
                 title: "Chief Operations Officer",
                 bio: "Maria ensures operational excellence across all aspects of Luxdada, from project delivery to client success.",
-                image:
-                  "/placeholder.svg?height=400&width=400&query=professional headshot of female COO in business attire",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of female COO in business attire",
               },
               {
                 name: "James Wilson",
                 title: "Chief Innovation Officer",
                 bio: "James focuses on identifying emerging technologies and trends to keep Luxdada at the cutting edge of AI.",
-                image:
-                  "/placeholder.svg?height=400&width=400&query=professional headshot of male innovation officer in business casual attire",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of male innovation officer in business casual attire",
               },
               {
                 name: "Aisha Johnson",
                 title: "Client Success Director",
                 bio: "Aisha works closely with our clients to ensure our solutions deliver measurable business impact and ROI.",
-                image:
-                  "/placeholder.svg?height=400&width=400&query=professional headshot of female client success director in business attire",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of female client success director in business attire",
               },
             ].map((member, index) => (
               <motion.div
@@ -281,12 +275,18 @@ export default function AboutPage() {
               >
                 <Card className="border-none shadow-md hover-scale h-full">
                   <CardContent className="p-6">
-                    <div className="relative h-64 rounded-lg overflow-hidden mb-4">
-                      <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
+                    <div className="relative h-48 sm:h-64 rounded-lg overflow-hidden mb-4">
+                      <Image 
+                        src={member.image || "/placeholder.svg"} 
+                        alt={member.name} 
+                        fill 
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
                     <p className="text-[#293e72] font-medium mb-3">{member.title}</p>
-                    <p className="text-gray-600">{member.bio}</p>
+                    <p className="text-gray-600 text-sm sm:text-base">{member.bio}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -296,8 +296,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-[#293e72]">
-        <div className="container mx-auto px-4">
+      <section className="py-16 md:py-20 relative">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/join-team.png"
+            alt="Join our team background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#293e72]/80" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -306,7 +316,7 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Team</h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 We're always looking for talented individuals who are passionate about AI and digital transformation.
                 Explore career opportunities at Luxdada.
               </p>
