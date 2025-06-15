@@ -57,7 +57,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-8">
           {navItems[language].map((item) => (
             <Link
               key={item.name}
@@ -98,7 +98,7 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button className="lg:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -111,7 +111,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white w-full overflow-hidden"
+            className="lg:hidden bg-white w-full overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               {navItems[language].map((item) => (

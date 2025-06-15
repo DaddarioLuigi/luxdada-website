@@ -228,7 +228,7 @@ export default function AboutPage() {
             <p className="text-xl text-gray-600">The experts driving innovation and excellence at Luxdada.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 name: "Alex Morgan",
@@ -272,20 +272,21 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={teamInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
+                className="w-full"
               >
-                <Card className="border-none shadow-md hover-scale h-full">
-                  <CardContent className="p-6">
-                    <div className="relative h-48 sm:h-64 rounded-lg overflow-hidden mb-4">
+                <Card className="border-none shadow-md hover-scale h-full bg-white">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-4">
                       <Image 
                         src={member.image || "/placeholder.svg"} 
                         alt={member.name} 
                         fill 
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
-                    <p className="text-[#293e72] font-medium mb-3">{member.title}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                    <p className="text-[#293e72] font-medium text-sm sm:text-base mb-2 sm:mb-3">{member.title}</p>
                     <p className="text-gray-600 text-sm sm:text-base">{member.bio}</p>
                   </CardContent>
                 </Card>
