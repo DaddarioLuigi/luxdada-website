@@ -139,19 +139,21 @@ export default function SolutionsPage() {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={solutionsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full"
               >
-                <Card className="border-none shadow-md hover-scale h-full">
-                  <CardContent className="p-6">
+                <Card className="border-none shadow-md hover-scale h-full bg-white">
+                  <CardContent className="p-4 sm:p-5 md:p-6">
                     <div className="bg-[#293e72]/10 p-3 rounded-lg inline-block mb-4">{solution.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{solution.title}</h3>
-                    <p className="text-gray-600 mb-4">{solution.description}</p>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-2">{solution.title}</h3>
+                    <p className="text-base sm:text-lg text-gray-600 mb-4">{solution.description}</p>
                     <ul className="space-y-2">
                       {solution.features.map((feature, i) => (
                         <li key={i} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-sm sm:text-base text-gray-700">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -484,19 +486,21 @@ export default function SolutionsPage() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
                   viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                 >
                   <div className="md:w-1/2 flex justify-center md:justify-end md:pr-12 md:pl-0 pl-12">
                     <div className={`${index % 2 === 0 ? "md:text-left" : "md:text-right"} max-w-md`}>
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
+                      <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+                      <p className="text-base sm:text-lg text-gray-600">{step.description}</p>
                     </div>
                   </div>
 
                   <div className="absolute left-0 md:left-1/2 top-4 md:top-6 transform md:-translate-x-1/2 flex items-center justify-center">
-                    <div className="bg-[#293e72] rounded-full p-3 z-10">{step.icon}</div>
+                    <div className="bg-[#293e72] rounded-full p-3 z-10 relative">
+                      {step.icon}
+                    </div>
                   </div>
 
                   <div className="md:w-1/2 md:pl-12 md:pr-0 pr-12"></div>
