@@ -16,6 +16,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Redirect /home to the actual homepage
+  if (request.nextUrl.pathname === '/home') {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
+
   // Redirect only the root path to coming soon
   if (request.nextUrl.pathname === '/') {
     return NextResponse.redirect(new URL('/coming-soon', request.url))
