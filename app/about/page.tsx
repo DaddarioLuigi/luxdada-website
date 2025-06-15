@@ -217,7 +217,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="py-16 md:py-20 bg-gray-50" ref={teamRef}>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 min-w-[320px]">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -228,7 +228,7 @@ export default function AboutPage() {
             <p className="text-xl text-gray-600">The experts driving innovation and excellence at Luxdada.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {[
               {
                 name: "Alex Morgan",
@@ -272,22 +272,23 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={teamInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="w-full"
+                className="w-full min-w-[280px]"
               >
                 <Card className="border-none shadow-md hover-scale h-full bg-white">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-4">
+                  <CardContent className="p-3 sm:p-4 md:p-6">
+                    <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-3 sm:mb-4">
                       <Image 
                         src={member.image || "/placeholder.svg"} 
                         alt={member.name} 
                         fill 
                         className="object-cover"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={index < 3}
                       />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
-                    <p className="text-[#293e72] font-medium text-sm sm:text-base mb-2 sm:mb-3">{member.title}</p>
-                    <p className="text-gray-600 text-sm sm:text-base">{member.bio}</p>
+                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                    <p className="text-[#293e72] font-medium text-sm sm:text-base mb-2">{member.title}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">{member.bio}</p>
                   </CardContent>
                 </Card>
               </motion.div>
