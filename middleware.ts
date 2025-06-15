@@ -16,7 +16,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Allow access to all routes
+  // Redirect only the root path to coming soon
+  if (request.nextUrl.pathname === '/') {
+    return NextResponse.redirect(new URL('/coming-soon', request.url))
+  }
+
+  // Allow access to all other routes
   return NextResponse.next()
 }
 
