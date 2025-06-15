@@ -218,10 +218,16 @@ export default function AboutPage() {
       {/* Team Section */}
       <section className="py-16 md:py-20 bg-gray-50" ref={teamRef}>
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership Team</h2>
-            <p className="text-xl text-gray-600">The experts driving innovation and excellence at Luxdada.</p>
-          </div>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership Team</h2>
+            <p className="text-lg sm:text-xl text-gray-600">The experts driving innovation and excellence at Luxdada.</p>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {[
@@ -262,10 +268,17 @@ export default function AboutPage() {
                 image: "/placeholder.svg?height=400&width=400&query=professional headshot of female client success director in business attire",
               },
             ].map((member, index) => (
-              <div key={index} className="w-full">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full"
+              >
                 <Card className="border-none shadow-md hover-scale h-full bg-white">
-                  <CardContent className="p-3 sm:p-4 md:p-6">
-                    <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-3 sm:mb-4">
+                  <CardContent className="p-4 sm:p-5 md:p-6">
+                    <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-4">
                       <Image 
                         src={member.image || "/placeholder.svg"} 
                         alt={member.name} 
@@ -275,12 +288,12 @@ export default function AboutPage() {
                         priority={index < 3}
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
-                    <p className="text-[#293e72] font-medium text-sm sm:text-base mb-2">{member.title}</p>
-                    <p className="text-gray-600 text-xs sm:text-sm md:text-base">{member.bio}</p>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                    <p className="text-base sm:text-lg text-[#293e72] font-medium mb-3">{member.title}</p>
+                    <p className="text-sm sm:text-base text-gray-600">{member.bio}</p>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
