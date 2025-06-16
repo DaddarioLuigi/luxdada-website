@@ -540,7 +540,7 @@ export default function SolutionsPage() {
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   Schedule a Consultation
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg">
+                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   Chat with LUX.AI Assistant
                 </Button>
               </div>
