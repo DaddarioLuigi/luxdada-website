@@ -433,81 +433,93 @@ export default function SolutionsPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Implementation Process</h2>
-              <p className="text-xl text-gray-600">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Implementation Process</h2>
+              <p className="text-lg sm:text-xl text-gray-600">
                 A structured approach to delivering successful AI and digital transformation solutions.
               </p>
             </motion.div>
           </div>
 
-          <div className="relative">
-            {/* Process Timeline */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-[#293e72]/20 transform -translate-x-1/2 z-0"></div>
-
-            <div className="space-y-12 relative">
-              {[
-                {
-                  title: "Discovery & Assessment",
-                  description:
-                    "We begin by understanding your business needs, challenges, and objectives to identify the right AI and digital solutions.",
-                  icon: <Lightbulb className="h-6 w-6 text-white" />,
-                },
-                {
-                  title: "Strategy & Planning",
-                  description:
-                    "We develop a comprehensive roadmap outlining the implementation strategy, timeline, and expected outcomes.",
-                  icon: <Target className="h-6 w-6 text-white" />,
-                },
-                {
-                  title: "Development & Integration",
-                  description:
-                    "Our team designs and develops custom solutions, ensuring seamless integration with your existing systems.",
-                  icon: <Code className="h-6 w-6 text-white" />,
-                },
-                {
-                  title: "Testing & Optimization",
-                  description:
-                    "We rigorously test all solutions to ensure they meet quality standards and optimize for performance.",
-                  icon: <Zap className="h-6 w-6 text-white" />,
-                },
-                {
-                  title: "Deployment & Training",
-                  description:
-                    "We deploy the solution and provide comprehensive training to ensure your team can effectively utilize it.",
-                  icon: <Users className="h-6 w-6 text-white" />,
-                },
-                {
-                  title: "Ongoing Support & Evolution",
-                  description:
-                    "We provide continuous support and regularly update your solutions to adapt to changing business needs.",
-                  icon: <Shield className="h-6 w-6 text-white" />,
-                },
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
-                >
-                  <div className="md:w-1/2 flex justify-center md:justify-end md:pr-12 md:pl-0 pl-12">
-                    <div className={`${index % 2 === 0 ? "md:text-left" : "md:text-right"} max-w-md`}>
-                      <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                      <p className="text-base sm:text-lg text-gray-600">{step.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="absolute left-0 md:left-1/2 top-4 md:top-6 transform md:-translate-x-1/2 flex items-center justify-center z-10">
-                    <div className="bg-[#293e72] rounded-full p-3 shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Discovery & Assessment",
+                description:
+                  "We begin by understanding your business needs, challenges, and objectives to identify the right AI and digital solutions.",
+                icon: <Lightbulb className="h-8 w-8 text-white" />,
+                color: "bg-blue-500",
+              },
+              {
+                title: "Strategy & Planning",
+                description:
+                  "We develop a comprehensive roadmap outlining the implementation strategy, timeline, and expected outcomes.",
+                icon: <Target className="h-8 w-8 text-white" />,
+                color: "bg-indigo-500",
+              },
+              {
+                title: "Development & Integration",
+                description:
+                  "Our team designs and develops custom solutions, ensuring seamless integration with your existing systems.",
+                icon: <Code className="h-8 w-8 text-white" />,
+                color: "bg-purple-500",
+              },
+              {
+                title: "Testing & Optimization",
+                description:
+                  "We rigorously test all solutions to ensure they meet quality standards and optimize for performance.",
+                icon: <Zap className="h-8 w-8 text-white" />,
+                color: "bg-pink-500",
+              },
+              {
+                title: "Deployment & Training",
+                description:
+                  "We deploy the solution and provide comprehensive training to ensure your team can effectively utilize it.",
+                icon: <Users className="h-8 w-8 text-white" />,
+                color: "bg-red-500",
+              },
+              {
+                title: "Ongoing Support & Evolution",
+                description:
+                  "We provide continuous support and regularly update your solutions to adapt to changing business needs.",
+                icon: <Shield className="h-8 w-8 text-white" />,
+                color: "bg-orange-500",
+              },
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full"
+              >
+                <Card className="border-none shadow-md hover-scale h-full bg-white">
+                  <CardContent className="p-6">
+                    <div className={`${step.color} rounded-lg p-4 inline-block mb-4`}>
                       {step.icon}
                     </div>
-                  </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
+                    <p className="text-gray-600">{step.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
 
-                  <div className="md:w-1/2 md:pl-12 md:pr-0 pr-12"></div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="mt-16 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-lg text-gray-600 mb-6">
+                Each phase of our implementation process is designed to ensure your success and maximize the value of your investment.
+              </p>
+              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">
+                Learn More About Our Process
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
