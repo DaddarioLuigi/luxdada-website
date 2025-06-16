@@ -442,7 +442,7 @@ export default function SolutionsPage() {
 
           <div className="relative">
             {/* Process Timeline */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-[#293e72]/20 transform -translate-x-1/2"></div>
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-[#293e72]/20 transform -translate-x-1/2 z-0"></div>
 
             <div className="space-y-12 relative">
               {[
@@ -498,8 +498,8 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <div className="absolute left-0 md:left-1/2 top-4 md:top-6 transform md:-translate-x-1/2 flex items-center justify-center">
-                    <div className="bg-[#293e72] rounded-full p-3 z-10 relative">
+                  <div className="absolute left-0 md:left-1/2 top-4 md:top-6 transform md:-translate-x-1/2 flex items-center justify-center z-10">
+                    <div className="bg-[#293e72] rounded-full p-3 shadow-lg">
                       {step.icon}
                     </div>
                   </div>
@@ -513,8 +513,18 @@ export default function SolutionsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-[#293e72]">
-        <div className="container mx-auto px-4">
+      <section className="py-16 md:py-20 relative">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/join-team.png"
+            alt="Transform your business background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#293e72]/80" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -523,7 +533,7 @@ export default function SolutionsPage() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Business?</h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 Contact us today to discuss how our AI and digital solutions can help you achieve your business goals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -531,7 +541,7 @@ export default function SolutionsPage() {
                   Schedule a Consultation
                 </Button>
                 <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg">
-                  View Case Studies
+                  Chat with LUX.AI Assistant
                 </Button>
               </div>
             </motion.div>
