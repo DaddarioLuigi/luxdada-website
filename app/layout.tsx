@@ -14,7 +14,7 @@ const sora = Sora({
 })
 
 export const metadata: Metadata = {
-  title: "Luxdada - AI & Digital Transformation Solutions",
+  title: "Luxdada - Gain insights from your data",
   description: "Digitizing business processes through software and Artificial Intelligence",
   generator: 'v0.dev'
 }
