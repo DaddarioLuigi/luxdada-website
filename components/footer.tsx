@@ -1,9 +1,59 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Loader2 } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function Footer() {
+  const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null)
+
+  // Handle newsletter subscription
+  async function handleSubscribe(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setIsSubmitting(true)
+    
+    const formData = new FormData()
+    formData.append("email", email)
+    
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        body: formData,
+      })
+      
+      const result = await response.json()
+      
+      if (result.success) {
+        setMessage({ text: result.message, type: "success" })
+        setEmail("") // Reset form
+      } else {
+        let errorMessage = result.message
+        if (result.error) {
+          errorMessage += ` (Error: ${result.error})`
+        }
+        setMessage({ text: errorMessage, type: "error" })
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setMessage({ 
+        text: `Something went wrong. Please try again later.`, 
+        type: "error" 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+    
+    // Clear message after 5 seconds
+    setTimeout(() => {
+      setMessage(null)
+    }, 5000)
+  }
+
   return (
     <footer className="bg-gray-50 pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -14,16 +64,16 @@ export default function Footer() {
               Digitizing business processes through software and Artificial Intelligence.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-500 hover:text-[#293e72] transition-colors">
+              <a href="https://www.facebook.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-[#293e72] transition-colors">
+              <a href="https://twitter.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-[#293e72] transition-colors">
+              <a href="https://www.linkedin.com/company/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-500 hover:text-[#293e72] transition-colors">
+              <a href="https://www.instagram.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
@@ -33,22 +83,22 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/about" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/case-studies" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/coming-soon" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/contact" className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Contact
                 </Link>
               </li>
@@ -76,14 +126,43 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">Newsletter</h4>
             <p className="text-gray-600 mb-4">Subscribe to our newsletter for the latest updates.</p>
-            <div className="flex flex-col space-y-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col space-y-2">
               <Input
                 type="email"
                 placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="border-gray-300 focus:border-[#293e72] focus:ring-[#293e72]"
               />
-              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">Subscribe</Button>
-            </div>
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...
+                  </>
+                ) : (
+                  "Subscribe"
+                )}
+              </Button>
+            </form>
+            
+            {/* Feedback Message */}
+            {message && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className={`mt-3 p-2 rounded-md text-sm ${
+                  message.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
+                }`}
+              >
+                {message.text}
+              </motion.div>
+            )}
           </div>
         </div>
 

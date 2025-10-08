@@ -12,18 +12,18 @@ import { AnimatedText } from "./animated-text"
 
 const navItems = {
   en: [
-    { name: "Home", href: "/coming-soon" },
-    { name: "About Us", href: "/coming-soon" },
-    { name: "Solutions", href: "/coming-soon" },
-    { name: "Case Studies", href: "/coming-soon" },
-    { name: "Contact", href: "/coming-soon" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Solutions", href: "/solutions" },
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Contact", href: "/contact" },
   ],
   it: [
-    { name: "Home", href: "/coming-soon" },
-    { name: "Chi Siamo", href: "/coming-soon" },
-    { name: "Soluzioni", href: "/coming-soon" },
-    { name: "Casi Studio", href: "/coming-soon" },
-    { name: "Contatti", href: "/coming-soon" },
+    { name: "Home", href: "/" },
+    { name: "Chi Siamo", href: "/about" },
+    { name: "Soluzioni", href: "/solutions" },
+    { name: "Casi Studio", href: "/case-studies" },
+    { name: "Contatti", href: "/contact" },
   ]
 }
 
@@ -48,7 +48,7 @@ export default function Header() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/coming-soon" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo_uff.png"
             alt="Luxdada Logo"
