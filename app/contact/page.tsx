@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
+import { Mail, Phone, Send, CheckCircle } from "lucide-react"
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -79,7 +79,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@luxdada.com</p>
+                    <p className="text-gray-600">info@luxdada.it</p>
                   </div>
                 </div>
 
@@ -89,23 +89,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-[#293e72]/10 p-3 rounded-full mr-4">
-                    <MapPin className="h-6 w-6 text-[#293e72]" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">Office</h3>
-                    <p className="text-gray-600">
-                      123 Innovation Drive
-                      <br />
-                      Tech City, TC 10101
-                      <br />
-                      United States
-                    </p>
+                    <p className="text-gray-600">+39 392 484 2124</p>
                   </div>
                 </div>
               </div>
@@ -265,20 +249,17 @@ export default function ContactPage() {
       {/* Map Section */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Visit Our Office</h2>
-            <p className="text-lg text-gray-600">
-              We're located in the heart of Tech City, easily accessible by public transportation.
-            </p>
-          </div>
-
-          <div className="relative h-[400px] rounded-xl overflow-hidden shadow-lg">
-            <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-[#293e72] mx-auto mb-4" />
-                <p className="text-gray-700 font-medium">123 Innovation Drive, Tech City, TC 10101</p>
-              </div>
-            </div>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89545.77729942316!2d9.102486335546863!3d45.46426987107542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilano%2C%20Italy!5e0!3m2!1sen!2sit!4v1709647300000!5m2!1sen!2sit"
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            ></iframe>
           </div>
         </div>
       </section>
