@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 import { AnimatedText } from "./animated-text"
+import { useToast } from "@/hooks/use-toast"
 
 const navItems = {
   en: [
@@ -31,6 +32,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { language, setLanguage } = useLanguage()
+  const { toast } = useToast()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,8 +63,15 @@ export default function Header() {
           {navItems[language].map((item) => (
             <Link
               key={item.name}
-              href={item.href}
+              href={item.href === "/contact" ? item.href : "#"}
               className="text-gray-700 hover:text-[#293e72] transition-colors font-medium"
+              onClick={item.href === "/contact" ? undefined : (e) => {
+                e.preventDefault()
+                toast({
+                  title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
+                  description: language === 'it' ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
+                })
+              }}
             >
               <AnimatedText key={`${language}-${item.name}`}>
                 {item.name}
@@ -117,9 +126,16 @@ export default function Header() {
               {navItems[language].map((item) => (
                 <Link
                   key={item.name}
-                  href={item.href}
+                  href={item.href === "/contact" ? item.href : "#"}
                   className="text-gray-700 hover:text-[#293e72] py-2 transition-colors font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={item.href === "/contact" ? () => setMobileMenuOpen(false) : (e) => {
+                    e.preventDefault()
+                    setMobileMenuOpen(false)
+                    toast({
+                      title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
+                      description: language === 'it' ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
+                    })
+                  }}
                 >
                   <AnimatedText key={`${language}-${item.name}`}>
                     {item.name}

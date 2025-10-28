@@ -257,7 +257,7 @@ export default function Home() {
             {[
               { value: "95%", label: "Innovation Impact" },
               { value: "20+", label: "Clients" },
-              { value: "150+", label: "Projects Completed" },
+              { value: "15+", label: "Projects Completed" },
               { value: "30%", label: "Efficiency Improvement" },
             ].map((stat, index) => (
               <motion.div

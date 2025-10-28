@@ -6,11 +6,21 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Loader2 } from "lucide-react"
 import { motion } from "framer-motion"
+import { useToast } from "@/hooks/use-toast"
 
 export default function Footer() {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null)
+  const { toast } = useToast()
+
+  function handleUnavailableClick(e: React.MouseEvent) {
+    e.preventDefault()
+    toast({
+      title: 'Sito in costruzione',
+      description: 'Stiamo lavorando per te. Torna presto!'
+    })
+  }
 
   // Handle newsletter subscription
   async function handleSubscribe(event: React.FormEvent<HTMLFormElement>) {
@@ -64,11 +74,8 @@ export default function Footer() {
               Digitizing business processes through software and Artificial Intelligence.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
+              <a href="https://www.facebook.com/luxdadadigital" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
                 <Facebook size={20} />
-              </a>
-              <a href="https://twitter.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
-                <Twitter size={20} />
               </a>
               <a href="https://www.linkedin.com/company/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
                 <Linkedin size={20} />
@@ -83,17 +90,17 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
                   Case Studies
                 </Link>
               </li>
@@ -172,10 +179,10 @@ export default function Footer() {
               © {new Date().getFullYear()} Luxdada. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link href="/privacy" className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
+              <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
+              <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
                 Terms of Service
               </Link>
             </div>
