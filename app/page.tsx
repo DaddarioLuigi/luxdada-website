@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Code, LineChart, Stethoscope, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 export default function Home() {
   const featuresRef = useRef(null)
@@ -93,17 +94,27 @@ export default function Home() {
           <div className="text-center mb-8">
             <p className="text-gray-500 font-medium">TRUSTED BY INDUSTRY LEADERS</p>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              >
-                <div className="h-12 w-32 bg-gray-200 rounded-md flex items-center justify-center">
-                  <span className="text-gray-500 font-medium">Client {i}</span>
-                </div>
-              </div>
-            ))}
+          <div className="relative">
+            <Carousel opts={{ align: "start", loop: true }}>
+              <CarouselContent>
+                {[
+                  "/trustedby/fondazione-alfieri-logo.png",
+                  "/trustedby/tawk.to.png",
+                  "/trustedby/Trusted-shops-logo.png",
+                  "/trustedby/virtusingegneria (1).png",
+                ].map((src) => (
+                  <CarouselItem key={src} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
+                    <div className="flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                      <div className="relative h-12 md:h-14 lg:h-16 w-32 md:w-40">
+                        <Image src={src} alt={src.split('/').pop() || 'logo'} fill className="object-contain" />
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </div>
       </section>
