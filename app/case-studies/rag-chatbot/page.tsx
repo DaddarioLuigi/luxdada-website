@@ -178,7 +178,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 viewBox="0 0 420 180"
-                className="w-full h-40"
+                className="w-full h-48 md:h-40"
               >
                 <g fill="#e5e7eb">
                   <rect x="40" y="20" width="320" height="1" />
@@ -187,10 +187,10 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
                   <rect x="40" y="140" width="320" height="1" />
                 </g>
                 <g>
-                  <motion.rect x="60" y="80" width="40" initial={{ height: 0 }} whileInView={{ height: 60 }} viewport={{ once: true }} transition={{ duration: 0.6 }} fill="#293e72" />
-                  <motion.rect x="140" y="60" width="40" initial={{ height: 0 }} whileInView={{ height: 80 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.05 }} fill="#293e72" />
-                  <motion.rect x="220" y="40" width="40" initial={{ height: 0 }} whileInView={{ height: 100 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} fill="#293e72" />
-                  <motion.rect x="300" y="50" width="40" initial={{ height: 0 }} whileInView={{ height: 90 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }} fill="#293e72" />
+                  <rect x="60" y="80" width="40" height="60" fill="#293e72" />
+                  <rect x="140" y="60" width="40" height="80" fill="#293e72" />
+                  <rect x="220" y="40" width="40" height="100" fill="#293e72" />
+                  <rect x="300" y="50" width="40" height="90" fill="#293e72" />
                 </g>
                 <g fontSize="10" fill="#6b7280">
                   <text x="60" y="160">Week 1</text>
