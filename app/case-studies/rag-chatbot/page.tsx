@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 
 import Image from "next/image"
@@ -33,17 +35,17 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
       {/* Overview */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="prose prose-gray max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto space-y-6 text-gray-700 leading-relaxed">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <h2>Overview</h2>
-              <p>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Overview</h2>
+              <p className="mb-4">
                 We implemented a Retrieval‑Augmented Generation (RAG) chatbot that runs on WhatsApp. Users ask questions; the bot retrieves relevant content from a curated knowledge base and crafts answers with an LLM. Orchestration is handled by <strong>n8n</strong>, which keeps the solution modular, observable, and easy to extend.
               </p>
-              <p>
+              <p className="mb-4">
                 Why RAG instead of pure fine‑tuning? Because <em>grounding</em> answers in your documents yields higher accuracy, fresher knowledge, and lower maintenance. Fine‑tuning still helps for tone or format, but RAG is ideal when content changes frequently or requires citations.
               </p>
-              <h3>Business Goals</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-gray-900">Business Goals</h3>
+              <ul className="list-disc pl-5 space-y-1">
                 <li>24/7 instant support directly on WhatsApp</li>
                 <li>Grounded answers based on verified, up‑to‑date documents</li>
                 <li>Low‑ops, composable workflow using n8n</li>
@@ -104,10 +106,10 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
       {/* Implementation */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="prose prose-gray max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto space-y-6 text-gray-700 leading-relaxed">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <h2>Implementation with n8n</h2>
-              <ol>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Implementation with n8n</h2>
+              <ol className="list-decimal pl-5 space-y-2">
                 <li>
                   <strong>Webhook / WhatsApp Integration:</strong> Receive messages via provider (e.g., Twilio, Vonage, Meta Cloud API) and forward to n8n. Validate signatures and throttle if needed.
                 </li>
@@ -125,36 +127,36 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
                 </li>
               </ol>
 
-              <h3>Observability</h3>
-              <p>
+              <h3 className="text-xl font-semibold text-gray-900 mt-8">Observability</h3>
+              <p className="mb-4">
                 Each step in n8n is logged. We track latency per stage (ingress, retrieval, generation) and quality signals like citation use, answer length, and user feedback. Fail‑safes route to a fallback message if guardrails are triggered.
               </p>
 
-              <h3>Pros</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-gray-900">Pros</h3>
+              <ul className="list-disc pl-5 space-y-1">
                 <li>Grounded answers reduce hallucinations and improve trust</li>
                 <li>Fast iteration thanks to n8n’s visual workflows</li>
                 <li>Composable: swap LLMs, change retrievers, add guardrails easily</li>
                 <li>WhatsApp reach: meet users where they already are</li>
               </ul>
 
-              <h3>Cons</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6">Cons</h3>
+              <ul className="list-disc pl-5 space-y-1">
                 <li>Requires careful prompt design and chunking to maintain answer quality</li>
                 <li>Latency can grow with larger corpora without caching/streaming</li>
                 <li>Ongoing content hygiene is needed to keep results fresh</li>
                 <li>WhatsApp provider limits and policies must be handled gracefully</li>
               </ul>
 
-              <h3>Security & Compliance</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6">Security & Compliance</h3>
+              <ul className="list-disc pl-5 space-y-1">
                 <li>PII redaction and scoped retrieval to avoid over‑exposure</li>
                 <li>Audit logs for prompts, retrieved sources, and responses</li>
                 <li>Role‑based access for ingestion and administration</li>
               </ul>
 
-              <h3>Performance & Costs</h3>
-              <ul>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6">Performance & Costs</h3>
+              <ul className="list-disc pl-5 space-y-1">
                 <li>Cache frequent Q&A pairs and embeddings to reduce spend</li>
                 <li>Stream responses and cap token output for better UX</li>
                 <li>Batch ingestion and use background jobs for re‑indexing</li>
