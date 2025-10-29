@@ -95,9 +95,6 @@ export default function Home() {
       {/* Trusted By Section */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <p className="text-gray-500 font-medium">TRUSTED BY INDUSTRY LEADERS</p>
-          </div>
           <div className="relative">
             <Carousel opts={{ align: "start", loop: true }}>
               <CarouselContent>
@@ -109,7 +106,7 @@ export default function Home() {
                   "/trustedby/aws.png",
                 ].map((src) => (
                   <CarouselItem key={src} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
-                    <div className="flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <div className="flex h-16 md:h-20 lg:h-24 items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                       <div className="relative h-12 md:h-14 lg:h-16 w-32 md:w-40">
                         <Image src={src} alt={src.split('/').pop() || 'logo'} fill className="object-contain" />
                       </div>
@@ -306,19 +303,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Healthcare Provider Efficiency",
+                title: "Conversational AI on WhatsApp (RAG)",
+                category: "AI Assistants",
+                image: "/neural-network-blueprint.png",
+                subtitle: "Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n."
+              },
+              {
+                title: "LLM‑Powered Medical Records Digitization",
                 category: "Healthcare",
                 image: "/digital-hospital-scene.png",
+                subtitle: "From scanned charts to structured clinical data with secure, compliant LLM workflows."
               },
               {
-                title: "Financial Services Automation",
-                category: "Finance",
+                title: "Headless E‑commerce with Medusa.js",
+                category: "E‑commerce",
                 image: "/fintech-dashboard-overview.png",
-              },
-              {
-                title: "Manufacturing Process Optimization",
-                category: "Manufacturing",
-                image: "/automated-assembly-line.png",
+                subtitle: "Scale‑ready headless commerce: fast storefronts and flexible APIs on Medusa.js."
               },
             ].map((study, index) => (
               <motion.div
@@ -356,7 +356,7 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#293e72] transition-colors">
                     {study.title}
                   </h3>
-                  <p className="text-gray-600 mb-3">See how we transformed operations and improved efficiency.</p>
+                  <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
                   <span className="text-[#293e72] font-medium flex items-center">
                     Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
                   </span>
