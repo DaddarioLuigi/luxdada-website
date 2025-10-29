@@ -37,7 +37,9 @@ export default function Home() {
               Luxdada transforms your business processes through software and AI, always respecting ethics, honesty, and the human touch.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">Get Started</Button>
+                <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">Get Started</Button>
+                </Link>
                 <Button
                   variant="outline"
                   className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
@@ -222,9 +224,11 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
-                  Explore Healthcare Solutions <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
+                    Explore Healthcare Solutions <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </motion.div>
             </div>
 
@@ -412,9 +416,16 @@ export default function Home() {
                 AI solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   Schedule a Consultation
                 </Button>
+              </Link>
+              <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
+                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
+                  Schedule a Consultation
+                </Button>
+              </Link>
                 <Button variant="outline" className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   View Our Solutions
                 </Button>

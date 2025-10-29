@@ -33,6 +33,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { language, setLanguage } = useLanguage()
   const { toast } = useToast()
+  const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,11 +100,13 @@ export default function Header() {
               <span className="text-lg">🇮🇹</span>
             </button>
           </div>
-          <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-2">
-            <AnimatedText key={`${language}-get-started`}>
-              {language === 'en' ? 'Get Started' : 'Inizia Ora'}
-            </AnimatedText>
-          </Button>
+          <Link href={bookingUrl || "/contact"} target={bookingUrl ? "_blank" : undefined} rel={bookingUrl ? "noopener noreferrer" : undefined}>
+            <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-2">
+              <AnimatedText key={`${language}-get-started`}>
+                {language === 'en' ? 'Get Started' : 'Inizia Ora'}
+              </AnimatedText>
+            </Button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -142,11 +145,13 @@ export default function Header() {
                   </AnimatedText>
                 </Link>
               ))}
-              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">
-                <AnimatedText key={`${language}-get-started-mobile`}>
-                  {language === 'en' ? 'Get Started' : 'Inizia Ora'}
-                </AnimatedText>
-              </Button>
+              <Link href={bookingUrl || "/contact"} target={bookingUrl ? "_blank" : undefined} rel={bookingUrl ? "noopener noreferrer" : undefined} className="w-full">
+                <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">
+                  <AnimatedText key={`${language}-get-started-mobile`}>
+                    {language === 'en' ? 'Get Started' : 'Inizia Ora'}
+                  </AnimatedText>
+                </Button>
+              </Link>
               {/* Mobile Language Switcher */}
               <div className="flex items-center justify-center gap-2 pt-2">
                 <button
