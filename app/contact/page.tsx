@@ -95,19 +95,19 @@ export default function ContactPage() {
               </div>
 
               <div className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Office Hours</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Orari</h3>
                 <ul className="space-y-2">
                   <li className="flex justify-between">
-                    <span className="text-gray-600">Monday - Friday:</span>
-                    <span className="text-gray-900">9:00 AM - 6:00 PM EST</span>
+                    <span className="text-gray-600">Lunedì - Venerdì:</span>
+                    <span className="text-gray-900">09:00 - 18:00</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-gray-600">Saturday:</span>
-                    <span className="text-gray-900">10:00 AM - 2:00 PM EST</span>
+                    <span className="text-gray-600">Sabato:</span>
+                    <span className="text-gray-900">10:00 - 14:00</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-gray-600">Sunday:</span>
-                    <span className="text-gray-900">Closed</span>
+                    <span className="text-gray-600">Domenica:</span>
+                    <span className="text-gray-900">Chiuso</span>
                   </li>
                 </ul>
               </div>

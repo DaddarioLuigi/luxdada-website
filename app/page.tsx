@@ -8,11 +8,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Code, LineChart, Stethoscope, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { useToast } from "@/hooks/use-toast"
 
 export default function Home() {
   const featuresRef = useRef(null)
   const statsRef = useRef(null)
   const testimonialsRef = useRef(null)
+  const { toast } = useToast()
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 })
@@ -104,6 +106,7 @@ export default function Home() {
                   "/trustedby/tawk.to.png",
                   "/trustedby/Trusted-shops-logo.png",
                   "/trustedby/virtusingegneria (1).png",
+                  "/trustedby/aws.png",
                 ].map((src) => (
                   <CarouselItem key={src} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
                     <div className="flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -326,7 +329,16 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
                 className="group"
               >
-                <Link href="/case-studies">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    toast({
+                      title: 'Sito in costruzione',
+                      description: 'Stiamo lavorando per te. Torna presto!'
+                    })
+                  }}
+                >
                   <div className="relative h-64 rounded-lg overflow-hidden mb-4">
                     <Image
                       src={study.image || "/placeholder.svg"}
@@ -348,13 +360,22 @@ export default function Home() {
                   <span className="text-[#293e72] font-medium flex items-center">
                     Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
                   </span>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10">
+            <Button
+              variant="outline"
+              className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10"
+              onClick={() =>
+                toast({
+                  title: 'Sito in costruzione',
+                  description: 'Stiamo lavorando per te. Torna presto!'
+                })
+              }
+            >
               View All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
