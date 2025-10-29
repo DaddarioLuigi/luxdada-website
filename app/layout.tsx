@@ -17,7 +17,10 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: "Luxdada - Gain insights from your data",
   description: "Digitizing business processes through software and Artificial Intelligence",
-  generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: "/favicon.png",
+  }
 }
 
 export default function RootLayout({
