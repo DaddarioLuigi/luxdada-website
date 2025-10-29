@@ -306,7 +306,8 @@ export default function Home() {
                 title: "Conversational AI on WhatsApp (RAG)",
                 category: "AI Assistants",
                 image: "/neural-network-blueprint.png",
-                subtitle: "Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n."
+                subtitle: "Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n.",
+                href: "/case-studies/rag-chatbot"
               },
               {
                 title: "LLM‑Powered Medical Records Digitization",
@@ -329,16 +330,41 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
                 className="group"
               >
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    toast({
-                      title: 'Sito in costruzione',
-                      description: 'Stiamo lavorando per te. Torna presto!'
-                    })
-                  }}
-                >
+                {study.href ? (
+                  <Link href={study.href}>
+                    <div className="relative h-64 rounded-lg overflow-hidden mb-4">
+                      <Image
+                        src={study.image || "/placeholder.svg"}
+                        alt={study.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
+                      <div className="absolute bottom-0 left-0 p-4">
+                        <span className="text-sm font-medium text-white bg-[#293e72] px-3 py-1 rounded-full">
+                          {study.category}
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-[#293e72] transition-colors">
+                      {study.title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
+                    <span className="text-[#293e72] font-medium flex items-center">
+                      Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
+                    </span>
+                  </Link>
+                ) : (
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      toast({
+                        title: 'Sito in costruzione',
+                        description: 'Stiamo lavorando per te. Torna presto!'
+                      })
+                    }}
+                  >
                   <div className="relative h-64 rounded-lg overflow-hidden mb-4">
                     <Image
                       src={study.image || "/placeholder.svg"}
@@ -360,7 +386,8 @@ export default function Home() {
                   <span className="text-[#293e72] font-medium flex items-center">
                     Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
                   </span>
-                </a>
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
