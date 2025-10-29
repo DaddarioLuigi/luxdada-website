@@ -442,11 +442,6 @@ export default function Home() {
                   Schedule a Consultation
                 </Button>
               </Link>
-              <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
-                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                  Schedule a Consultation
-                </Button>
-              </Link>
                 <Button variant="outline" className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   View Our Solutions
                 </Button>
