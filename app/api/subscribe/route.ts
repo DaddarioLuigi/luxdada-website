@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import mailchimp from "@mailchimp/mailchimp_marketing"
 
+export const runtime = 'nodejs'
+
 // Initialize Mailchimp
 const apiKey = process.env.MAILCHIMP_API_KEY
 const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX

@@ -3,6 +3,8 @@ import fs from "fs/promises"
 import path from "path"
 import mailchimp from "@mailchimp/mailchimp_marketing"
 
+export const runtime = 'nodejs'
+
 const DATA_FILE = path.join(process.cwd(), "public", "subscribers.json")
 
 function isValidEmail(email: string): boolean {
