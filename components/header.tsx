@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 import { AnimatedText } from "./animated-text"
 import { useToast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 
 const navItems = {
   en: [
@@ -34,6 +35,7 @@ export default function Header() {
   const { language, setLanguage } = useLanguage()
   const { toast } = useToast()
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +44,32 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Konami code easter egg → /arcade
+  useEffect(() => {
+    const sequence = [
+      'ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'
+    ]
+    let index = 0
+    const onKey = (e: KeyboardEvent) => {
+      const key = e.key
+      if (key === sequence[index]) {
+        index += 1
+        if (index === sequence.length) {
+          index = 0
+          toast({
+            title: language === 'it' ? 'Arcade sbloccato!' : 'Arcade unlocked!',
+            description: language === 'it' ? 'Buon divertimento ✨' : 'Have fun ✨'
+          })
+          router.push('/arcade')
+        }
+      } else {
+        index = 0
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [router, toast, language])
 
   return (
     <header
