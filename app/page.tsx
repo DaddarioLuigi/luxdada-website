@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useInView } from "framer-motion"
@@ -10,106 +10,6 @@ import { Brain, Code, LineChart, Stethoscope, Zap, Shield, ArrowRight, CheckCirc
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
-import { useRouter } from "next/navigation"
-
-function FloatingEgg({ label }: { label: string }) {
-  const router = useRouter()
-  const eggRef = useRef<HTMLDivElement | null>(null)
-  const [pos, setPos] = useState({ x: 0, y: 0 })
-  const draggingRef = useRef(false)
-  const lastRef = useRef({ t: 0, x: 0, y: 0 })
-  const pointerIdRef = useRef<number | null>(null)
-  const tapMetaRef = useRef({ startX: 0, startY: 0, startT: 0 })
-
-  useEffect(() => {
-    const init = () => {
-      const w = window.innerWidth
-      const h = window.innerHeight
-      setPos({ x: Math.max(0, w - 80), y: Math.max(0, h - 120) })
-      lastRef.current.t = performance.now()
-    }
-    init()
-
-    const onPointerDown = (e: PointerEvent) => {
-      const egg = eggRef.current
-      if (!egg) return
-      if (pointerIdRef.current !== null) return
-      pointerIdRef.current = e.pointerId
-      draggingRef.current = true
-      egg.setPointerCapture(e.pointerId)
-      const x = e.clientX - 28
-      const y = e.clientY - 28
-      tapMetaRef.current = { startX: x, startY: y, startT: performance.now() }
-      setPos({ x, y })
-      lastRef.current.x = e.clientX
-      lastRef.current.y = e.clientY
-    }
-
-    const onPointerMove = (e: PointerEvent) => {
-      if (!draggingRef.current || pointerIdRef.current !== e.pointerId) return
-      const x = e.clientX - 28
-      const y = e.clientY - 28
-      lastRef.current.x = e.clientX
-      lastRef.current.y = e.clientY
-      const size = 56
-      const maxX = Math.max(0, window.innerWidth - size)
-      const maxY = Math.max(0, window.innerHeight - size)
-      setPos({ x: Math.min(Math.max(0, x), maxX), y: Math.min(Math.max(0, y), maxY) })
-    }
-
-    const onPointerUp = (e: PointerEvent) => {
-      const egg = eggRef.current
-      if (!egg || pointerIdRef.current !== e.pointerId) return
-      egg.releasePointerCapture(e.pointerId)
-      draggingRef.current = false
-      pointerIdRef.current = null
-      const d = Math.hypot(pos.x - tapMetaRef.current.startX, pos.y - tapMetaRef.current.startY)
-      const dt = performance.now() - tapMetaRef.current.startT
-      if (d < 6 && dt < 200) {
-        router.push('/arcade')
-      }
-    }
-
-    const egg = eggRef.current
-    egg?.addEventListener('pointerdown', onPointerDown)
-    window.addEventListener('pointermove', onPointerMove)
-    window.addEventListener('pointerup', onPointerUp)
-
-    const onResize = () => {
-      const size = 56
-      const maxX = Math.max(0, window.innerWidth - size)
-      const maxY = Math.max(0, window.innerHeight - size)
-      setPos((p) => ({ x: Math.min(p.x, maxX), y: Math.min(p.y, maxY) }))
-    }
-    window.addEventListener('resize', onResize)
-
-    return () => {
-      egg?.removeEventListener('pointerdown', onPointerDown)
-      window.removeEventListener('pointermove', onPointerMove)
-      window.removeEventListener('pointerup', onPointerUp)
-      window.removeEventListener('resize', onResize)
-    }
-  }, [pos.x, pos.y, router])
-
-  return (
-    <div
-      ref={eggRef}
-      aria-label={label}
-      role="button"
-      tabIndex={0}
-      style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
-      className="fixed z-50 h-14 w-14 select-none touch-none left-0 top-0"
-    >
-      <div className="relative h-full w-full rounded-full bg-white border border-gray-200 shadow-xl flex items-center justify-center">
-        <span className="text-2xl" aria-hidden>🥚</span>
-        <span className="absolute -top-7 right-0 text-xs font-medium bg-[#293e72] text-white px-2 py-1 rounded-md shadow">
-          {label}
-        </span>
-        <span className="pointer-events-none absolute inline-flex h-full w-full rounded-full bg-[#293e72]/20 animate-ping"></span>
-      </div>
-    </div>
-  )
-}
 
 export default function Home() {
   const featuresRef = useRef(null)
@@ -131,8 +31,15 @@ export default function Home() {
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#293e72]/10 rounded-full blur-3xl"></div>
           <div className="absolute top-60 -left-20 w-60 h-60 bg-[#293e72]/5 rounded-full blur-3xl"></div>
         </div>
-        {/* Draggable floating egg across the whole page */}
-        <FloatingEgg label={isIt ? 'Gioca' : 'Play'} />
+        {/* Simple fixed clickable egg → Arcade */}
+        <Link href="/arcade" aria-label={isIt ? "Vai all'Arcade" : "Go to Arcade"} className="fixed z-40 bottom-6 right-6">
+          <div className="relative h-14 w-14 rounded-full bg-white border border-gray-200 shadow-xl flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+            <span className="text-2xl" aria-hidden>🥚</span>
+            <span className="absolute -top-7 right-0 text-xs font-medium bg-[#293e72] text-white px-2 py-1 rounded-md shadow">
+              {isIt ? 'Gioca' : 'Play'}
+            </span>
+          </div>
+        </Link>
 
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
