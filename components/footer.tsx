@@ -183,14 +183,14 @@ export default function Footer() {
             <p className="text-gray-600 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} Luxdada. {isIt ? 'Tutti i diritti riservati.' : 'All rights reserved.'} · {isIt ? 'P.IVA' : 'VAT'}: IT08275310723
             </p>
-            <div className="flex space-x-6">
-              <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
+          <div className="flex space-x-6">
+            <Link href="/privacy-policy" className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
               {isIt ? 'Informativa Privacy' : 'Privacy Policy'}
-              </Link>
-              <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
+            </Link>
+            <Link href="/terms-of-service" className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
               {isIt ? 'Termini di servizio' : 'Terms of Service'}
-              </Link>
-            </div>
+            </Link>
+          </div>
           </div>
         </div>
       </div>
