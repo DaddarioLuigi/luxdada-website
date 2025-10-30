@@ -17,6 +17,55 @@ export default function ArcadePage() {
   const targetsRef = useRef<Array<{ pos: Vector; vel: Vector; r: number }>>([])
   const rafRef = useRef<number | null>(null)
   const timerRef = useRef<number | null>(null)
+  const audioCtxRef = useRef<AudioContext | null>(null)
+  const audioUnlockedRef = useRef(false)
+
+  function ensureAudio() {
+    if (typeof window === 'undefined') return
+    const AC: any = (window as any).AudioContext || (window as any).webkitAudioContext
+    if (!AC) return
+    if (!audioCtxRef.current) audioCtxRef.current = new AC()
+    if (audioCtxRef.current.state === 'suspended') audioCtxRef.current.resume()
+    audioUnlockedRef.current = true
+  }
+
+  function playCatchSound() {
+    if (!audioUnlockedRef.current) return
+    const ctx = audioCtxRef.current
+    if (!ctx) return
+    const now = ctx.currentTime
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.type = 'triangle'
+    osc.frequency.setValueAtTime(420, now)
+    osc.frequency.exponentialRampToValueAtTime(880, now + 0.09)
+    gain.gain.setValueAtTime(0.12, now)
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12)
+    osc.connect(gain).connect(ctx.destination)
+    osc.start(now)
+    osc.stop(now + 0.14)
+  }
+
+  function playEndSound() {
+    if (!audioUnlockedRef.current) return
+    const ctx = audioCtxRef.current
+    if (!ctx) return
+    const now = ctx.currentTime
+    const make = (f: number, t: number, d: number) => {
+      const o = ctx.createOscillator()
+      const g = ctx.createGain()
+      o.type = 'sine'
+      o.frequency.setValueAtTime(f, now + t)
+      g.gain.setValueAtTime(0.11, now + t)
+      g.gain.exponentialRampToValueAtTime(0.0001, now + t + d)
+      o.connect(g).connect(ctx.destination)
+      o.start(now + t)
+      o.stop(now + t + d + 0.02)
+    }
+    make(440, 0.00, 0.12)
+    make(660, 0.10, 0.12)
+    make(880, 0.20, 0.16)
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -46,7 +95,9 @@ export default function ArcadePage() {
       const rect = canvas.getBoundingClientRect()
       playerRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top }
     }
+    const onDown = () => ensureAudio()
     canvas.addEventListener("pointermove", onMove)
+    canvas.addEventListener("pointerdown", onDown)
 
     const loop = () => {
       if (!isPlaying) return
@@ -110,6 +161,7 @@ export default function ArcadePage() {
         if (d2 <= rr) {
           targetsRef.current.splice(i, 1)
           setScore((s) => s + 1)
+          playCatchSound()
           // respawn a new target
           targetsRef.current.push({
             pos: { x: random(40, w - 40), y: random(40, h - 40) },
@@ -129,7 +181,16 @@ export default function ArcadePage() {
       setTimeLeft((t) => {
         const next = t - 1
         if (next <= 0) {
+          if (t > 0) {
+            ensureAudio()
+            playEndSound()
+          }
           setIsPlaying(false)
+          if (timerRef.current) {
+            window.clearInterval(timerRef.current)
+            timerRef.current = null
+          }
+          return 0
         }
         return next
       })
@@ -138,6 +199,7 @@ export default function ArcadePage() {
     return () => {
       window.removeEventListener("resize", resize)
       canvas.removeEventListener("pointermove", onMove)
+      canvas.removeEventListener("pointerdown", onDown)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       if (timerRef.current) window.clearInterval(timerRef.current)
     }
