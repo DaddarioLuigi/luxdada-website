@@ -411,7 +411,10 @@ function DataDodgerGame() {
         const dx = Math.max(b.x - p.x, 0, p.x - (b.x + b.w))
         const dy = Math.max(b.y - p.y, 0, p.y - (b.y + b.h))
         if (dx * dx + dy * dy <= 16 * 16) {
-          setIsPlaying(false)
+          // penalty on hit, remove block, continue playing
+          blocksRef.current.splice(i, 1)
+          setScore((s) => Math.max(0, s - 1))
+          continue
         }
       }
 
