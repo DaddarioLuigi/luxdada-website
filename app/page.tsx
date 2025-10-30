@@ -12,61 +12,23 @@ import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
 import { useRouter } from "next/navigation"
 
-function FloatingEgg({ containerRef, label }: { containerRef: React.RefObject<HTMLElement>, label: string }) {
+function FloatingEgg({ label }: { label: string }) {
   const router = useRouter()
   const eggRef = useRef<HTMLDivElement | null>(null)
   const [pos, setPos] = useState({ x: 0, y: 0 })
-  const velRef = useRef({ x: 0, y: 0 })
   const draggingRef = useRef(false)
   const lastRef = useRef({ t: 0, x: 0, y: 0 })
   const pointerIdRef = useRef<number | null>(null)
   const tapMetaRef = useRef({ startX: 0, startY: 0, startT: 0 })
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
     const init = () => {
-      const rect = container.getBoundingClientRect()
-      const x = rect.width - 80
-      const y = rect.height - 80
-      setPos({ x, y })
-      velRef.current = { x: -120, y: -40 }
+      const w = window.innerWidth
+      const h = window.innerHeight
+      setPos({ x: Math.max(0, w - 80), y: Math.max(0, h - 120) })
       lastRef.current.t = performance.now()
     }
-
     init()
-
-    const onFrame = () => {
-      const now = performance.now()
-      const dt = Math.min(0.032, (now - lastRef.current.t) / 1000)
-      lastRef.current.t = now
-      if (!draggingRef.current) {
-        const g = 1500
-        const friction = 0.995
-        const bounce = 0.6
-        const rect = container.getBoundingClientRect()
-        let { x, y } = pos
-        let { x: vx, y: vy } = velRef.current
-        vy += g * dt
-        x += vx * dt
-        y += vy * dt
-        const size = 56
-        const maxX = Math.max(0, rect.width - size)
-        const maxY = Math.max(0, rect.height - size)
-        if (x <= 0) { x = 0; vx = Math.abs(vx) * bounce }
-        if (x >= maxX) { x = maxX; vx = -Math.abs(vx) * bounce }
-        if (y <= 0) { y = 0; vy = Math.abs(vy) * bounce }
-        if (y >= maxY) { y = maxY; vy = -Math.abs(vy) * bounce }
-        vx *= friction
-        vy *= friction
-        velRef.current = { x: vx, y: vy }
-        setPos({ x, y })
-      }
-      raf = requestAnimationFrame(onFrame)
-    }
-
-    let raf = requestAnimationFrame(onFrame)
 
     const onPointerDown = (e: PointerEvent) => {
       const egg = eggRef.current
@@ -75,28 +37,24 @@ function FloatingEgg({ containerRef, label }: { containerRef: React.RefObject<HT
       pointerIdRef.current = e.pointerId
       draggingRef.current = true
       egg.setPointerCapture(e.pointerId)
-      const rect = container.getBoundingClientRect()
-      const x = e.clientX - rect.left - 28
-      const y = e.clientY - rect.top - 28
+      const x = e.clientX - 28
+      const y = e.clientY - 28
       tapMetaRef.current = { startX: x, startY: y, startT: performance.now() }
       setPos({ x, y })
-      velRef.current = { x: 0, y: 0 }
       lastRef.current.x = e.clientX
       lastRef.current.y = e.clientY
     }
 
     const onPointerMove = (e: PointerEvent) => {
       if (!draggingRef.current || pointerIdRef.current !== e.pointerId) return
-      const rect = container.getBoundingClientRect()
-      const x = e.clientX - rect.left - 28
-      const y = e.clientY - rect.top - 28
-      const dx = e.clientX - lastRef.current.x
-      const dy = e.clientY - lastRef.current.y
-      const dt = Math.max(1, performance.now() - lastRef.current.t) / 1000
-      velRef.current = { x: dx / dt, y: dy / dt }
+      const x = e.clientX - 28
+      const y = e.clientY - 28
       lastRef.current.x = e.clientX
       lastRef.current.y = e.clientY
-      setPos({ x, y })
+      const size = 56
+      const maxX = Math.max(0, window.innerWidth - size)
+      const maxY = Math.max(0, window.innerHeight - size)
+      setPos({ x: Math.min(Math.max(0, x), maxX), y: Math.min(Math.max(0, y), maxY) })
     }
 
     const onPointerUp = (e: PointerEvent) => {
@@ -118,19 +76,20 @@ function FloatingEgg({ containerRef, label }: { containerRef: React.RefObject<HT
     window.addEventListener('pointerup', onPointerUp)
 
     const onResize = () => {
-      const rect = container.getBoundingClientRect()
-      setPos((p) => ({ x: Math.min(p.x, Math.max(0, rect.width - 56)), y: Math.min(p.y, Math.max(0, rect.height - 56)) }))
+      const size = 56
+      const maxX = Math.max(0, window.innerWidth - size)
+      const maxY = Math.max(0, window.innerHeight - size)
+      setPos((p) => ({ x: Math.min(p.x, maxX), y: Math.min(p.y, maxY) }))
     }
     window.addEventListener('resize', onResize)
 
     return () => {
-      cancelAnimationFrame(raf)
       egg?.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('pointermove', onPointerMove)
       window.removeEventListener('pointerup', onPointerUp)
       window.removeEventListener('resize', onResize)
     }
-  }, [containerRef, pos.x, pos.y, router])
+  }, [pos.x, pos.y, router])
 
   return (
     <div
@@ -139,7 +98,7 @@ function FloatingEgg({ containerRef, label }: { containerRef: React.RefObject<HT
       role="button"
       tabIndex={0}
       style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}
-      className="absolute z-10 h-14 w-14 select-none touch-none"
+      className="fixed z-50 h-14 w-14 select-none touch-none left-0 top-0"
     >
       <div className="relative h-full w-full rounded-full bg-white border border-gray-200 shadow-xl flex items-center justify-center">
         <span className="text-2xl" aria-hidden>🥚</span>
@@ -159,7 +118,6 @@ export default function Home() {
   const { toast } = useToast()
   const { language } = useLanguage()
   const isIt = language === 'it'
-  const heroRef = useRef<HTMLElement | null>(null)
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 })
@@ -168,18 +126,13 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section ref={heroRef} className="pt-32 pb-20 md:pt-40 md:pb-28 relative bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#293e72]/10 rounded-full blur-3xl"></div>
           <div className="absolute top-60 -left-20 w-60 h-60 bg-[#293e72]/5 rounded-full blur-3xl"></div>
         </div>
-        {/* Physics-based floating egg */}
-        {heroRef.current && (
-          <FloatingEgg
-            containerRef={heroRef as React.RefObject<HTMLElement>}
-            label={isIt ? 'Gioca' : 'Play'}
-          />
-        )}
+        {/* Draggable floating egg across the whole page */}
+        <FloatingEgg label={isIt ? 'Gioca' : 'Play'} />
 
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
