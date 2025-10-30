@@ -9,12 +9,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Code, LineChart, Stethoscope, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useToast } from "@/hooks/use-toast"
+import { useLanguage } from "@/lib/language-context"
 
 export default function Home() {
   const featuresRef = useRef(null)
   const statsRef = useRef(null)
   const testimonialsRef = useRef(null)
   const { toast } = useToast()
+  const { language } = useLanguage()
+  const isIt = language === 'it'
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 })
@@ -33,20 +36,30 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Driving Innovation with<span className="text-[#293e72]"> AI</span>, Respecting <span className="text-[#293e72]">Humanity</span>
+                {isIt ? (
+                  <>
+                    Guidiamo l’innovazione con<span className="text-[#293e72]"> AI</span>, rispettando <span className="text-[#293e72]">l’umanità</span>
+                  </>
+                ) : (
+                  <>
+                    Driving Innovation with<span className="text-[#293e72]"> AI</span>, Respecting <span className="text-[#293e72]">Humanity</span>
+                  </>
+                )}
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-lg">
-              Luxdada transforms your business processes through software and AI, always respecting ethics, honesty, and the human touch.
+                {isIt
+                  ? 'Luxdada trasforma i tuoi processi aziendali con software e AI, nel pieno rispetto di etica, trasparenza e centralità umana.'
+                  : 'Luxdada transforms your business processes through software and AI, always respecting ethics, honesty, and the human touch.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
-                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">Get Started</Button>
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">{isIt ? 'Inizia Ora' : 'Get Started'}</Button>
                 </Link>
                 <Button
                   variant="outline"
                   className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
                 >
-                  Learn More
+                  {isIt ? 'Scopri di più' : 'Learn More'}
                 </Button>
               </div>
             </motion.div>
@@ -71,8 +84,8 @@ export default function Home() {
                     <Brain className="h-6 w-6 text-[#293e72]" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">AI-Powered</p>
-                    <p className="text-xs text-gray-500">Smart Solutions</p>
+                    <p className="text-sm font-medium text-gray-900">{isIt ? 'Basato su AI' : 'AI-Powered'}</p>
+                    <p className="text-xs text-gray-500">{isIt ? 'Soluzioni intelligenti' : 'Smart Solutions'}</p>
                   </div>
                 </div>
               </div>
@@ -82,8 +95,8 @@ export default function Home() {
                     <Stethoscope className="h-6 w-6 text-[#293e72]" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Healthcare Focus</p>
-                    <p className="text-xs text-gray-500">Specialized Solutions</p>
+                    <p className="text-sm font-medium text-gray-900">{isIt ? 'Focus Sanità' : 'Healthcare Focus'}</p>
+                    <p className="text-xs text-gray-500">{isIt ? 'Soluzioni specializzate' : 'Specialized Solutions'}</p>
                   </div>
                 </div>
               </div>
@@ -131,10 +144,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Innovative Solutions for Modern Businesses
+              {isIt ? 'Soluzioni innovative per le aziende moderne' : 'Innovative Solutions for Modern Businesses'}
             </h2>
             <p className="text-xl text-gray-600">
-              We combine cutting-edge technology with industry expertise to deliver transformative results.
+              {isIt
+                ? 'Uniamo tecnologie all’avanguardia e competenze di settore per generare risultati trasformativi.'
+                : 'We combine cutting-edge technology with industry expertise to deliver transformative results.'}
             </p>
           </motion.div>
 
@@ -142,35 +157,45 @@ export default function Home() {
             {[
               {
                 icon: <Brain className="h-8 w-8 text-[#293e72]" />,
-                title: "AI Consulting",
-                description: "Strategic guidance on implementing AI solutions tailored to your business needs.",
+                title: isIt ? 'Consulenza AI' : 'AI Consulting',
+                description: isIt
+                  ? 'Guida strategica per implementare soluzioni AI su misura per il tuo business.'
+                  : 'Strategic guidance on implementing AI solutions tailored to your business needs.',
               },
               {
                 icon: <Code className="h-8 w-8 text-[#293e72]" />,
-                title: "Custom Software Development",
-                description: "Bespoke software solutions designed to streamline your operations and boost efficiency.",
+                title: isIt ? 'Sviluppo software su misura' : 'Custom Software Development',
+                description: isIt
+                  ? 'Soluzioni software bespoke per snellire le operazioni e aumentare l’efficienza.'
+                  : 'Bespoke software solutions designed to streamline your operations and boost efficiency.',
               },
               {
                 icon: <Stethoscope className="h-8 w-8 text-[#293e72]" />,
-                title: "Healthcare AI Solutions",
-                description:
-                  "Specialized AI applications for healthcare providers to improve patient care and outcomes.",
+                title: isIt ? 'Soluzioni AI per la sanità' : 'Healthcare AI Solutions',
+                description: isIt
+                  ? 'Applicazioni AI specializzate per migliorare la cura dei pazienti e gli esiti clinici.'
+                  : 'Specialized AI applications for healthcare providers to improve patient care and outcomes.',
               },
               {
                 icon: <LineChart className="h-8 w-8 text-[#293e72]" />,
-                title: "Data Analytics",
-                description: "Transform your data into actionable insights with our advanced analytics solutions.",
+                title: isIt ? 'Analisi dei dati' : 'Data Analytics',
+                description: isIt
+                  ? 'Trasforma i tuoi dati in insight azionabili con analitiche avanzate.'
+                  : 'Transform your data into actionable insights with our advanced analytics solutions.',
               },
               {
                 icon: <Zap className="h-8 w-8 text-[#293e72]" />,
-                title: "Process Automation",
-                description: "Automate repetitive tasks and workflows to increase productivity and reduce errors.",
+                title: isIt ? 'Automazione dei processi' : 'Process Automation',
+                description: isIt
+                  ? 'Automatizza attività e workflow ripetitivi per aumentare la produttività e ridurre gli errori.'
+                  : 'Automate repetitive tasks and workflows to increase productivity and reduce errors.',
               },
               {
                 icon: <Shield className="h-8 w-8 text-[#293e72]" />,
-                title: "Secure Integration",
-                description:
-                  "Seamlessly integrate AI solutions with your existing systems with enterprise-grade security.",
+                title: isIt ? 'Integrazione sicura' : 'Secure Integration',
+                description: isIt
+                  ? 'Integra l’AI nei sistemi esistenti con sicurezza a livello enterprise.'
+                  : 'Seamlessly integrate AI solutions with your existing systems with enterprise-grade security.',
               },
             ].map((feature, index) => (
               <motion.div
@@ -204,20 +229,29 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Revolutionizing Healthcare with AI
+                  {isIt ? 'Rivoluzionare la sanità con l’AI' : 'Revolutionizing Healthcare with AI'}
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  At Luxdada, we believe AI can significantly improve quality of life and daily work in the healthcare
-                  sector. Our specialized solutions help healthcare providers:
+                  {isIt
+                    ? 'In Luxdada crediamo che l’AI possa migliorare significativamente la qualità della vita e il lavoro quotidiano nella sanità. Le nostre soluzioni aiutano i provider sanitari a:'
+                    : 'At Luxdada, we believe AI can significantly improve quality of life and daily work in the healthcare sector. Our specialized solutions help healthcare providers:'}
                 </p>
                 <ul className="space-y-4 mb-8">
-                  {[
-                    "Enhance diagnostic accuracy and speed",
-                    "Streamline administrative workflows",
-                    "Improve patient care coordination",
-                    "Optimize resource allocation",
-                    "Ensure data security and compliance",
-                  ].map((item, index) => (
+                  {(isIt
+                    ? [
+                        'Aumentare accuratezza e velocità diagnostica',
+                        'Snellire i flussi amministrativi',
+                        'Migliorare il coordinamento della cura',
+                        'Ottimizzare l’allocazione delle risorse',
+                        'Garantire sicurezza e conformità dei dati',
+                      ]
+                    : [
+                        'Enhance diagnostic accuracy and speed',
+                        'Streamline administrative workflows',
+                        'Improve patient care coordination',
+                        'Optimize resource allocation',
+                        'Ensure data security and compliance',
+                      ]).map((item, index) => (
                     <li key={index} className="flex items-start">
                       <CheckCircle className="h-6 w-6 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700">{item}</span>
@@ -226,7 +260,7 @@ export default function Home() {
                 </ul>
                 <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                   <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
-                    Explore Healthcare Solutions <ArrowRight className="ml-2 h-4 w-4" />
+                    {isIt ? 'Esplora le soluzioni per la sanità' : 'Explore Healthcare Solutions'} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </motion.div>
@@ -249,8 +283,8 @@ export default function Home() {
                       <Stethoscope className="h-6 w-6 text-[#293e72]" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900">Healthcare Focus</p>
-                      <p className="text-xs text-gray-500">AI-Driven Solutions</p>
+                      <p className="text-sm font-medium text-gray-900">{isIt ? 'Focus Sanità' : 'Healthcare Focus'}</p>
+                      <p className="text-xs text-gray-500">{isIt ? 'Soluzioni guidate dall’AI' : 'AI-Driven Solutions'}</p>
                     </div>
                   </div>
                 </div>
@@ -270,10 +304,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             {[
-              { value: "95%", label: "Innovation Impact" },
-              { value: "20+", label: "Clients" },
-              { value: "15+", label: "Projects Completed" },
-              { value: "30%", label: "Efficiency Improvement" },
+              { value: "95%", label: isIt ? 'Impatto dell’innovazione' : 'Innovation Impact' },
+              { value: "20+", label: isIt ? 'Clienti' : 'Clients' },
+              { value: "15+", label: isIt ? 'Progetti completati' : 'Projects Completed' },
+              { value: "30%", label: isIt ? 'Miglioramento dell’efficienza' : 'Efficiency Improvement' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -294,32 +328,32 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{isIt ? 'Storie di successo' : 'Success Stories'}</h2>
             <p className="text-xl text-gray-600">
-              See how our solutions have transformed businesses across industries.
+              {isIt ? 'Scopri come le nostre soluzioni hanno trasformato aziende in diversi settori.' : 'See how our solutions have transformed businesses across industries.'}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Conversational AI on WhatsApp (RAG)",
-                category: "AI Assistants",
+                title: isIt ? 'AI conversazionale su WhatsApp (RAG)' : 'Conversational AI on WhatsApp (RAG)',
+                category: isIt ? 'Assistenti AI' : 'AI Assistants',
                 image: "/neural-network-blueprint.png",
-                subtitle: "Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n.",
+                subtitle: isIt ? 'Risposte immediate e accurate su WhatsApp con Retrieval‑Augmented Generation orchestrato con n8n.' : 'Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n.',
                 href: "/case-studies/rag-chatbot"
               },
               {
-                title: "LLM‑Powered Medical Records Digitization",
-                category: "Healthcare",
+                title: isIt ? 'Digitalizzazione cartelle cliniche con LLM' : 'LLM‑Powered Medical Records Digitization',
+                category: isIt ? 'Sanità' : 'Healthcare',
                 image: "/digital-hospital-scene.png",
-                subtitle: "From scanned charts to structured clinical data with secure, compliant LLM workflows."
+                subtitle: isIt ? 'Dalle cartelle scannerizzate a dati clinici strutturati con workflow LLM sicuri e conformi.' : 'From scanned charts to structured clinical data with secure, compliant LLM workflows.'
               },
               {
-                title: "Headless E‑commerce with Medusa.js",
+                title: isIt ? 'E‑commerce headless con Medusa.js' : 'Headless E‑commerce with Medusa.js',
                 category: "E‑commerce",
                 image: "/fintech-dashboard-overview.png",
-                subtitle: "Scale‑ready headless commerce: fast storefronts and flexible APIs on Medusa.js."
+                subtitle: isIt ? 'Headless commerce pronto a scalare: storefront veloci e API flessibili su Medusa.js.' : 'Scale‑ready headless commerce: fast storefronts and flexible APIs on Medusa.js.'
               },
             ].map((study, index) => (
               <motion.div
@@ -351,7 +385,7 @@ export default function Home() {
                     </h3>
                     <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
                     <span className="text-[#293e72] font-medium flex items-center">
-                      Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
+                      {isIt ? 'Leggi il caso studio' : 'Read Case Study'} <ArrowRight className="ml-2 h-4 w-4" />
                     </span>
                   </Link>
                 ) : (
@@ -360,8 +394,8 @@ export default function Home() {
                     onClick={(e) => {
                       e.preventDefault()
                       toast({
-                        title: 'Sito in costruzione',
-                        description: 'Stiamo lavorando per te. Torna presto!'
+                        title: isIt ? 'Sito in costruzione' : 'Site under construction',
+                        description: isIt ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
                       })
                     }}
                   >
@@ -384,7 +418,7 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
                   <span className="text-[#293e72] font-medium flex items-center">
-                    Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
+                    {isIt ? 'Leggi il caso studio' : 'Read Case Study'} <ArrowRight className="ml-2 h-4 w-4" />
                   </span>
                   </a>
                 )}
@@ -398,12 +432,12 @@ export default function Home() {
               className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10"
               onClick={() =>
                 toast({
-                  title: 'Sito in costruzione',
-                  description: 'Stiamo lavorando per te. Torna presto!'
+                  title: isIt ? 'Sito in costruzione' : 'Site under construction',
+                  description: isIt ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
                 })
               }
             >
-              View All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
+              {isIt ? 'Vedi tutti i casi studio' : 'View All Case Studies'} <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>
@@ -418,9 +452,9 @@ export default function Home() {
             animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Visit Us in Milano</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{isIt ? 'Vieni a trovarci a Milano' : 'Visit Us in Milano'}</h2>
             <p className="text-xl text-gray-600">
-              We're located in the heart of Milano, ready to help you transform your business with AI.
+              {isIt ? 'Siamo nel cuore di Milano, pronti ad aiutarti a trasformare il tuo business con l’AI.' : "We're located in the heart of Milano, ready to help you transform your business with AI."}
             </p>
           </motion.div>
 
@@ -457,20 +491,21 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Ready to Transform Your Business with AI?
+                {isIt ? 'Pronto a trasformare il tuo business con l’AI?' : 'Ready to Transform Your Business with AI?'}
               </h2>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                Let's discuss how Luxdada can help you digitize and optimize your business processes with cutting-edge
-                AI solutions.
+                {isIt
+                  ? 'Parliamo di come Luxdada può aiutarti a digitalizzare e ottimizzare i processi con soluzioni AI all’avanguardia.'
+                  : "Let's discuss how Luxdada can help you digitize and optimize your business processes with cutting-edge AI solutions."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                  Schedule a Consultation
+                  {isIt ? 'Prenota una consulenza' : 'Schedule a Consultation'}
                 </Button>
               </Link>
                 <Button variant="outline" className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                  View Our Solutions
+                  {isIt ? 'Scopri le nostre soluzioni' : 'View Our Solutions'}
                 </Button>
               </div>
             </motion.div>
