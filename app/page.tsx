@@ -32,6 +32,19 @@ export default function Home() {
           <div className="absolute top-60 -left-20 w-60 h-60 bg-[#293e72]/5 rounded-full blur-3xl"></div>
         </div>
 
+        {/* Floating egg easter-egg link → Arcade */}
+        <div className="absolute right-6 bottom-6 z-10">
+          <Link href="/arcade" aria-label={isIt ? 'Vai all\'Arcade' : 'Go to Arcade'}>
+            <div className="relative h-14 w-14 rounded-full bg-white border border-gray-200 shadow-xl flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+              <span className="text-2xl" role="img" aria-hidden>🥚</span>
+              <span className="absolute -top-7 right-0 text-xs font-medium bg-[#293e72] text-white px-2 py-1 rounded-md shadow">
+                {isIt ? 'Gioca' : 'Play'}
+              </span>
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[#293e72]/20 animate-ping"></span>
+            </div>
+          </Link>
+        </div>
+
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>

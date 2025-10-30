@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import fs from "fs/promises"
 import path from "path"
+import mailchimp from "@mailchimp/mailchimp_marketing"
 
 const DATA_FILE = path.join(process.cwd(), "public", "subscribers.json")
 
@@ -37,6 +38,35 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // Try Mailchimp first if configured
+    const apiKey = process.env.MAILCHIMP_API_KEY
+    const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX
+    const listId = process.env.MAILCHIMP_LIST_ID
+
+    if (apiKey && serverPrefix && listId) {
+      try {
+        mailchimp.setConfig({ apiKey, server: serverPrefix })
+        await mailchimp.lists.addListMember(listId, {
+          email_address: email,
+          status: "subscribed",
+        })
+        return NextResponse.json({ success: true, message: "Subscribed" })
+      } catch (err: any) {
+        // If member exists or any Mailchimp error, continue to local save fallback
+        try {
+          const responseText = err?.response?.text
+          if (responseText) {
+            const parsed = JSON.parse(responseText)
+            if (parsed?.title === "Member Exists") {
+              return NextResponse.json({ success: true, message: "Already subscribed" })
+            }
+          }
+        } catch {}
+        // Fall through to local persistence
+      }
+    }
+
+    // Local persistence fallback
     const subscribers = await getSubscribers()
     const exists = subscribers.some((s: any) => s.email === email)
     if (exists) {
