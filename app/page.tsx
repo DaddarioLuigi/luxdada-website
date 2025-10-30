@@ -330,7 +330,7 @@ export default function Home() {
             {[
               { value: "95%", label: isIt ? 'Impatto dell’innovazione' : 'Innovation Impact' },
               { value: "20+", label: isIt ? 'Clienti' : 'Clients' },
-              { value: "15+", label: isIt ? 'Progetti completati' : 'Projects Completed' },
+              { value: "25+", label: isIt ? 'Progetti completati' : 'Projects Completed' },
               { value: "30%", label: isIt ? 'Miglioramento dell’efficienza' : 'Efficiency Improvement' },
             ].map((stat, index) => (
               <motion.div
