@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useInView } from "framer-motion"
@@ -18,10 +18,31 @@ export default function Home() {
   const { toast } = useToast()
   const { language } = useLanguage()
   const isIt = language === 'it'
+  const [logos, setLogos] = useState<string[]>([
+    "/trustedby/fondazione-alfieri-logo.png",
+    "/trustedby/tawk.to.png",
+    "/trustedby/Trusted-shops-logo.png",
+    "/trustedby/virtusingegneria (1).png",
+    "/trustedby/aws.png",
+  ])
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 })
   const testimonialsInView = useInView(testimonialsRef, { once: true, amount: 0.3 })
+
+  useEffect(() => {
+    let active = true
+    fetch('/api/trustedby')
+      .then((r) => r.json())
+      .then((d) => {
+        if (!active) return
+        if (Array.isArray(d?.logos) && d.logos.length > 0) {
+          setLogos(d.logos)
+        }
+      })
+      .catch(() => {})
+    return () => { active = false }
+  }, [])
 
   return (
     <div className="overflow-hidden">
@@ -120,13 +141,7 @@ export default function Home() {
           <div className="relative">
             <Carousel opts={{ align: "start", loop: true }}>
               <CarouselContent>
-                {[
-                  "/trustedby/fondazione-alfieri-logo.png",
-                  "/trustedby/tawk.to.png",
-                  "/trustedby/Trusted-shops-logo.png",
-                  "/trustedby/virtusingegneria (1).png",
-                  "/trustedby/aws.png",
-                ].map((src) => (
+                {logos.map((src) => (
                   <CarouselItem key={src} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
                     <div className="flex h-16 md:h-20 lg:h-24 items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                       <div className="relative h-12 md:h-14 lg:h-16 w-32 md:w-40">
