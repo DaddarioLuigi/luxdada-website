@@ -7,18 +7,21 @@ import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Loader2 } from "lucide-react"
 import { motion } from "framer-motion"
 import { useToast } from "@/hooks/use-toast"
+import { useLanguage } from "@/lib/language-context"
 
 export default function Footer() {
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null)
   const { toast } = useToast()
+  const { language } = useLanguage()
+  const isIt = language === 'it'
 
   function handleUnavailableClick(e: React.MouseEvent) {
     e.preventDefault()
     toast({
-      title: 'Sito in costruzione',
-      description: 'Stiamo lavorando per te. Torna presto!'
+      title: isIt ? 'Sito in costruzione' : 'Site under construction',
+      description: isIt ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
     })
   }
 
@@ -71,7 +74,9 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-bold text-[#293e72] mb-4">Luxdada</h3>
             <p className="text-gray-600 mb-4">
-              Digitizing business processes through software and Artificial Intelligence.
+            {isIt
+              ? 'Digitalizziamo i processi aziendali tramite software e Intelligenza Artificiale.'
+              : 'Digitizing business processes through software and Artificial Intelligence.'}
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/luxdadadigital" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
@@ -87,33 +92,33 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Quick Links</h4>
+          <h4 className="font-semibold text-gray-900 mb-4">{isIt ? 'Link rapidi' : 'Quick Links'}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
-                  About Us
+                {isIt ? 'Chi Siamo' : 'About Us'}
                 </Link>
               </li>
               <li>
                 <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
-                  Solutions
+                {isIt ? 'Soluzioni' : 'Solutions'}
                 </Link>
               </li>
               <li>
                 <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
-                  Case Studies
+                {isIt ? 'Casi Studio' : 'Case Studies'}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-gray-600 hover:text-[#293e72] transition-colors">
-                  Contact
+                {isIt ? 'Contatti' : 'Contact'}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Contact</h4>
+          <h4 className="font-semibold text-gray-900 mb-4">{isIt ? 'Contatti' : 'Contact'}</h4>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={18} className="text-[#293e72] mr-2 mt-1 flex-shrink-0" />
@@ -131,12 +136,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Newsletter</h4>
-            <p className="text-gray-600 mb-4">Subscribe to our newsletter for the latest updates.</p>
+          <h4 className="font-semibold text-gray-900 mb-4">Newsletter</h4>
+          <p className="text-gray-600 mb-4">{isIt ? 'Iscriviti alla newsletter per rimanere aggiornato.' : 'Subscribe to our newsletter for the latest updates.'}</p>
             <form onSubmit={handleSubscribe} className="flex flex-col space-y-2">
               <Input
                 type="email"
-                placeholder="Your email"
+              placeholder={isIt ? 'La tua email' : 'Your email'}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -149,10 +154,10 @@ export default function Footer() {
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Subscribing...
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {isIt ? 'Iscrizione in corso...' : 'Subscribing...'}
                   </>
                 ) : (
-                  "Subscribe"
+                  (isIt ? 'Iscriviti' : 'Subscribe')
                 )}
               </Button>
             </form>
@@ -176,14 +181,14 @@ export default function Footer() {
         <div className="border-t border-gray-200 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-600 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Luxdada. All rights reserved.
+            © {new Date().getFullYear()} Luxdada. {isIt ? 'Tutti i diritti riservati.' : 'All rights reserved.'} · {isIt ? 'P.IVA' : 'VAT'}: IT08275310723
             </p>
             <div className="flex space-x-6">
               <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
-                Privacy Policy
+              {isIt ? 'Informativa Privacy' : 'Privacy Policy'}
               </Link>
               <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] text-sm transition-colors">
-                Terms of Service
+              {isIt ? 'Termini di servizio' : 'Terms of Service'}
               </Link>
             </div>
           </div>
