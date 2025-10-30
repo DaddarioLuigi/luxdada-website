@@ -336,6 +336,7 @@ function DataDodgerGame() {
   const rafRef = useRef<number | null>(null)
   const spawnRef = useRef<number | null>(null)
   const timerRef = useRef<number | null>(null)
+  const holdingRef = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -357,7 +358,11 @@ function DataDodgerGame() {
       const rect = canvas.getBoundingClientRect()
       playerRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top }
     }
+    const onDown = () => { holdingRef.current = true }
+    const onUp = () => { holdingRef.current = false }
     canvas.addEventListener("pointermove", onMove)
+    canvas.addEventListener("pointerdown", onDown)
+    window.addEventListener("pointerup", onUp)
 
     const spawn = () => {
       if (!isPlaying) return
@@ -392,7 +397,8 @@ function DataDodgerGame() {
       ctx.fillStyle = "#0ea5e9"
       for (let i = blocksRef.current.length - 1; i >= 0; i--) {
         const b = blocksRef.current[i]
-        b.y += b.vy * (1 / 60)
+        const speedFactor = holdingRef.current ? 0 : 1
+        b.y += b.vy * (1 / 60) * speedFactor
         ctx.fillRect(b.x, b.y, b.w, b.h)
 
         // dodge scored
@@ -428,6 +434,8 @@ function DataDodgerGame() {
     return () => {
       window.removeEventListener("resize", resize)
       canvas.removeEventListener("pointermove", onMove)
+      canvas.removeEventListener("pointerdown", onDown)
+      window.removeEventListener("pointerup", onUp)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       if (spawnRef.current) window.clearInterval(spawnRef.current)
       if (timerRef.current) window.clearInterval(timerRef.current)
@@ -436,7 +444,6 @@ function DataDodgerGame() {
   }, [])
 
   const reset = () => {
-    // simple reload to fully reset state
     window.location.reload()
   }
 
@@ -477,7 +484,7 @@ function DataDodgerGame() {
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-[#293e72]">{language === 'it' ? 'Luxdada Data Dodger' : 'Luxdada Data Dodger'}</h1>
           <p className="text-slate-600 mt-2">
-            {language === 'it' ? 'Evita i blocchi di dati che cadono per 30 secondi. Muovi il cursore per schivare. Ogni blocco evitato vale 1 punto.' : 'Avoid falling data blocks for 30 seconds. Move your cursor to dodge. Each dodged block is worth 1 point.'}
+            {language === 'it' ? 'Evita i blocchi che cadono per 30s. Muovi il cursore per schivare. Tieni premuto per fermarli temporaneamente.' : 'Avoid falling blocks for 30s. Move your cursor to dodge. Hold to temporarily freeze them.'}
           </p>
         </div>
         <div className="w-full aspect-[3/2] rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
@@ -491,45 +498,37 @@ function DataDodgerGame() {
             <span className="font-semibold">{language === "it" ? "Tempo" : "Time"}:</span> {Math.max(timeLeft, 0)}s
           </div>
           {!isPlaying && (
-            <button
-              className="px-4 py-2 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57]"
-              onClick={reset}
-            >
+            <button className="px-4 py-2 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57]" onClick={reset}>
               {language === 'it' ? 'Rigioca' : 'Play again'}
             </button>
           )}
         </div>
 
         {!isPlaying && (
-          <div className="mt-8 p-4 rounded-lg border border-slate-200 bg-slate-50">
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">
-              {language === "it" ? "Hai finito!" : "You’re done!"}
-            </h2>
-            <p className="text-slate-600 mb-4">
-              {language === "it"
-                ? "Bel lavoro schivatore di dati."
-                : "Nice work, data dodger."}
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3" onSubmit={submitEmail}>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={language === "it" ? "tua@email.com" : "your@email.com"}
-                className="flex-1 px-3 py-2 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#293e72]"
-                aria-label={language === 'it' ? 'Inserisci la tua email per essere ricontattato/a:' : 'Enter your email to be contacted:'}
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57] whitespace-nowrap"
-              >
-                {language === "it" ? "Invia" : "Submit"}
-              </button>
-            </form>
-            {status && (
-              <p className="mt-3 text-sm text-slate-700">{status}</p>
-            )}
+          <div className="fixed inset-0 z-50 bg-black/30 flex items-center justify-center p-4">
+            <div className="w-full max-w-lg rounded-lg border border-slate-200 bg-white p-5 shadow-xl">
+              <h2 className="text-xl font-semibold text-slate-900 mb-2">
+                {language === "it" ? "Hai finito!" : "You’re done!"}
+              </h2>
+              <p className="text-slate-600 mb-4">
+                {language === "it" ? "Bel lavoro schivatore di dati." : "Nice work, data dodger."}
+              </p>
+              <form className="flex flex-col sm:flex-row gap-3" onSubmit={submitEmail}>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={language === "it" ? "tua@email.com" : "your@email.com"}
+                  className="flex-1 px-3 py-2 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#293e72]"
+                  aria-label={language === 'it' ? 'Inserisci la tua email per essere ricontattato/a:' : 'Enter your email to be contacted:'}
+                />
+                <button type="submit" className="px-4 py-2 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57] whitespace-nowrap">
+                  {language === "it" ? "Invia" : "Submit"}
+                </button>
+              </form>
+              {status && <p className="mt-3 text-sm text-slate-700">{status}</p>}
+            </div>
           </div>
         )}
       </div>
