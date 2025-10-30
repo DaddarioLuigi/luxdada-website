@@ -35,15 +35,26 @@ export default function ContactPage() {
     setFormState((prev) => ({ ...prev, interest: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real implementation, you would send the form data to your backend
-    console.log("Form submitted:", formState)
-
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data?.message || 'Request failed')
+      }
       setIsSubmitted(true)
-    }, 1000)
+    } catch (error) {
+      alert(
+        (language === 'it')
+          ? 'Invio non riuscito. Riprova tra poco.'
+          : 'Failed to send. Please try again later.'
+      )
+    }
   }
 
   return (
