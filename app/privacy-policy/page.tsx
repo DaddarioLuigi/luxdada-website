@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-3">{isIt ? 'Finalità e basi giuridiche' : 'Purposes and Legal Bases'}</h2>
               <ul className="list-disc pl-5 space-y-1">
                 <li>{isIt ? 'Rispondere a richieste e fornire assistenza (art. 6.1.b GDPR).' : 'Responding to inquiries and providing support (Art. 6.1.b GDPR).'}</li>
-                <li>{isIt ? 'Marketing diretto previa base giuridica appropriata (consenso o legittimo interesse – art. 6.1.a/f).' : 'Direct marketing under appropriate legal basis (consent or legitimate interest – Art. 6.1.a/f).'}
+                <li>{isIt ? 'Marketing diretto previa base giuridica appropriata (consenso o legittimo interesse – art. 6.1.a/f).' : 'Direct marketing under appropriate legal basis (consent or legitimate interest – Art. 6.1.a/f).'}</li>
                 <li>{isIt ? 'Miglioramento dei servizi e sicurezza del sito (legittimo interesse – art. 6.1.f).' : 'Improving services and website security (legitimate interest – Art. 6.1.f).'}</li>
               </ul>
             </section>
