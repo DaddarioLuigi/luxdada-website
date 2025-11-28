@@ -71,8 +71,6 @@ export default function TaviLandingPage() {
                 </div>
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                <span className="text-[#293e72]">TAVI Assist</span>
-                <br />
                 Supporto intelligente per la selezione della protesi valvolare
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
