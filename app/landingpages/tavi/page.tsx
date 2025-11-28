@@ -19,6 +19,7 @@ import {
   ArrowDown,
   ArrowUp
 } from "lucide-react"
+import Image from "next/image"
 
 export default function TaviLandingPage() {
   const featuresRef = useRef(null)
@@ -53,11 +54,22 @@ export default function TaviLandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center justify-center mb-6">
-                <div className="bg-[#293e72]/10 p-3 rounded-full">
-                  <Heart className="h-8 w-8 text-[#293e72]" />
+              <motion.div
+                className="inline-flex items-center justify-center mb-8"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <div className="relative w-32 h-32 md:w-40 md:h-40">
+                  <Image
+                    src="/tavi-assist-logo.png"
+                    alt="TAVI Assist Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-              </div>
+              </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 <span className="text-[#293e72]">TAVI Assist</span>
                 <br />
