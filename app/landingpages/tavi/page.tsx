@@ -12,14 +12,11 @@ import {
   Shield, 
   Zap, 
   CheckCircle, 
-  ArrowRight,
   Heart,
   Activity,
   Database,
   Users
 } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
 
 export default function TaviLandingPage() {
   const featuresRef = useRef(null)
@@ -62,11 +59,6 @@ export default function TaviLandingPage() {
                 riducendo il rischio di mis-sizing e migliorando l'outcome procedurale.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
-                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">
-                    Richiedi una demo
-                  </Button>
-                </Link>
                 <Button
                   variant="outline"
                   className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
@@ -289,15 +281,8 @@ export default function TaviLandingPage() {
                 migliorando la qualità delle decisioni cliniche e gli outcome dei pazienti.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
-                  <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                    Richiedi una demo
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
                 <Button
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg"
+                  className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg"
                   onClick={() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }}
