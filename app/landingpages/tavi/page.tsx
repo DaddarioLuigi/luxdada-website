@@ -15,14 +15,27 @@ import {
   Heart,
   Activity,
   Database,
-  Users
+  Users,
+  ArrowDown,
+  ArrowUp
 } from "lucide-react"
 
 export default function TaviLandingPage() {
   const featuresRef = useRef(null)
+  const parametersRef = useRef(null)
   const benefitsRef = useRef(null)
+  const conclusionRef = useRef(null)
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
+  const parametersInView = useInView(parametersRef, { once: true, amount: 0.3 })
   const benefitsInView = useInView(benefitsRef, { once: true, amount: 0.3 })
+  const conclusionInView = useInView(conclusionRef, { once: true, amount: 0.3 })
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
 
   return (
     <div className="overflow-hidden">
@@ -59,16 +72,19 @@ export default function TaviLandingPage() {
                 riducendo il rischio di mis-sizing e migliorando l'outcome procedurale.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  variant="outline"
-                  className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
-                  onClick={() => {
-                    const element = document.getElementById('features')
-                    element?.scrollIntoView({ behavior: 'smooth' })
-                  }}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Scopri le funzionalità
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
+                    onClick={() => scrollToSection('features')}
+                  >
+                    Scopri le funzionalità
+                    <ArrowDown className="ml-2 h-5 w-5" />
+                  </Button>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -138,11 +154,33 @@ export default function TaviLandingPage() {
               </motion.div>
             ))}
           </div>
+          
+          {/* Navigation Button */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={featuresInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                variant="outline"
+                className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-6 py-3"
+                onClick={() => scrollToSection('parameters')}
+              >
+                Scopri i parametri supportati
+                <ArrowDown className="ml-2 h-4 w-4" />
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Detailed Parameters Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="parameters" ref={parametersRef} className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -180,12 +218,34 @@ export default function TaviLandingPage() {
                 ))}
               </div>
             </motion.div>
+            
+            {/* Navigation Button */}
+            <motion.div
+              className="text-center mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={parametersInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  variant="outline"
+                  className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-6 py-3"
+                  onClick={() => scrollToSection('benefits')}
+                >
+                  Scopri il valore aggiunto
+                  <ArrowDown className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Value Proposition Section */}
-      <section className="py-20 bg-white" ref={benefitsRef}>
+      <section id="benefits" className="py-20 bg-white" ref={benefitsRef}>
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
@@ -252,11 +312,33 @@ export default function TaviLandingPage() {
               </motion.div>
             ))}
           </div>
+          
+          {/* Navigation Button */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                variant="outline"
+                className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-6 py-3"
+                onClick={() => scrollToSection('conclusion')}
+              >
+                Scopri di più
+                <ArrowDown className="ml-2 h-4 w-4" />
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Conclusion Section */}
-      <section className="py-20 bg-gradient-to-br from-[#293e72] to-[#1e2e57]">
+      <section id="conclusion" ref={conclusionRef} className="py-20 bg-gradient-to-br from-[#293e72] to-[#1e2e57]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -281,14 +363,20 @@ export default function TaviLandingPage() {
                 migliorando la qualità delle decisioni cliniche e gli outcome dei pazienti.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg"
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Torna all'inizio
-                </Button>
+                  <Button
+                    className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }}
+                  >
+                    <ArrowUp className="mr-2 h-5 w-5" />
+                    Torna all'inizio
+                  </Button>
+                </motion.div>
               </div>
             </motion.div>
           </div>
