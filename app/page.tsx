@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Code, LineChart, Stethoscope, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
 
@@ -29,6 +29,7 @@ export default function Home() {
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 })
   const testimonialsInView = useInView(testimonialsRef, { once: true, amount: 0.3 })
+  const [api, setApi] = useState<CarouselApi>()
 
   useEffect(() => {
     let active = true
@@ -43,6 +44,21 @@ export default function Home() {
       .catch(() => {})
     return () => { active = false }
   }, [])
+
+  // Auto-scroll per il carousel dei loghi
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 3000) // Scorre ogni 3 secondi
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [api])
 
   return (
     <div className="overflow-hidden">
@@ -139,7 +155,7 @@ export default function Home() {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="relative">
-            <Carousel opts={{ align: "start", loop: true }}>
+            <Carousel opts={{ align: "start", loop: true }} setApi={setApi}>
               <CarouselContent>
                 {logos.map((src) => (
                   <CarouselItem key={src} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
