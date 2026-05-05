@@ -488,11 +488,12 @@ export default function SolutionsPage() {
 
   return (
     <div className="pt-24">
-      <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 md:py-24 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-4">{isIt ? "CAPABILITY" : "CAPABILITIES"}</p>
+              <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6">
                 {isIt ? (
                   <>
                     Le nostre <span className="text-[#293e72]">{hero.titleAccent}</span>
@@ -511,7 +512,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-left max-w-3xl mb-16"
@@ -520,7 +521,7 @@ export default function SolutionsPage() {
             viewport={viewportOpts}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">{overview.title}</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-gray-900 mb-4">{overview.title}</h2>
             <p className="text-lg sm:text-xl text-gray-600">{overview.subtitle}</p>
           </motion.div>
 
@@ -534,7 +535,7 @@ export default function SolutionsPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="w-full"
               >
-                <Card className="border-none shadow-md hover-scale h-full bg-white">
+                <Card className="border border-gray-200 h-full bg-white">
                   <CardContent className="p-4 sm:p-5 md:p-6">
                     <div className="bg-[#293e72]/10 p-3 rounded-lg inline-block mb-4">{solution.icon}</div>
                     <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-2">{solution.title}</h3>
@@ -555,7 +556,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -564,7 +565,7 @@ export default function SolutionsPage() {
               transition={{ duration: 0.8 }}
               viewport={viewportOpts}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{digitizationSection.title}</h2>
+              <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-6">{digitizationSection.title}</h2>
               <p className="text-lg text-gray-600 mb-6">{digitizationSection.p1}</p>
               <p className="text-lg text-gray-600 mb-6">{digitizationSection.p2}</p>
               <ul className="space-y-4 mb-8">
@@ -591,10 +592,10 @@ export default function SolutionsPage() {
               viewport={viewportOpts}
               className="relative"
             >
-              <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
+                <div className="relative h-[400px] w-full overflow-hidden border border-gray-200">
                 <Image src="/fintech-dashboard-overview.png" alt={digitizationSection.imgAlt} fill className="object-cover" />
               </div>
-              <div className="absolute -bottom-6 right-6 bg-white p-4 rounded-lg shadow-lg">
+                <div className="absolute -bottom-6 right-6 bg-white p-4 border border-gray-200">
                 <div className="flex items-center gap-3">
                   <div className="bg-[#293e72]/10 p-2 rounded-full">
                     <Workflow className="h-6 w-6 text-[#293e72]" />
@@ -610,7 +611,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-white" ref={industriesRef}>
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200" ref={industriesRef}>
         <div className="container mx-auto px-4">
           <motion.div
             className="text-left max-w-3xl mb-16"
@@ -685,7 +686,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="text-left max-w-3xl mb-16">
             <motion.div
@@ -746,7 +747,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]">
+      <section className="py-16 md:py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div

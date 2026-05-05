@@ -8,14 +8,8 @@ import { Menu, X } from "lucide-react"
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
-import { AnimatedText } from "./animated-text"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
-
-/** Routes that are live (others still show “under construction”) */
-function isNavEnabled(href: string) {
-  return href === "/" || href === "/contact" || href === "/solutions"
-}
 
 const navItems = {
   en: [
@@ -79,8 +73,8 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-200/70",
-        isScrolled ? "shadow-sm py-3" : "py-4",
+        "fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-200",
+        isScrolled ? "py-4" : "py-5",
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -93,51 +87,37 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-2 shadow-sm">
+        <nav className="hidden lg:flex items-center gap-6">
           {navItems[language].map((item) => (
             <Link
               key={item.name}
-              href={isNavEnabled(item.href) ? item.href : "#"}
-              className="rounded-full px-3 py-2 text-sm text-gray-700 hover:text-[#293e72] hover:bg-gray-100 transition-colors font-medium"
-              onClick={isNavEnabled(item.href) ? undefined : (e) => {
-                e.preventDefault()
-                toast({
-                  title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
-                  description: language === 'it' ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
-                })
-              }}
+              href={item.href}
+              className="relative py-2 text-sm text-gray-700 transition-colors hover:text-[#293e72] font-medium after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-[#293e72] after:transition-all hover:after:w-full"
             >
-              <AnimatedText key={`${language}-${item.name}`}>
-                {item.name}
-              </AnimatedText>
+              {item.name}
             </Link>
           ))}
-          {/* Language Switcher - Desktop */}
-          <div className="flex items-center ml-2 mr-1">
+          <div className="h-6 w-px bg-gray-200" />
+          <div className="flex items-center text-xs font-semibold tracking-[0.14em] text-gray-700">
             <button
               aria-label="Switch to English"
               onClick={() => setLanguage('en')}
-              className={`w-9 h-9 flex items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] mx-0.5 ${
-                language === 'en' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
-              }`}
+              className={cn("transition-colors", language === "en" ? "text-[#293e72]" : "hover:text-[#293e72]")}
             >
-              <span className="text-lg">🇬🇧</span>
+              EN
             </button>
+            <span className="mx-2 text-gray-300">/</span>
             <button
               aria-label="Switch to Italian"
               onClick={() => setLanguage('it')}
-              className={`w-9 h-9 flex items-center justify-center rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] mx-0.5 ${
-                language === 'it' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
-              }`}
+              className={cn("transition-colors", language === "it" ? "text-[#293e72]" : "hover:text-[#293e72]")}
             >
-              <span className="text-lg">🇮🇹</span>
+              IT
             </button>
           </div>
           <Link href={bookingUrl || "/contact"} target={bookingUrl ? "_blank" : undefined} rel={bookingUrl ? "noopener noreferrer" : undefined}>
-            <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-1">
-              <AnimatedText key={`${language}-get-started`}>
-                {language === 'en' ? 'Get Started' : 'Inizia Ora'}
-              </AnimatedText>
+            <Button variant="outline" className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/5 ml-1">
+              {language === 'en' ? 'Get Started' : 'Inizia Ora'}
             </Button>
           </Link>
         </nav>
@@ -166,58 +146,33 @@ export default function Header() {
               {navItems[language].map((item) => (
                 <Link
                   key={item.name}
-                  href={isNavEnabled(item.href) ? item.href : "#"}
+                  href={item.href}
                   className="text-gray-700 hover:text-[#293e72] py-2 transition-colors font-medium"
-                  onClick={
-                    isNavEnabled(item.href)
-                      ? () => setMobileMenuOpen(false)
-                      : (e) => {
-                          e.preventDefault()
-                          setMobileMenuOpen(false)
-                          toast({
-                            title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
-                            description: language === 'it' ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
-                          })
-                        }
-                  }
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <AnimatedText key={`${language}-${item.name}`}>
-                    {item.name}
-                  </AnimatedText>
+                  {item.name}
                 </Link>
               ))}
               <Link href={bookingUrl || "/contact"} target={bookingUrl ? "_blank" : undefined} rel={bookingUrl ? "noopener noreferrer" : undefined} className="w-full">
                 <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full">
-                  <AnimatedText key={`${language}-get-started-mobile`}>
-                    {language === 'en' ? 'Get Started' : 'Inizia Ora'}
-                  </AnimatedText>
+                  {language === 'en' ? 'Get Started' : 'Inizia Ora'}
                 </Button>
               </Link>
-              {/* Mobile Language Switcher */}
-              <div className="flex items-center justify-center gap-2 pt-2">
+              <div className="flex items-center justify-center gap-3 pt-2 text-sm font-semibold tracking-[0.12em]">
                 <button
                   aria-label="Switch to English"
                   onClick={() => setLanguage('en')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] ${
-                    language === 'en' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
-                  }`}
+                  className={cn("transition-colors", language === "en" ? "text-[#293e72]" : "text-gray-600")}
                 >
-                  <span className="text-base">🇬🇧</span>
-                  <AnimatedText key={`${language}-english`}>
-                    <span className="text-sm font-medium">English</span>
-                  </AnimatedText>
+                  EN
                 </button>
+                <span className="text-gray-300">/</span>
                 <button
                   aria-label="Switch to Italian"
                   onClick={() => setLanguage('it')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors focus:outline-none focus:ring-2 focus:ring-[#293e72] ${
-                    language === 'it' ? 'bg-[#293e72] text-white border-[#293e72]' : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
-                  }`}
+                  className={cn("transition-colors", language === "it" ? "text-[#293e72]" : "text-gray-600")}
                 >
-                  <span className="text-base">🇮🇹</span>
-                  <AnimatedText key={`${language}-italian`}>
-                    <span className="text-sm font-medium">Italiano</span>
-                  </AnimatedText>
+                  IT
                 </button>
               </div>
             </div>

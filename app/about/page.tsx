@@ -19,16 +19,16 @@ export default function AboutPage() {
   return (
     <div className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 md:py-24 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-4">CHI SIAMO</p>
+              <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6">
                 About <span className="text-[#293e72]">Luxdada</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                We help organizations digitize workflows, automate what repeats, and integrate the tools they already
-                rely on, with pragmatic AI where it earns its place.
+                We partner with organizations to modernize operations through process design, system integration, and software delivery grounded in measurable business value.
               </p>
             </motion.div>
           </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+              <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-6">Our Story</h2>
               <p className="text-lg text-gray-600 mb-6">
                 Luxdada was founded to bridge the gap between “digital strategy” and software that runs in production:
                 process clarity first, then integrations, automation, and bespoke applications when packaged tools fall
@@ -69,7 +69,7 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               className="relative"
             >
-              <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
+              <div className="relative h-[400px] w-full overflow-hidden border border-gray-200">
                 <Image
                   src="/placeholder.svg?height=800&width=800&query=diverse team of technology professionals in modern office with blue accent lighting"
                   alt="Luxdada Team"
@@ -83,7 +83,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-16 md:py-20 bg-gray-50" ref={missionRef}>
+      <section className="py-16 md:py-20 bg-white border-y border-gray-200" ref={missionRef}>
         <div className="container mx-auto px-4">
           <motion.div
             className="text-left max-w-3xl mb-16"
@@ -103,7 +103,7 @@ export default function AboutPage() {
               animate={missionInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Card className="border-none shadow-md h-full bg-white">
+              <Card className="border border-gray-200 h-full bg-white">
                 <CardContent className="p-8">
                   <div className="bg-[#293e72]/10 p-3 rounded-lg inline-block mb-4">
                     <Target className="h-8 w-8 text-[#293e72]" />
@@ -134,7 +134,7 @@ export default function AboutPage() {
               animate={missionInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Card className="border-none shadow-md h-full bg-white">
+              <Card className="border border-gray-200 h-full bg-white">
                 <CardContent className="p-8">
                   <div className="bg-[#293e72]/10 p-3 rounded-lg inline-block mb-4">
                     <Lightbulb className="h-8 w-8 text-[#293e72]" />
@@ -172,7 +172,7 @@ export default function AboutPage() {
             animate={valuesInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-4">Our Core Values</h2>
             <p className="text-xl text-gray-600">The principles that guide everything we do at Luxdada.</p>
           </motion.div>
 
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 animate={valuesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
               >
-                <Card className="border-none shadow-md hover-scale h-full">
+                <Card className="border border-gray-200 h-full">
                   <CardContent className="p-6 text-left">
                     <div className="bg-[#293e72]/10 p-3 rounded-full inline-block mb-4">{value.icon}</div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
@@ -221,7 +221,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 md:py-20 bg-gray-50" ref={teamRef}>
+      <section className="py-16 md:py-20 bg-white border-y border-gray-200" ref={teamRef}>
         <div className="container mx-auto px-4">
           <motion.div
             className="text-left max-w-3xl mb-16"
@@ -230,7 +230,7 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership Team</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-gray-900 mb-4">Meet Our Leadership Team</h2>
             <p className="text-lg sm:text-xl text-gray-600">The experts driving innovation and excellence at Luxdada.</p>
           </motion.div>
 
@@ -281,14 +281,14 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="w-full"
               >
-                <Card className="border-none shadow-md hover-scale h-full bg-white">
+                <Card className="border border-gray-200 h-full bg-white">
                   <CardContent className="p-4 sm:p-5 md:p-6">
                     <div className="relative aspect-square w-full rounded-lg overflow-hidden mb-4">
                       <Image 
                         src={member.image || "/placeholder.svg"} 
                         alt={member.name} 
                         fill 
-                        className="object-cover"
+                        className="object-cover grayscale"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         priority={index < 3}
                       />
@@ -305,18 +305,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 relative">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/join-team.png"
-            alt="Join our team background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-[#293e72]/80" />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-16 md:py-20 bg-[#293e72]">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -324,7 +314,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Team</h2>
+              <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Join Our Team</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl">
                 We're always looking for people who love shipping systems that work in the real world: process nerds,
                 integrators, and product-minded engineers welcome.

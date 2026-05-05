@@ -128,6 +128,54 @@ export default function Home() {
         ],
       }
 
+  const valueStories = isIt
+    ? [
+        {
+          label: "CASO DI SUCCESSO",
+          title: "Virtus Ingegneria accelera il supporto con AI conversazionale su WhatsApp",
+          detail:
+            "Un assistente RAG integrato nei processi operativi per ridurre tempi di risposta e migliorare coerenza informativa.",
+          href: "/case-studies/rag-chatbot",
+        },
+        {
+          label: "CASO DI SUCCESSO",
+          title: "Fondazione Alfieri digitalizza le cartelle cliniche e standardizza le metriche",
+          detail:
+            "Dalla documentazione clinica a dataset strutturati, con tracciabilita delle fonti e governance del dato.",
+          href: "/case-studies/clinical-records-extraction",
+        },
+        {
+          label: "VALORE A 360°",
+          title: "Trusted Shops integra sistemi e automazione nel ciclo e-commerce",
+          detail:
+            "Sincronizzazione tra processi commerciali e operativi per una gestione piu affidabile e scalabile.",
+          href: "/contact",
+        },
+      ]
+    : [
+        {
+          label: "SUCCESS STORY",
+          title: "Virtus Ingegneria speeds up support with conversational AI on WhatsApp",
+          detail:
+            "A workflow-embedded RAG assistant to reduce response times and improve information consistency.",
+          href: "/case-studies/rag-chatbot",
+        },
+        {
+          label: "SUCCESS STORY",
+          title: "Fondazione Alfieri digitizes clinical records and standardizes key metrics",
+          detail:
+            "From clinical documentation to structured datasets with source traceability and stronger data governance.",
+          href: "/case-studies/clinical-records-extraction",
+        },
+        {
+          label: "360° VALUE",
+          title: "Trusted Shops aligns integrations and automation across commerce operations",
+          detail:
+            "Synchronization across commercial and operational workflows for more reliable and scalable execution.",
+          href: "/contact",
+        },
+      ]
+
   useEffect(() => {
     let active = true
     fetch('/api/trustedby')
@@ -160,29 +208,31 @@ export default function Home() {
   return (
     <div className="overflow-hidden pt-20">
       {/* Hero Section */}
-      <section className="pt-16 pb-16 md:pt-20 md:pb-20 relative bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="pt-20 pb-20 md:pt-28 md:pb-24 relative bg-white border-b border-gray-200">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#293e72]/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-60 -left-20 w-60 h-60 bg-[#293e72]/5 rounded-full blur-3xl"></div>
+          <div className="absolute -top-32 -right-32 w-72 h-72 bg-[#293e72]/5 rounded-full blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div className="lg:col-span-7" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 text-balance">
+              <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-5">
+                {isIt ? "LUXDADA · DIGITAL TRANSFORMATION" : "LUXDADA · DIGITAL TRANSFORMATION"}
+              </p>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-gray-900 leading-[1.05] mb-6 text-balance">
                 {isIt ? (
                   <>
-                    Digitalizziamo e automatizziamo i <span className="text-[#293e72]">processi</span>, con <span className="text-[#293e72]">AI</span> e visione <span className="text-[#293e72]">umana</span>
+                    Reinventiamo i <span className="text-[#293e72]">processi</span> delle imprese con tecnologia, dati e <span className="text-[#293e72]">intelligenza artificiale</span>
                   </>
                 ) : (
                   <>
-                    We <span className="text-[#293e72]">digitize</span> and <span className="text-[#293e72]">automate</span> how you work with <span className="text-[#293e72]">AI</span> and a <span className="text-[#293e72]">human</span> lens
+                    We reinvent <span className="text-[#293e72]">enterprise operations</span> with technology, data, and <span className="text-[#293e72]">artificial intelligence</span>
                   </>
                 )}
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl">
                 {isIt
-                  ? 'Consulenza, integrazione tra sistemi, sviluppo software su misura e automazione intelligente: accompagniamo le imprese dalla mappa dei processi al risultato misurabile, con etica e trasparenza.'
-                  : 'From process mapping to integration, bespoke software, and intelligent automation, we help enterprises turn fragmented workflows into scalable, measurable operations, ethically and transparently.'}
+                  ? "Uniamo strategia operativa, integrazione sistemi e delivery software per trasformazioni concrete, misurabili e sostenibili nel tempo."
+                  : "We combine operational strategy, systems integration, and software delivery to build concrete, measurable, and sustainable transformation outcomes."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
@@ -219,8 +269,11 @@ export default function Home() {
       </section>
 
       {/* Trusted By Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
+          <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-5">
+            {isIt ? "PARTNER E CLIENTI" : "PARTNERS & CLIENTS"}
+          </p>
           <div className="relative">
             <Carousel opts={{ align: "start", loop: true }} setApi={setApi}>
               <CarouselContent>
@@ -241,8 +294,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Value 360 Section */}
+      <section className="py-20 bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4">
+          <div className="text-left max-w-4xl mb-10">
+            <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-3">
+              {isIt ? "VALORE A 360°" : "360° VALUE"}
+            </p>
+            <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-4">
+              {isIt ? "Trasformazioni concrete, in settori diversi" : "Transformation outcomes across sectors"}
+            </h2>
+            <p className="text-lg text-gray-600">
+              {isIt
+                ? "Dalla sanita ai servizi professionali, progettiamo e realizziamo iniziative con metriche chiare e adozione reale."
+                : "From healthcare to professional services, we design and deliver initiatives with clear metrics and real adoption."}
+            </p>
+          </div>
+
+          <Carousel opts={{ align: "start", loop: true }}>
+            <CarouselContent>
+              {valueStories.map((story) => (
+                <CarouselItem key={story.title} className="basis-full md:basis-1/2 lg:basis-1/3">
+                  <div className="h-full border border-gray-200 bg-white p-6 flex flex-col">
+                    <p className="text-xs tracking-[0.14em] font-semibold text-[#293e72] mb-3">{story.label}</p>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-3">{story.title}</h3>
+                    <p className="text-gray-600 mb-6 flex-1">{story.detail}</p>
+                    <Link href={story.href} className="text-[#293e72] font-medium inline-flex items-center">
+                      {isIt ? "Scopri di più" : "Learn more"} <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
+        </div>
+      </section>
+
       {/* Features Section */}
-      <section className="py-20 bg-gray-50" ref={featuresRef}>
+      <section className="py-20 bg-white border-b border-gray-200" ref={featuresRef}>
         <div className="container mx-auto px-4">
           <motion.div
             className="text-left max-w-3xl mb-16"
@@ -262,7 +353,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {deliverySteps.map((step) => (
-              <Card key={step.title} className="border border-gray-200 shadow-sm bg-white h-full">
+              <Card key={step.title} className="border border-gray-200 bg-white h-full">
                 <CardContent className="p-6">
                   <p className="text-sm text-[#293e72] font-semibold mb-2">{step.title}</p>
                   <p className="text-gray-600">{step.description}</p>
@@ -278,7 +369,7 @@ export default function Home() {
               animate={featuresInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <Card className="border border-gray-200 shadow-sm bg-white">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-0">
                   <div className="px-6 py-5 border-b border-gray-100">
                     <h3 className="text-2xl font-semibold text-gray-900">
@@ -303,7 +394,7 @@ export default function Home() {
               animate={featuresInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Card className="border border-gray-200 shadow-sm bg-white">
+              <Card className="border border-gray-200 bg-white">
                 <CardContent className="p-6">
                   <h3 className="text-2xl font-semibold text-gray-900 mb-2">{engagementModel.title}</h3>
                   <p className="text-gray-600 mb-6">{engagementModel.subtitle}</p>
@@ -330,7 +421,7 @@ export default function Home() {
       </section>
 
       {/* Digitization & automation spotlight */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
@@ -388,10 +479,10 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 className="relative"
               >
-                <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
+                <div className="relative h-[400px] w-full overflow-hidden border border-gray-200">
                   <Image src="/fintech-dashboard-overview.png" alt={isIt ? 'Dashboard e automazione processi' : 'Process automation dashboard'} fill className="object-cover" />
                 </div>
-                <div className="absolute -bottom-6 right-6 bg-white p-4 rounded-lg shadow-lg">
+                <div className="absolute -bottom-6 right-6 bg-white p-4 border border-gray-200">
                   <div className="flex items-center gap-3">
                     <div className="bg-[#293e72]/10 p-2 rounded-full">
                       <Zap className="h-6 w-6 text-[#293e72]" />
@@ -409,7 +500,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]" ref={statsRef}>
+      <section className="py-20 bg-[#293e72]" ref={statsRef}>
         <div className="container mx-auto px-4">
           <div className="mb-10 max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
@@ -447,7 +538,7 @@ export default function Home() {
       </section>
 
       {/* Case Studies Preview */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="text-left max-w-3xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{isIt ? 'Storie di successo' : 'Success Stories'}</h2>
@@ -567,7 +658,7 @@ export default function Home() {
       </section>
 
       {/* Location Section - Milano */}
-      <section className="py-20 bg-gray-50" ref={testimonialsRef}>
+      <section className="py-20 bg-white border-b border-gray-200" ref={testimonialsRef}>
         <div className="container mx-auto px-4">
           <motion.div
             className="text-left max-w-3xl mb-16"
@@ -619,7 +710,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]">
+      <section className="py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div

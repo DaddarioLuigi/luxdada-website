@@ -60,11 +60,12 @@ export default function ContactPage() {
   return (
     <div className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 md:py-24 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-4">{isIt ? "CONTATTI" : "CONTACT"}</p>
+              <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6">
                 {isIt ? (
                   <>Mettiti in <span className="text-[#293e72]">contatto</span></>
                 ) : (
@@ -82,11 +83,11 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{isIt ? 'Contattaci' : 'Contact Us'}</h2>
+              <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-6">{isIt ? 'Contattaci' : 'Contact Us'}</h2>
               <p className="text-lg text-gray-600 mb-8">
                 {isIt
                   ? 'Compila il modulo: entro 24 ore ti richiamiamo per capire priorità, sistemi coinvolti e come possiamo supportarti su digitalizzazione, integrazione e automazione.'
@@ -115,7 +116,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="border border-gray-200 p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{isIt ? 'Orari' : 'Hours'}</h3>
                 <ul className="space-y-2">
                   <li className="flex justify-between">
@@ -135,7 +136,7 @@ export default function ContactPage() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <Card className="border-none shadow-lg">
+              <Card className="border border-gray-200">
                 <CardContent className="p-8">
                   {isSubmitted ? (
                     <div className="text-left py-8">
@@ -270,9 +271,9 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+          <div className="relative overflow-hidden border border-gray-200">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89545.77729942316!2d9.102486335546863!3d45.46426987107542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilano%2C%20Italy!5e0!3m2!1sen!2sit!4v1709647300000!5m2!1sen!2sit"
               width="100%"
@@ -288,10 +289,10 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{isIt ? 'Domande frequenti' : 'Frequently Asked Questions'}</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-4">{isIt ? 'Domande frequenti' : 'Frequently Asked Questions'}</h2>
             <p className="text-lg text-gray-600">{isIt ? 'Trova risposte alle domande più comuni su servizi e modalità di lavoro.' : 'Find answers to common questions about our services and process.'}</p>
           </div>
 
@@ -348,7 +349,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
-                <Card className="border-none shadow-md h-full">
+                <Card className="border border-gray-200 h-full">
                   <CardContent className="p-6 text-center">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{faq.question}</h3>
                     <p className="text-gray-600">{faq.answer}</p>
@@ -361,7 +362,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]">
+      <section className="py-16 md:py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div

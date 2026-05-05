@@ -18,6 +18,7 @@ export default function CaseStudiesPage() {
       category: "Automation",
       icon: <Workflow className="h-5 w-5" />,
       image: "/fintech-dashboard-overview.png",
+      href: "/case-studies/rag-chatbot",
       summary:
         "Automated classification and routing of incoming policies and claims correspondence, cutting manual triage time and accelerating underwriting follow-up.",
       results: [
@@ -32,6 +33,7 @@ export default function CaseStudiesPage() {
       category: "Finance",
       icon: <Briefcase className="h-5 w-5" />,
       image: "/fintech-dashboard-overview.png",
+      href: "/case-studies/clinical-records-extraction",
       summary:
         "Developed a machine learning-based fraud detection system that reduced fraudulent transactions by 92% and saved the company $4.5M annually.",
       results: [
@@ -46,6 +48,7 @@ export default function CaseStudiesPage() {
       category: "Manufacturing",
       icon: <Factory className="h-5 w-5" />,
       image: "/automated-assembly-line.png",
+      href: "/contact",
       summary:
         "Implemented a predictive maintenance system that reduced equipment downtime by 47% and maintenance costs by 32%.",
       results: [
@@ -61,6 +64,7 @@ export default function CaseStudiesPage() {
       icon: <ShoppingBag className="h-5 w-5" />,
       image:
         "/placeholder.svg?height=600&width=800&query=modern retail store with digital displays and technology integration",
+      href: "/contact",
       summary:
         "Developed a personalized recommendation engine that increased average order value by 24% and customer retention by 18%.",
       results: [
@@ -75,6 +79,7 @@ export default function CaseStudiesPage() {
       category: "Manufacturing",
       icon: <Factory className="h-5 w-5" />,
       image: "/automated-assembly-line.png",
+      href: "/contact",
       summary:
         "Connected technician dispatch, warehouse availability, and customer SLAs in one workflow, reducing emergency downtime and manual coordination.",
       results: [
@@ -90,6 +95,7 @@ export default function CaseStudiesPage() {
       icon: <Factory className="h-5 w-5" />,
       image:
         "/placeholder.svg?height=600&width=800&query=global supply chain visualization with logistics and shipping",
+      href: "/contact",
       summary:
         "Developed an AI-powered supply chain optimization system that reduced inventory costs by 27% and improved delivery times by 31%.",
       results: [
@@ -104,11 +110,12 @@ export default function CaseStudiesPage() {
   return (
     <div className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 md:py-24 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-4">CASE STUDIES</p>
+              <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6">
                 Our <span className="text-[#293e72]">Success Stories</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
@@ -121,7 +128,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Section */}
-      <section className="py-16 md:py-20 bg-white" ref={casesRef}>
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200" ref={casesRef}>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
@@ -132,7 +139,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 className="group"
               >
-                <Card className="border-none shadow-md hover-scale h-full overflow-hidden">
+                <Card className="border border-gray-200 h-full overflow-hidden">
                   <div className="relative h-64 w-full">
                     <Image
                       src={study.image || "/placeholder.svg"}
@@ -164,7 +171,7 @@ export default function CaseStudiesPage() {
                         ))}
                       </ul>
                     </div>
-                    <Link href={`/case-studies/${index + 1}`} className="text-[#293e72] font-medium flex items-center">
+                    <Link href={study.href} className="text-[#293e72] font-medium flex items-center">
                       Read Full Case Study <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </CardContent>
@@ -176,7 +183,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Results Overview Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="text-left max-w-3xl mb-16">
             <motion.div
@@ -185,7 +192,7 @@ export default function CaseStudiesPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Measurable Impact</h2>
+              <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-4">Measurable Impact</h2>
               <p className="text-xl text-gray-600">
                 Our solutions deliver tangible results across key performance indicators.
               </p>
@@ -206,7 +213,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
-                <Card className="border-none shadow-md h-full text-left p-8">
+                <Card className="border border-gray-200 h-full text-left p-8">
                   <CardContent className="p-0">
                     <div className="text-[#293e72] font-bold text-5xl mb-4">{stat.value}</div>
                     <p className="text-gray-700 font-medium">{stat.label}</p>
@@ -259,7 +266,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
-                <Card className="border-none shadow-md h-full">
+                <Card className="border border-gray-200 h-full">
                   <CardContent className="p-8">
                     <div className="mb-6 text-[#293e72]">
                       {Array(5)
