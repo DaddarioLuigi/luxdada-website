@@ -22,8 +22,9 @@ import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: "Luxdada - Gain insights from your data",
-  description: "Digitizing business processes through software and Artificial Intelligence",
+  title: "Luxdada — Digitalizzazione e automazione dei processi aziendali",
+  description:
+    "Luxdada accompagna le imprese nella digitalizzazione dei processi: software su misura, integrazione sistemi, automazione e intelligenza artificiale con un approccio etico e centrato sulle persone.",
   generator: 'v0.dev',
   icons: {
     icon: "/favicon.png",

@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Stethoscope, Briefcase, Factory, ShoppingBag, ChevronRight } from "lucide-react"
+import { ArrowRight, Workflow, Briefcase, Factory, ShoppingBag, ChevronRight } from "lucide-react"
 
 export default function CaseStudiesPage() {
   const casesRef = useRef(null)
@@ -14,17 +14,17 @@ export default function CaseStudiesPage() {
 
   const caseStudies = [
     {
-      title: "AI-Powered Diagnostic Support for Regional Hospital Network",
-      category: "Healthcare",
-      icon: <Stethoscope className="h-5 w-5" />,
-      image: "/digital-hospital-scene.png",
+      title: "Intelligent document intake for a mid-market insurer",
+      category: "Automation",
+      icon: <Workflow className="h-5 w-5" />,
+      image: "/fintech-dashboard-overview.png",
       summary:
-        "Implemented an AI-based diagnostic support system that improved diagnostic accuracy by 28% and reduced time to diagnosis by 35%.",
+        "Automated classification and routing of incoming policies and claims correspondence—cutting manual triage time and accelerating underwriting follow-up.",
       results: [
-        "28% improvement in diagnostic accuracy",
-        "35% reduction in time to diagnosis",
-        "22% decrease in unnecessary tests",
-        "Improved patient satisfaction scores by 18%",
+        "68% reduction in manual sorting time",
+        "41% faster case assignment to specialists",
+        "32% fewer status inquiries from brokers",
+        "Full audit trail for compliance reviews",
       ],
     },
     {
@@ -71,18 +71,17 @@ export default function CaseStudiesPage() {
       ],
     },
     {
-      title: "Patient Flow Optimization for Urban Medical Center",
-      category: "Healthcare",
-      icon: <Stethoscope className="h-5 w-5" />,
-      image:
-        "/placeholder.svg?height=600&width=800&query=busy hospital waiting room with digital patient management system",
+      title: "Field service scheduling & spare-parts sync for industrial OEM",
+      category: "Manufacturing",
+      icon: <Factory className="h-5 w-5" />,
+      image: "/automated-assembly-line.png",
       summary:
-        "Implemented an AI-driven patient flow system that reduced wait times by 42% and improved resource utilization by 35%.",
+        "Connected technician dispatch, warehouse availability, and customer SLAs in one workflow—reducing emergency downtime and manual coordination.",
       results: [
-        "42% reduction in patient wait times",
-        "35% improvement in resource utilization",
-        "28% increase in patient throughput",
-        "Improved staff satisfaction scores by 22%",
+        "37% reduction in first-time fix delays",
+        "29% lower expedited shipping costs",
+        "Same-day visibility for operations managers",
+        "Technician utilization up 18% within two quarters",
       ],
     },
     {
@@ -113,8 +112,8 @@ export default function CaseStudiesPage() {
                 Our <span className="text-[#293e72]">Success Stories</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Discover how our AI and digital transformation solutions have delivered measurable results for
-                organizations across industries.
+                Examples of how digitization, integration, and automation projects moved operational KPIs—not slide-deck
+                promises.
               </p>
             </motion.div>
           </div>
@@ -240,10 +239,10 @@ export default function CaseStudiesPage() {
             {[
               {
                 quote:
-                  "Luxdada's AI solutions have revolutionized our patient management system. The team's expertise and dedication to understanding our unique challenges resulted in a solution that exceeded our expectations.",
-                name: "Dr. Sarah Johnson",
-                title: "Chief Medical Officer",
-                company: "Metro Health Systems",
+                  "Luxdada replaced months of fragmented spreadsheets with a workflow our teams actually use. They challenged our assumptions kindly—and shipped integrations we did not think were possible with our legacy stack.",
+                name: "Elena Marchetti",
+                title: "Head of Operations",
+                company: "NordLogistica S.r.l.",
               },
               {
                 quote:

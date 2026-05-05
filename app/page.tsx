@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Brain, Code, LineChart, Stethoscope, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
+import { Brain, Code, LineChart, Workflow, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
@@ -84,18 +84,18 @@ export default function Home() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 {isIt ? (
                   <>
-                    Guidiamo l’innovazione con<span className="text-[#293e72]"> AI</span>, rispettando <span className="text-[#293e72]">l’umanità</span>
+                    Digitalizziamo e automatizziamo i <span className="text-[#293e72]">processi</span>, con <span className="text-[#293e72]">AI</span> e visione <span className="text-[#293e72]">umana</span>
                   </>
                 ) : (
                   <>
-                    Driving Innovation with<span className="text-[#293e72]"> AI</span>, Respecting <span className="text-[#293e72]">Humanity</span>
+                    We <span className="text-[#293e72]">digitize</span> and <span className="text-[#293e72]">automate</span> how you work—with <span className="text-[#293e72]">AI</span> and a <span className="text-[#293e72]">human</span> lens
                   </>
                 )}
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-lg">
                 {isIt
-                  ? 'Luxdada trasforma i tuoi processi aziendali con software e AI, nel pieno rispetto di etica, trasparenza e centralità umana.'
-                  : 'Luxdada transforms your business processes through software and AI, always respecting ethics, honesty, and the human touch.'}
+                  ? 'Consulenza, integrazione tra sistemi, sviluppo software su misura e automazione intelligente: accompagniamo le imprese dalla mappa dei processi al risultato misurabile, con etica e trasparenza.'
+                  : 'From process mapping to integration, bespoke software, and intelligent automation—we help enterprises turn fragmented workflows into scalable, measurable operations—ethically and transparently.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
@@ -138,11 +138,11 @@ export default function Home() {
               <div className="absolute -top-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
                 <div className="flex items-center gap-3">
                   <div className="bg-[#293e72]/10 p-2 rounded-full">
-                    <Stethoscope className="h-6 w-6 text-[#293e72]" />
+                    <Workflow className="h-6 w-6 text-[#293e72]" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{isIt ? 'Focus Sanità' : 'Healthcare Focus'}</p>
-                    <p className="text-xs text-gray-500">{isIt ? 'Soluzioni specializzate' : 'Specialized Solutions'}</p>
+                    <p className="text-sm font-medium text-gray-900">{isIt ? 'Processi digitali' : 'Digital workflows'}</p>
+                    <p className="text-xs text-gray-500">{isIt ? 'Dalla carta al sistema' : 'From paper to platform'}</p>
                   </div>
                 </div>
               </div>
@@ -184,37 +184,37 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {isIt ? 'Soluzioni innovative per le aziende moderne' : 'Innovative Solutions for Modern Businesses'}
+              {isIt ? 'Tutto ciò che serve per digitalizzare l’impresa' : 'Everything you need to digitize the enterprise'}
             </h2>
             <p className="text-xl text-gray-600">
               {isIt
-                ? 'Uniamo tecnologie all’avanguardia e competenze di settore per generare risultati trasformativi.'
-                : 'We combine cutting-edge technology with industry expertise to deliver transformative results.'}
+                ? 'Analisi dei flussi, integrazione dati, automazione e sviluppo su misura: un unico partner per rendere operativi i processi e liberare tempo per il valore.'
+                : 'Workflow analysis, data integration, automation, and custom development—one partner to operationalize processes and free your teams for higher-value work.'}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                icon: <Workflow className="h-8 w-8 text-[#293e72]" />,
+                title: isIt ? 'Digitalizzazione dei processi' : 'Process digitization',
+                description: isIt
+                  ? 'Mappatura dei flussi, ridisegno operativo e introduzione di strumenti digitali coerenti con il tuo modo di lavorare.'
+                  : 'Workflow mapping, operational redesign, and digital tooling aligned with how your organization actually works.',
+              },
+              {
                 icon: <Brain className="h-8 w-8 text-[#293e72]" />,
                 title: isIt ? 'Consulenza AI' : 'AI Consulting',
                 description: isIt
-                  ? 'Guida strategica per implementare soluzioni AI su misura per il tuo business.'
-                  : 'Strategic guidance on implementing AI solutions tailored to your business needs.',
+                  ? 'Use case con ROI chiaro: dove l’AI accelera decisioni e automazioni senza complessità inutile.'
+                  : 'ROI-led AI adoption—where models and automation accelerate decisions without needless complexity.',
               },
               {
                 icon: <Code className="h-8 w-8 text-[#293e72]" />,
                 title: isIt ? 'Sviluppo software su misura' : 'Custom Software Development',
                 description: isIt
-                  ? 'Soluzioni software bespoke per snellire le operazioni e aumentare l’efficienza.'
-                  : 'Bespoke software solutions designed to streamline your operations and boost efficiency.',
-              },
-              {
-                icon: <Stethoscope className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Soluzioni AI per la sanità' : 'Healthcare AI Solutions',
-                description: isIt
-                  ? 'Applicazioni AI specializzate per migliorare la cura dei pazienti e gli esiti clinici.'
-                  : 'Specialized AI applications for healthcare providers to improve patient care and outcomes.',
+                  ? 'Applicazioni, API e portali che collegano persone, dati e sistemi legacy in un’unica esperienza.'
+                  : 'Apps, APIs, and portals that connect people, data, and legacy systems into one coherent experience.',
               },
               {
                 icon: <LineChart className="h-8 w-8 text-[#293e72]" />,
@@ -234,8 +234,8 @@ export default function Home() {
                 icon: <Shield className="h-8 w-8 text-[#293e72]" />,
                 title: isIt ? 'Integrazione sicura' : 'Secure Integration',
                 description: isIt
-                  ? 'Integra l’AI nei sistemi esistenti con sicurezza a livello enterprise.'
-                  : 'Seamlessly integrate AI solutions with your existing systems with enterprise-grade security.',
+                  ? 'API, middleware e connettori per far dialogare ERP, CRM e strumenti verticali senza compromettere sicurezza e compliance.'
+                  : 'APIs, middleware, and connectors so ERP, CRM, and line-of-business tools work as one—without compromising security or compliance.',
               },
             ].map((feature, index) => (
               <motion.div
@@ -257,7 +257,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Healthcare Focus Section */}
+      {/* Digitization & automation spotlight */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -269,28 +269,28 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  {isIt ? 'Rivoluzionare la sanità con l’AI' : 'Revolutionizing Healthcare with AI'}
+                  {isIt ? 'Meno attività manuali, più valore per il business' : 'Less manual work, more business value'}
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
                   {isIt
-                    ? 'In Luxdada crediamo che l’AI possa migliorare significativamente la qualità della vita e il lavoro quotidiano nella sanità. Le nostre soluzioni aiutano i provider sanitari a:'
-                    : 'At Luxdada, we believe AI can significantly improve quality of life and daily work in the healthcare sector. Our specialized solutions help healthcare providers:'}
+                    ? 'Digitalizzare significa rendere espliciti i passaggi, collegare gli strumenti e misurare ciò che conta. Lavoriamo fianco a fianco con il tuo team per:'
+                    : 'Digitization means making every step explicit, connecting your stack, and measuring what matters. We work alongside your team to:'}
                 </p>
                 <ul className="space-y-4 mb-8">
                   {(isIt
                     ? [
-                        'Aumentare accuratezza e velocità diagnostica',
-                        'Snellire i flussi amministrativi',
-                        'Migliorare il coordinamento della cura',
-                        'Ottimizzare l’allocazione delle risorse',
-                        'Garantire sicurezza e conformità dei dati',
+                        'Allineare processi, ruoli e sistemi in un’unica visione operativa',
+                        'Automatizzare task ripetitivi con regole chiare e integrazioni robuste',
+                        'Portare dati e documenti su flussi tracciabili e conformi',
+                        'Accelerare decisioni con dashboard e analytics dove servono',
+                        'Presidiare sicurezza, accessi e continuità nel tempo',
                       ]
                     : [
-                        'Enhance diagnostic accuracy and speed',
-                        'Streamline administrative workflows',
-                        'Improve patient care coordination',
-                        'Optimize resource allocation',
-                        'Ensure data security and compliance',
+                        'Align processes, roles, and systems around one operational picture',
+                        'Automate repetitive work with clear rules and dependable integrations',
+                        'Move documents and data onto traceable, compliant workflows',
+                        'Speed up decisions with dashboards and analytics where they matter',
+                        'Govern security, access, and continuity over the long run',
                       ]).map((item, index) => (
                     <li key={index} className="flex items-start">
                       <CheckCircle className="h-6 w-6 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
@@ -298,9 +298,9 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
+                <Link href="/solutions">
                   <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
-                    {isIt ? 'Esplora le soluzioni per la sanità' : 'Explore Healthcare Solutions'} <ArrowRight className="ml-2 h-4 w-4" />
+                    {isIt ? 'Vedi come lo facciamo' : 'See how we deliver'} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </motion.div>
@@ -315,16 +315,16 @@ export default function Home() {
                 className="relative"
               >
                 <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
-                  <Image src="/connected-care.png" alt="Healthcare AI Solutions" fill className="object-cover" />
+                  <Image src="/fintech-dashboard-overview.png" alt={isIt ? 'Dashboard e automazione processi' : 'Process automation dashboard'} fill className="object-cover" />
                 </div>
                 <div className="absolute -bottom-6 right-6 bg-white p-4 rounded-lg shadow-lg">
                   <div className="flex items-center gap-3">
                     <div className="bg-[#293e72]/10 p-2 rounded-full">
-                      <Stethoscope className="h-6 w-6 text-[#293e72]" />
+                      <Zap className="h-6 w-6 text-[#293e72]" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{isIt ? 'Focus Sanità' : 'Healthcare Focus'}</p>
-                      <p className="text-xs text-gray-500">{isIt ? 'Soluzioni guidate dall’AI' : 'AI-Driven Solutions'}</p>
+                      <p className="text-sm font-medium text-gray-900">{isIt ? 'Automazione intelligente' : 'Smart automation'}</p>
+                      <p className="text-xs text-gray-500">{isIt ? 'Integrata nei tuoi sistemi' : 'Built into your stack'}</p>
                     </div>
                   </div>
                 </div>
@@ -384,10 +384,10 @@ export default function Home() {
                 href: "/case-studies/rag-chatbot"
               },
               {
-                title: isIt ? 'Digitalizzazione cartelle cliniche con LLM' : 'LLM‑Powered Medical Records Digitization',
-                category: isIt ? 'Sanità' : 'Healthcare',
-                image: "/digital-hospital-scene.png",
-                subtitle: isIt ? 'Dalle cartelle scannerizzate a dati clinici strutturati con workflow LLM sicuri e conformi.' : 'From scanned charts to structured clinical data with secure, compliant LLM workflows.'
+                title: isIt ? 'Automazione documentale e integrazione ERP' : 'Document automation & ERP integration',
+                category: isIt ? 'Automazione' : 'Automation',
+                image: "/automated-assembly-line.png",
+                subtitle: isIt ? 'Classificazione documenti, workflow approvativi e sincronizzazione ordini–magazzino–fatturazione su sistemi esistenti.' : 'Document classification, approval workflows, and order–inventory–billing sync across your existing systems.'
               },
               {
                 title: isIt ? 'E‑commerce headless con Medusa.js' : 'Headless E‑commerce with Medusa.js',
@@ -494,7 +494,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{isIt ? 'Vieni a trovarci a Milano' : 'Visit Us in Milano'}</h2>
             <p className="text-xl text-gray-600">
-              {isIt ? 'Siamo nel cuore di Milano, pronti ad aiutarti a trasformare il tuo business con l’AI.' : "We're located in the heart of Milano, ready to help you transform your business with AI."}
+              {isIt ? 'Ci trovi a Milano: incontriamo team e stakeholder per progettare digitalizzazione e automazione concretamente operative.' : "We're in Milano—working with your teams and stakeholders to ship digitization and automation that actually sticks."}
             </p>
           </motion.div>
 
@@ -531,12 +531,12 @@ export default function Home() {
               viewport={{ once: true, amount: 0.3 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                {isIt ? 'Pronto a trasformare il tuo business con l’AI?' : 'Ready to Transform Your Business with AI?'}
+                {isIt ? 'Pronto a digitalizzare e automatizzare i tuoi processi?' : 'Ready to digitize and automate your operations?'}
               </h2>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 {isIt
-                  ? 'Parliamo di come Luxdada può aiutarti a digitalizzare e ottimizzare i processi con soluzioni AI all’avanguardia.'
-                  : "Let's discuss how Luxdada can help you digitize and optimize your business processes with cutting-edge AI solutions."}
+                  ? 'Raccontaci obiettivi e vincoli: ti proporremo un percorso concreto—integrazioni, software su misura e AI solo dove genera valore misurabile.'
+                  : "Tell us your goals and constraints—we'll propose a concrete path: integrations, bespoke software, and AI only where it drives measurable value."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>

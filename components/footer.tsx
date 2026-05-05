@@ -77,8 +77,8 @@ export default function Footer() {
             </h3>
             <p className="text-gray-600 mb-4">
             {isIt
-              ? 'Digitalizziamo i processi aziendali tramite software e Intelligenza Artificiale.'
-              : 'Digitizing business processes through software and Artificial Intelligence.'}
+              ? 'Progettiamo e realizziamo la trasformazione digitale delle imprese: processi snelli, automazione intelligente, integrazione tra sistemi e soluzioni software su misura.'
+              : 'We design and deliver digital transformation for businesses: lean processes, intelligent automation, system integration, and bespoke software—powered by AI where it truly adds value.'}
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/luxdadadigital" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">

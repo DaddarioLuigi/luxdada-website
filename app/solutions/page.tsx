@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,7 +11,7 @@ import {
   Brain,
   Code,
   LineChart,
-  Stethoscope,
+  Workflow,
   Zap,
   Shield,
   ArrowRight,
@@ -18,6 +19,7 @@ import {
   Briefcase,
   Factory,
   ShoppingBag,
+  Building2,
   Lightbulb,
   Target,
   Users,
@@ -41,7 +43,8 @@ export default function SolutionsPage() {
                 Our <span className="text-[#293e72]">Solutions</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Innovative AI and software solutions designed to transform your business processes and drive growth.
+                End-to-end digitalization: we map how you work today, connect your systems, automate what repeats, and
+                build software where off-the-shelf tools stop short.
               </p>
             </motion.div>
           </div>
@@ -58,10 +61,10 @@ export default function SolutionsPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Comprehensive Digital Solutions</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Built for real-world operations</h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              From AI consulting to custom software development, we offer end-to-end solutions to meet your business
-              needs.
+              Strategy, integration, automation, and custom engineering—so processes run faster, data stays consistent,
+              and teams spend time on judgment—not copy-paste.
             </p>
           </motion.div>
 
@@ -91,15 +94,15 @@ export default function SolutionsPage() {
                 ],
               },
               {
-                icon: <Stethoscope className="h-8 w-8 text-[#293e72]" />,
-                title: "Healthcare AI Solutions",
+                icon: <Workflow className="h-8 w-8 text-[#293e72]" />,
+                title: "Process digitization & BPM",
                 description:
-                  "Specialized AI applications for healthcare providers to improve patient care and outcomes.",
+                  "Discovery workshops, As-Is / To-Be mapping, and rollout of digital workflows aligned with governance and KPIs.",
                 features: [
-                  "Clinical decision support",
-                  "Patient flow optimization",
-                  "Predictive analytics",
-                  "Administrative automation",
+                  "Process discovery & documentation",
+                  "Workflow redesign & ownership",
+                  "Tooling selection & rollout",
+                  "Continuous improvement loops",
                 ],
               },
               {
@@ -166,7 +169,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Healthcare Focus Section */}
+      {/* Digitization in practice */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -176,22 +179,22 @@ export default function SolutionsPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Healthcare AI Solutions</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Digitization that survives Monday morning</h2>
               <p className="text-lg text-gray-600 mb-6">
-                At Luxdada, we have a special focus on the healthcare sector, believing that AI can significantly
-                improve quality of life and daily work for healthcare professionals and patients alike.
+                Pretty slides do not ship outcomes—we implement workflows people actually follow. That means crisp
+                requirements, integrations that tolerate messy reality, and automation with observability when something
+                breaks.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                Our specialized healthcare AI solutions are designed to address the unique challenges faced by
-                healthcare providers, from clinical decision support to administrative efficiency.
+                Whether you are modernizing back-office operations or orchestrating customer-facing journeys, we combine
+                business analysis and engineering so initiatives land with adoption—not shelfware.
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Clinical decision support systems that enhance diagnostic accuracy",
-                  "Patient flow optimization to reduce wait times and improve care delivery",
-                  "Administrative automation to reduce paperwork and free up staff time",
-                  "Predictive analytics for resource planning and patient outcomes",
-                  "Secure integration with existing healthcare IT systems",
+                  "Single source of truth across CRM, ERP, and spreadsheets—without forcing a rip-and-replace",
+                  "Human-in-the-loop automation for exceptions and approvals",
+                  "Operational metrics wired into dashboards leadership trusts",
+                  "Security, audit trails, and role-based access baked into delivery—not bolted on later",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
                     <CheckCircle className="h-6 w-6 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
@@ -199,9 +202,11 @@ export default function SolutionsPage() {
                   </li>
                 ))}
               </ul>
-              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
-                Learn More About Healthcare Solutions <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
+                  Talk to us about your processes <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </motion.div>
 
             <motion.div
@@ -213,8 +218,8 @@ export default function SolutionsPage() {
             >
               <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
                 <Image
-                  src="/placeholder.svg?height=800&width=800&query=healthcare professionals using AI technology with digital medical interface"
-                  alt="Healthcare AI Solutions"
+                  src="/fintech-dashboard-overview.png"
+                  alt="Integrated operations dashboard"
                   fill
                   className="object-cover"
                 />
@@ -222,11 +227,11 @@ export default function SolutionsPage() {
               <div className="absolute -bottom-6 right-6 bg-white p-4 rounded-lg shadow-lg">
                 <div className="flex items-center gap-3">
                   <div className="bg-[#293e72]/10 p-2 rounded-full">
-                    <Stethoscope className="h-6 w-6 text-[#293e72]" />
+                    <Workflow className="h-6 w-6 text-[#293e72]" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Healthcare Focus</p>
-                    <p className="text-xs text-gray-500">AI-Driven Solutions</p>
+                    <p className="text-sm font-medium text-gray-900">Operations-first</p>
+                    <p className="text-xs text-gray-500">Measured delivery</p>
                   </div>
                 </div>
               </div>
@@ -246,17 +251,17 @@ export default function SolutionsPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
             <p className="text-xl text-gray-600">
-              Our AI and digital transformation solutions are tailored to meet the unique needs of various industries.
+              Patterns repeat across sectors—the stack changes. These snapshots show where we typically plug in first.
             </p>
           </motion.div>
 
-          <Tabs defaultValue="healthcare" className="w-full">
+          <Tabs defaultValue="enterprise" className="w-full">
             <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 bg-transparent h-auto mb-8">
               <TabsTrigger
-                value="healthcare"
+                value="enterprise"
                 className="data-[state=active]:bg-[#293e72] data-[state=active]:text-white py-3"
               >
-                <Stethoscope className="h-5 w-5 mr-2" /> Healthcare
+                <Building2 className="h-5 w-5 mr-2" /> Enterprise & services
               </TabsTrigger>
               <TabsTrigger
                 value="finance"
@@ -278,21 +283,21 @@ export default function SolutionsPage() {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="healthcare" className="mt-0">
+            <TabsContent value="enterprise" className="mt-0">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare Solutions</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Enterprise & professional services</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    Our healthcare-focused AI solutions help providers improve patient care, optimize operations, and
-                    reduce administrative burden.
+                    Shared services, multi-entity reporting, and knowledge work at scale—we digitize approval chains,
+                    client delivery, and internal controls without slowing experts down.
                   </p>
                   <ul className="space-y-3 mb-6">
                     {[
-                      "Clinical decision support systems",
-                      "Patient flow optimization",
-                      "Predictive analytics for patient outcomes",
-                      "Administrative process automation",
-                      "Secure healthcare data integration",
+                      "Document intake, classification, and case routing",
+                      "Contract-to-cash and procure-to-pay acceleration",
+                      "Project / engagement governance with financial visibility",
+                      "Knowledge bases and copilots grounded in your policies",
+                      "Identity, roles, and audit trails across tools",
                     ].map((item, index) => (
                       <li key={index} className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
@@ -300,12 +305,12 @@ export default function SolutionsPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">Explore Healthcare Solutions</Button>
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">Explore enterprise patterns</Button>
                 </div>
                 <div className="relative h-[350px] rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/placeholder.svg?height=700&width=700&query=healthcare professionals using digital technology in hospital setting"
-                    alt="Healthcare Solutions"
+                    src="/placeholder.svg?height=700&width=700&query=modern corporate office team collaborating with digital dashboards and laptops"
+                    alt="Enterprise digital transformation"
                     fill
                     className="object-cover"
                   />

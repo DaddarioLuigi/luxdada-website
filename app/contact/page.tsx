@@ -73,8 +73,8 @@ export default function ContactPage() {
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 {isIt
-                  ? 'Hai domande sulle nostre soluzioni AI o vuoi parlarci del tuo progetto? Siamo qui per aiutarti.'
-                  : "Have questions about our AI solutions or want to discuss your project? We're here to help."}
+                  ? 'Vuoi digitalizzare un processo, integrare i sistemi o automatizzare il lavoro ripetitivo? Raccontaci dove partirà il progetto.'
+                  : "Need to digitize a workflow, connect systems, or automate repetitive work? Tell us where your project starts—we'll take it from there."}
               </p>
             </motion.div>
           </div>
@@ -89,8 +89,8 @@ export default function ContactPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">{isIt ? 'Contattaci' : 'Contact Us'}</h2>
               <p className="text-lg text-gray-600 mb-8">
                 {isIt
-                  ? 'Compila il modulo: un nostro esperto ti ricontatterà entro 24 ore per capire come possiamo aiutarti con AI e trasformazione digitale.'
-                  : 'Fill out the form below, and one of our experts will get back to you within 24 hours to discuss how we can help with your AI and digital transformation needs.'}
+                  ? 'Compila il modulo: entro 24 ore ti richiamiamo per capire priorità, sistemi coinvolti e come possiamo supportarti su digitalizzazione, integrazione e automazione.'
+                  : "Fill out the form—within 24 hours we'll follow up to understand priorities, your stack, and how we can support digitization, integration, and automation."}
               </p>
 
               <div className="space-y-6 mb-8">
@@ -231,7 +231,7 @@ export default function ContactPage() {
                           <SelectContent>
                             <SelectItem value="ai-consulting">{isIt ? 'Consulenza AI' : 'AI Consulting'}</SelectItem>
                             <SelectItem value="custom-software">{isIt ? 'Sviluppo software su misura' : 'Custom Software Development'}</SelectItem>
-                            <SelectItem value="healthcare-solutions">{isIt ? 'Soluzioni AI per la sanità' : 'Healthcare AI Solutions'}</SelectItem>
+                            <SelectItem value="process-digitization">{isIt ? 'Digitalizzazione dei processi' : 'Process digitization'}</SelectItem>
                             <SelectItem value="data-analytics">{isIt ? 'Analisi dei dati' : 'Data Analytics'}</SelectItem>
                             <SelectItem value="process-automation">{isIt ? 'Automazione dei processi' : 'Process Automation'}</SelectItem>
                             <SelectItem value="other">{isIt ? 'Altro' : 'Other'}</SelectItem>
@@ -299,7 +299,7 @@ export default function ContactPage() {
                   {
                     question: 'In quali settori siete specializzati?',
                     answer:
-                      'Lavoriamo in diversi settori, con particolare esperienza in sanità, finanza, manifattura e retail. Le nostre soluzioni AI sono personalizzate per le sfide specifiche di ogni ambito.',
+                      'Supportiamo PMI e mid-market in manifattura, servizi professionali, retail ed e‑commerce, logistica e finanza. Partiamo sempre dal processo reale, poi scegliamo strumenti e integrazioni adeguati.',
                   },
                   {
                     question: 'Quanto dura in media un progetto?',
@@ -314,14 +314,14 @@ export default function ContactPage() {
                   {
                     question: 'Come garantite sicurezza e privacy dei dati?',
                     answer:
-                      'La sicurezza è prioritaria. Applichiamo misure allo stato dell’arte, rispettiamo le normative pertinenti e seguiamo le best practice. Collaboriamo con il tuo team per soddisfare ogni requisito.',
+                      'La sicurezza è parte del progetto: misure tecniche e organizzative adeguate, conformità GDPR e normative di settore quando applicabili, controllo degli accessi e tracciabilità fin dall’inizio.',
                   },
                 ]
               : [
                   {
                     question: 'What industries do you specialize in?',
                     answer:
-                      'While we serve clients across various industries, we have particular expertise in healthcare, finance, manufacturing, and retail. Our AI solutions are customized to address the specific challenges and opportunities in each sector.',
+                      "We work with SMEs and mid-market teams across manufacturing, professional services, retail and e-commerce, logistics, and finance. Every engagement starts from operational reality—not a generic toolkit.",
                   },
                   {
                     question: 'How long does a typical project take?',
@@ -336,7 +336,7 @@ export default function ContactPage() {
                   {
                     question: 'How do you ensure data security and privacy?',
                     answer:
-                      "Data security is a top priority. We implement industry-leading security measures, comply with relevant regulations (like HIPAA for healthcare), and follow best practices for data protection. We'll work with your team to ensure all security requirements are met.",
+                      "Data security is non-negotiable. We follow industry best practices, align with GDPR and sector-specific requirements where they apply, and design access control and audit trails into delivery—not as an afterthought.",
                   },
                 ]).map((faq, index) => (
               <motion.div

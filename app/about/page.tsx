@@ -27,7 +27,8 @@ export default function AboutPage() {
                 About <span className="text-[#293e72]">Luxdada</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                We're on a mission to transform businesses through innovative AI solutions and digital transformation.
+                We help organizations digitize workflows, automate what repeats, and integrate the tools they already
+                rely on—with pragmatic AI where it earns its place.
               </p>
             </motion.div>
           </div>
@@ -46,16 +47,18 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Luxdada was founded with a clear vision: to harness the power of artificial intelligence and innovative
-                software to transform how businesses operate in the digital age.
+                Luxdada was founded to bridge the gap between “digital strategy” and software that runs in production:
+                process clarity first, then integrations, automation, and bespoke applications when packaged tools fall
+                short.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                What began as a small team of passionate technologists has grown into a leading provider of AI-driven
-                solutions across multiple industries, with a special focus on healthcare.
+                What began as a compact engineering-led team is now a partner for SMEs and mid-market firms across
+                finance, manufacturing, retail, and professional services—shipping measurable improvements to throughput,
+                quality of data, and time-to-close.
               </p>
               <p className="text-lg text-gray-600">
-                Today, we continue to push the boundaries of what's possible, helping organizations of all sizes embrace
-                digital transformation and unlock new levels of efficiency and innovation.
+                Today we stay deliberately hands-on: analysts and engineers sit with operators to remove friction from
+                everyday work—because transformation only counts when teams adopt it.
               </p>
             </motion.div>
 
@@ -89,7 +92,9 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Mission & Vision</h2>
-            <p className="text-xl text-gray-600">Driving innovation and excellence through AI-powered solutions.</p>
+            <p className="text-xl text-gray-600">
+              Operational excellence through digitization, automation, and responsible use of AI.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -105,8 +110,8 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    To empower organizations with cutting-edge AI and software solutions that digitize and optimize
-                    business processes, driving efficiency, innovation, and growth.
+                    To give every organization a credible path from fragmented processes to connected operations—through
+                    honest assessments, solid integrations, and software built for how people actually work.
                   </p>
                   <ul className="space-y-3">
                     {[
@@ -136,14 +141,14 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    To be the global leader in AI-driven digital transformation, recognized for our innovation,
-                    expertise, and the tangible impact we create for our clients and society.
+                    To be recognized as the partner that ships durable digital operations—not slide decks—raising the
+                    bar for transparency, craft, and outcomes in business technology services.
                   </p>
                   <ul className="space-y-3">
                     {[
-                      "Pioneer new applications of AI across industries",
-                      "Revolutionize healthcare through specialized AI solutions",
-                      "Create a future where technology enhances human potential",
+                      "Democratize enterprise-grade automation for growing companies",
+                      "Champion transparent, auditable AI applied to real workflows",
+                      "Expand human capacity by removing soul-crushing manual work",
                     ].map((item, index) => (
                       <li key={index} className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
@@ -245,9 +250,9 @@ export default function AboutPage() {
               },
               {
                 name: "David Patel",
-                title: "Healthcare Solutions Director",
-                bio: "With a background in both healthcare and technology, David spearheads our specialized healthcare AI initiatives.",
-                image: "/placeholder.svg?height=400&width=400&query=professional headshot of male healthcare director in business attire",
+                title: "Director of Digital Transformation",
+                bio: "David leads enterprise discovery and delivery—aligning stakeholders, process owners, and engineering so digitization programs land with adoption.",
+                image: "/placeholder.svg?height=400&width=400&query=professional headshot of male technology director in business attire",
               },
               {
                 name: "Maria Rodriguez",
@@ -321,8 +326,8 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Team</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                We're always looking for talented individuals who are passionate about AI and digital transformation.
-                Explore career opportunities at Luxdada.
+                We're always looking for people who love shipping systems that work in the real world—process nerds,
+                integrators, and product-minded engineers welcome.
               </p>
               <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                 View Open Positions
