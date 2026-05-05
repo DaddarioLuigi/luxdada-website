@@ -49,6 +49,7 @@
     "framer-motion": "latest",
     "fs": "latest",
     "input-otp": "1.4.1",
+    "katex": "^0.16.45",
     "lucide-react": "^0.454.0",
     "mailchimp-marketing": "^0.0.1-security",
     "next": "15.2.8",
@@ -61,13 +62,14 @@
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
     "sonner": "^1.7.1",
+    "supports-color": "8.1.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
-    "supports-color": "8.1.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/katex": "^0.16.8",
     "@types/node": "^22.15.31",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19",

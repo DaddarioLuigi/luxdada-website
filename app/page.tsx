@@ -380,10 +380,13 @@ export default function Home() {
                 subtitle: isIt ? 'Classificazione documenti, workflow approvativi e sincronizzazione ordini–magazzino–fatturazione su sistemi esistenti.' : 'Document classification, approval workflows, and order–inventory–billing sync across your existing systems.'
               },
               {
-                title: isIt ? 'E‑commerce headless con Medusa.js' : 'Headless E‑commerce with Medusa.js',
-                category: "E‑commerce",
-                image: "/fintech-dashboard-overview.png",
-                subtitle: isIt ? 'Headless commerce pronto a scalare: storefront veloci e API flessibili su Medusa.js.' : 'Scale‑ready headless commerce: fast storefronts and flexible APIs on Medusa.js.'
+                title: isIt ? 'Digitalizzazione cartelle cliniche ed estrazione metriche' : 'Clinical records digitization and metric extraction',
+                category: isIt ? 'Sanità digitale' : 'Digital health',
+                image: "/digital-hospital-scene.png",
+                subtitle: isIt
+                  ? 'Da documenti clinici a fogli Excel strutturati: estrazione ripetibile di metriche e tracciabilità delle fonti.'
+                  : 'From clinical documents to structured Excel: repeatable metric extraction with source traceability.',
+                href: "/case-studies/clinical-records-extraction"
               },
             ].map((study, index) => (
               <motion.div
