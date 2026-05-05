@@ -70,7 +70,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-50 pt-16 pb-8 border-t border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="mb-12 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4">
               <h3 className="text-2xl font-bold text-[#293e72] mb-4 font-sora">

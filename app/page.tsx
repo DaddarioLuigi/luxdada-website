@@ -436,7 +436,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="text-left rounded-xl border border-white/20 p-6"
+                className="text-left rounded-xl p-6"
               >
                 <p className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</p>
                 <p className="text-lg text-white/80">{stat.label}</p>
