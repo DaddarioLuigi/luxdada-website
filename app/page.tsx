@@ -168,9 +168,6 @@ export default function Home() {
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div className="lg:col-span-7" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <p className="inline-flex items-center rounded-full border border-[#293e72]/20 bg-white px-3 py-1 text-sm text-[#293e72] mb-6">
-                {isIt ? "Digitalizzazione, integrazione e AI applicata ai processi" : "Digitization, integration, and process-focused AI"}
-              </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 text-balance">
                 {isIt ? (
                   <>
@@ -200,17 +197,6 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {[
-                  isIt ? "Approccio orientato al ROI" : "ROI-oriented approach",
-                  isIt ? "Integrazione con sistemi esistenti" : "Integration with existing systems",
-                  isIt ? "Consegne progressive e misurabili" : "Progressive measurable delivery",
-                ].map((item) => (
-                  <div key={item} className="rounded-xl border border-gray-200 bg-white p-4">
-                    <p className="text-sm font-medium text-gray-700">{item}</p>
-                  </div>
-                ))}
-              </div>
             </motion.div>
 
             <motion.div
@@ -226,18 +212,6 @@ export default function Home() {
                   fill
                   className="object-cover"
                 />
-              </div>
-              <div className="mt-4 rounded-xl bg-white border border-gray-200 p-4 shadow-sm">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-gray-500">{isIt ? "Settori coperti" : "Sectors served"}</p>
-                    <p className="text-lg font-semibold text-gray-900">{isIt ? "Servizi, Finance, Operations" : "Services, Finance, Operations"}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-wide text-gray-500">{isIt ? "Focus" : "Focus"}</p>
-                    <p className="text-lg font-semibold text-gray-900">{isIt ? "Efficienza & crescita" : "Efficiency & growth"}</p>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -297,7 +271,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-start">
             <motion.div
               className="lg:col-span-8"
               initial={{ opacity: 0, y: 20 }}
@@ -329,7 +303,7 @@ export default function Home() {
               animate={featuresInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <Card className="border border-gray-200 shadow-sm bg-white h-full">
+              <Card className="border border-gray-200 shadow-sm bg-white">
                 <CardContent className="p-6">
                   <h3 className="text-2xl font-semibold text-gray-900 mb-2">{engagementModel.title}</h3>
                   <p className="text-gray-600 mb-6">{engagementModel.subtitle}</p>
@@ -462,7 +436,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="text-left rounded-xl bg-white/10 border border-white/20 p-6"
+                className="text-left rounded-xl border border-white/20 p-6"
               >
                 <p className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</p>
                 <p className="text-lg text-white/80">{stat.label}</p>

@@ -699,25 +699,33 @@ export default function SolutionsPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewportOpts}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full"
-              >
-                <Card className="border-none shadow-md hover-scale h-full bg-white">
-                  <CardContent className="p-6">
-                    <div className={`${step.color} rounded-lg p-4 inline-block mb-4`}>{step.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="relative max-w-5xl">
+            <div className="absolute left-5 top-2 bottom-2 w-px bg-gray-200" />
+            <div className="space-y-8">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewportOpts}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative pl-14"
+                >
+                  <div className={`absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full ${step.color} text-sm font-semibold text-white shadow-sm`}>
+                    {index + 1}
+                  </div>
+                  <Card className="border border-gray-200 shadow-sm bg-white">
+                    <CardContent className="p-6">
+                      <div className="mb-3 flex items-center gap-3">
+                        <div className={`${step.color} rounded-lg p-2`}>{step.icon}</div>
+                        <h3 className="text-xl font-semibold text-gray-900">{step.title}</h3>
+                      </div>
+                      <p className="text-gray-600">{step.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <div className="mt-16 text-left">
