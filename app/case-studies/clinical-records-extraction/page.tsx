@@ -36,6 +36,14 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
                 ? "Da documenti clinici eterogenei a un foglio di lavoro tabellare con metriche e variabili estratte in modo ripetibile, validabile e confrontabile nel tempo."
                 : "From heterogeneous clinical documents to a spreadsheet-grade tabular layer with metrics and variables extracted repeatably, validateably, and comparably over time."}
             </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-base font-medium text-[#293e72] mt-4"
+            >
+              {isIt ? "Cliente: Fondazione Alfieri" : "Client: Fondazione Alfieri"}
+            </motion.p>
           </div>
         </div>
       </section>
@@ -165,18 +173,20 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-gray-50 border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <Link href="/case-studies/rag-chatbot" className="text-[#293e72] font-medium hover:underline">
+          <div className="max-w-3xl flex flex-col gap-6">
+            <Link href="/case-studies/rag-chatbot" className="text-left text-[#293e72] font-medium hover:underline">
               ← {isIt ? "Caso studio: chatbot RAG su WhatsApp" : "Case study: RAG chatbot on WhatsApp"}
             </Link>
-            <Link
-              href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
-              target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
-              rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57] transition-colors"
-            >
-              {isIt ? "Contattaci" : "Contact us"}
-            </Link>
+            <div className="flex justify-center">
+              <Link
+                href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
+                target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
+                rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57] transition-colors"
+              >
+                {isIt ? "Contattaci" : "Contact us"}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

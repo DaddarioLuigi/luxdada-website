@@ -146,12 +146,14 @@ export default function ContactPage() {
                       <p className="text-lg text-gray-600 mb-6">
                         {isIt ? 'Abbiamo ricevuto il tuo messaggio. Ti risponderemo entro 24 ore.' : 'Your message has been received. One of our team members will get back to you within 24 hours.'}
                       </p>
-                      <Button
-                        className="bg-[#293e72] hover:bg-[#1e2e57] text-white"
-                        onClick={() => setIsSubmitted(false)}
-                      >
-                        {isIt ? 'Invia un altro messaggio' : 'Send Another Message'}
-                      </Button>
+                      <div className="flex justify-center">
+                        <Button
+                          className="bg-[#293e72] hover:bg-[#1e2e57] text-white"
+                          onClick={() => setIsSubmitted(false)}
+                        >
+                          {isIt ? 'Invia un altro messaggio' : 'Send Another Message'}
+                        </Button>
+                      </div>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -374,9 +376,11 @@ export default function ContactPage() {
                   ? 'Prenota una consulenza con i nostri esperti per scoprire come l’AI e il digitale possono aiutarti a raggiungere i tuoi obiettivi.'
                   : 'Schedule a consultation with our experts to discuss how our AI and digital solutions can help you achieve your business goals.'}
               </p>
-              <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                {isIt ? 'Prenota una consulenza' : 'Schedule a Consultation'}
-              </Button>
+              <div className="flex justify-center">
+                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
+                  {isIt ? 'Prenota una consulenza' : 'Schedule a Consultation'}
+                </Button>
+              </div>
             </motion.div>
           </div>
         </div>

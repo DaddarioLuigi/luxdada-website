@@ -329,9 +329,11 @@ export default function AboutPage() {
                 We're always looking for people who love shipping systems that work in the real world: process nerds,
                 integrators, and product-minded engineers welcome.
               </p>
-              <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                View Open Positions
-              </Button>
+              <div className="flex justify-center">
+                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
+                  View Open Positions
+                </Button>
+              </div>
             </motion.div>
           </div>
         </div>

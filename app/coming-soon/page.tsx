@@ -242,7 +242,7 @@ export default function ComingSoonPage() {
               </form>
 
               {/* Social Media Links */}
-              <div className="flex justify-start space-x-6 mt-10">
+              <div className="flex justify-center space-x-6 mt-10">
                 <a href="#" className="text-gray-500 hover:text-[#293e72] transition-colors" aria-label="Facebook">
                   <Facebook size={24} />
                 </a>

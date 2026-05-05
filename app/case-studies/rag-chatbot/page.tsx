@@ -37,6 +37,14 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
                 ? "Un caso di studio sulla messa in opera di risposte linguisticamente fluide, ancorate a corpus documentali curati e supervisionati tramite workflow osservabili."
                 : "A case study on deploying fluent, linguistically polished answers grounded in curated corpora, supervised through observable workflows."}
             </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-base font-medium text-[#293e72] mt-4"
+            >
+              {isIt ? "Cliente: Virtus Ingegneria" : "Client: Virtus Ingegneria"}
+            </motion.p>
           </div>
         </div>
       </section>
@@ -244,21 +252,23 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-white border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <Link href="/case-studies/clinical-records-extraction" className="text-[#293e72] font-medium hover:underline">
+          <div className="max-w-3xl flex flex-col gap-6">
+            <Link href="/case-studies/clinical-records-extraction" className="text-left text-[#293e72] font-medium hover:underline">
               ←{" "}
               {isIt
                 ? "Caso studio: cartelle cliniche ed estrazione metriche"
                 : "Case study: clinical records and metric extraction"}
             </Link>
-            <Link
-              href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
-              target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
-              rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57] transition-colors"
-            >
-              {isIt ? "Parliamo del tuo caso" : "Discuss your use case"}
-            </Link>
+            <div className="flex justify-center">
+              <Link
+                href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
+                target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
+                rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-[#293e72] text-white hover:bg-[#1e2e57] transition-colors"
+              >
+                {isIt ? "Parliamo del tuo caso" : "Discuss your use case"}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

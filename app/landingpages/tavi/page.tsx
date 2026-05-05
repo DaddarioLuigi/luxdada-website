@@ -218,7 +218,7 @@ export default function TaviLandingPage() {
               <p className="text-lg text-gray-600 mb-8 max-w-2xl">
                 {t.hero.description2}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -287,7 +287,7 @@ export default function TaviLandingPage() {
           
           {/* Navigation Button */}
           <motion.div
-            className="text-left mt-12"
+            className="flex justify-center mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={featuresInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -341,7 +341,7 @@ export default function TaviLandingPage() {
             
             {/* Navigation Button */}
             <motion.div
-              className="text-left mt-12"
+              className="flex justify-center mt-12"
               initial={{ opacity: 0, y: 20 }}
               animate={parametersInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -414,7 +414,7 @@ export default function TaviLandingPage() {
           
           {/* Navigation Button */}
           <motion.div
-            className="text-left mt-12"
+            className="flex justify-center mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.7 }}
@@ -460,7 +460,7 @@ export default function TaviLandingPage() {
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
                 {t.conclusion.text2}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

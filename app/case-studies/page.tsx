@@ -305,9 +305,11 @@ export default function CaseStudiesPage() {
                 Contact us today to discuss how our AI and digital solutions can help you transform your business and
                 achieve measurable results.
               </p>
-              <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
-                Schedule a Consultation
-              </Button>
+              <div className="flex justify-center">
+                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
+                  Schedule a Consultation
+                </Button>
+              </div>
             </motion.div>
           </div>
         </div>

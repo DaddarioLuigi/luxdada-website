@@ -575,11 +575,13 @@ export default function SolutionsPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contact">
-                <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
-                  {digitizationSection.cta} <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              <div className="flex justify-center">
+                <Link href="/contact">
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
+                    {digitizationSection.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
 
             <motion.div
@@ -654,9 +656,11 @@ export default function SolutionsPage() {
                         </li>
                       ))}
                     </ul>
-                    <Link href="/contact">
-                      <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">{tabCopy[key].btn}</Button>
-                    </Link>
+                    <div className="flex justify-center">
+                      <Link href="/contact">
+                        <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">{tabCopy[key].btn}</Button>
+                      </Link>
+                    </div>
                   </div>
                   <div className="relative h-[350px] rounded-xl overflow-hidden shadow-lg">
                     <Image
@@ -724,9 +728,11 @@ export default function SolutionsPage() {
               transition={{ duration: 0.5 }}
             >
               <p className="text-lg text-gray-600 mb-6">{processFooter.text}</p>
-              <Link href="/contact">
-                <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">{processFooter.btn}</Button>
-              </Link>
+              <div className="flex justify-center">
+                <Link href="/contact">
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">{processFooter.btn}</Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -747,9 +753,11 @@ export default function SolutionsPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{cta.title}</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl">{cta.subtitle}</p>
-              <Link href="/contact">
-                <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">{cta.primary}</Button>
-              </Link>
+              <div className="flex justify-center">
+                <Link href="/contact">
+                  <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">{cta.primary}</Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
