@@ -20,17 +20,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: [
-          "-apple-system",
-          "BlinkMacSystemFont",
-          '"Segoe UI"',
-          '"Noto Sans"',
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-        ],
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sora: ["var(--font-sora)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
