@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Loader2 } from "lucide-react"
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, Loader2 } from "lucide-react"
 import { motion } from "framer-motion"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
@@ -68,115 +68,117 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-50 pt-16 pb-8 font-sora">
+    <footer className="bg-gray-50 pt-16 pb-8 border-t border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <h3 className="text-2xl font-bold text-[#293e72] mb-4">
-              Luxdada
-            </h3>
-            <p className="text-gray-600 mb-4">
-            {isIt
-              ? 'Progettiamo e realizziamo la trasformazione digitale delle imprese: processi snelli, automazione intelligente, integrazione tra sistemi e soluzioni software su misura.'
-              : 'We design and deliver digital transformation for businesses: lean processes, intelligent automation, system integration, and bespoke software, powered by AI where it truly adds value.'}
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/luxdadadigital" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://www.linkedin.com/company/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://www.instagram.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors">
-                <Instagram size={20} />
-              </a>
+        <div className="mb-12 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-4">
+              <h3 className="text-2xl font-bold text-[#293e72] mb-4 font-sora">
+                Luxdada
+              </h3>
+              <p className="text-gray-600 mb-6">
+                {isIt
+                  ? 'Progettiamo e realizziamo la trasformazione digitale delle imprese: processi snelli, automazione intelligente, integrazione tra sistemi e soluzioni software su misura.'
+                  : 'We design and deliver digital transformation for businesses: lean processes, intelligent automation, system integration, and bespoke software, powered by AI where it truly adds value.'}
+              </p>
+              <div className="flex space-x-4">
+                <a href="https://www.facebook.com/luxdadadigital" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors" aria-label="Facebook">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://www.linkedin.com/company/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors" aria-label="LinkedIn">
+                  <Linkedin size={20} />
+                </a>
+                <a href="https://www.instagram.com/luxdada" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#293e72] transition-colors" aria-label="Instagram">
+                  <Instagram size={20} />
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div>
-          <h4 className="font-semibold text-gray-900 mb-4">{isIt ? 'Link rapidi' : 'Quick Links'}</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
-                {isIt ? 'Chi Siamo' : 'About Us'}
-                </Link>
-              </li>
-              <li>
-                <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
-                {isIt ? 'Soluzioni' : 'Solutions'}
-                </Link>
-              </li>
-              <li>
-                <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
-                {isIt ? 'Casi Studio' : 'Case Studies'}
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-600 hover:text-[#293e72] transition-colors">
-                {isIt ? 'Contatti' : 'Contact'}
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <div className="lg:col-span-2">
+              <h4 className="font-semibold text-gray-900 mb-4">{isIt ? 'Link rapidi' : 'Quick Links'}</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
+                    {isIt ? 'Chi Siamo' : 'About Us'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                    {isIt ? 'Soluzioni' : 'Solutions'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
+                    {isIt ? 'Casi Studio' : 'Case Studies'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-gray-600 hover:text-[#293e72] transition-colors">
+                    {isIt ? 'Contatti' : 'Contact'}
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-          <h4 className="font-semibold text-gray-900 mb-4">{isIt ? 'Contatti' : 'Contact'}</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin size={18} className="text-[#293e72] mr-2 mt-1 flex-shrink-0" />
-                <span className="text-gray-600">Trav. 19A di Via Napoli, Bari, BA 70127</span>
-              </li>
-              <li className="flex items-center">
-                <Phone size={18} className="text-[#293e72] mr-2 flex-shrink-0" />
-                <span className="text-gray-600">+39 392 484 2124</span>
-              </li>
-              <li className="flex items-center">
-                <Mail size={18} className="text-[#293e72] mr-2 flex-shrink-0" />
-                <span className="text-gray-600">info@luxdada.it</span>
-              </li>
-            </ul>
-          </div>
+            <div className="lg:col-span-3">
+              <h4 className="font-semibold text-gray-900 mb-4">{isIt ? 'Contatti' : 'Contact'}</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <MapPin size={18} className="text-[#293e72] mr-2 mt-1 flex-shrink-0" />
+                  <span className="text-gray-600">Trav. 19A di Via Napoli, Bari, BA 70127</span>
+                </li>
+                <li className="flex items-center">
+                  <Phone size={18} className="text-[#293e72] mr-2 flex-shrink-0" />
+                  <span className="text-gray-600">+39 392 484 2124</span>
+                </li>
+                <li className="flex items-center">
+                  <Mail size={18} className="text-[#293e72] mr-2 flex-shrink-0" />
+                  <span className="text-gray-600">info@luxdada.it</span>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-          <h4 className="font-semibold text-gray-900 mb-4">Newsletter</h4>
-          <p className="text-gray-600 mb-4">{isIt ? 'Iscriviti alla newsletter per rimanere aggiornato.' : 'Subscribe to our newsletter for the latest updates.'}</p>
-            <form onSubmit={handleSubscribe} className="flex flex-col space-y-2">
-              <Input
-                type="email"
-              placeholder={isIt ? 'La tua email' : 'Your email'}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="border-gray-300 focus:border-[#293e72] focus:ring-[#293e72]"
-              />
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full"
-              >
-                {isSubmitting ? (
-                  <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {isIt ? 'Iscrizione in corso...' : 'Subscribing...'}
-                  </>
-                ) : (
-                  (isIt ? 'Iscriviti' : 'Subscribe')
-                )}
-              </Button>
-            </form>
-            
-            {/* Feedback Message */}
-            {message && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className={`mt-3 p-2 rounded-md text-sm ${
-                  message.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
-                }`}
-              >
-                {message.text}
-              </motion.div>
-            )}
+            <div className="lg:col-span-3">
+              <h4 className="font-semibold text-gray-900 mb-4">Newsletter</h4>
+              <p className="text-gray-600 mb-4">{isIt ? 'Iscriviti alla newsletter per rimanere aggiornato.' : 'Subscribe to our newsletter for the latest updates.'}</p>
+              <form onSubmit={handleSubscribe} className="flex flex-col space-y-2">
+                <Input
+                  type="email"
+                  placeholder={isIt ? 'La tua email' : 'Your email'}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="border-gray-300 focus:border-[#293e72] focus:ring-[#293e72]"
+                />
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-[#293e72] hover:bg-[#1e2e57] text-white w-full"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {isIt ? 'Iscrizione in corso...' : 'Subscribing...'}
+                    </>
+                  ) : (
+                    (isIt ? 'Iscriviti' : 'Subscribe')
+                  )}
+                </Button>
+              </form>
+
+              {/* Feedback Message */}
+              {message && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className={`mt-3 p-2 rounded-md text-sm ${
+                    message.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
+                  }`}
+                >
+                  {message.text}
+                </motion.div>
+              )}
+            </div>
           </div>
         </div>
 

@@ -79,8 +79,8 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "bg-white/95 backdrop-blur-sm shadow-sm py-3" : "bg-transparent py-5",
+        "fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-gray-200/70",
+        isScrolled ? "shadow-sm py-3" : "py-4",
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -93,12 +93,12 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-2 shadow-sm">
           {navItems[language].map((item) => (
             <Link
               key={item.name}
               href={isNavEnabled(item.href) ? item.href : "#"}
-              className="text-gray-700 hover:text-[#293e72] transition-colors font-medium"
+              className="rounded-full px-3 py-2 text-sm text-gray-700 hover:text-[#293e72] hover:bg-gray-100 transition-colors font-medium"
               onClick={isNavEnabled(item.href) ? undefined : (e) => {
                 e.preventDefault()
                 toast({
@@ -113,7 +113,7 @@ export default function Header() {
             </Link>
           ))}
           {/* Language Switcher - Desktop */}
-          <div className="flex items-center ml-4 mr-2">
+          <div className="flex items-center ml-2 mr-1">
             <button
               aria-label="Switch to English"
               onClick={() => setLanguage('en')}
@@ -134,7 +134,7 @@ export default function Header() {
             </button>
           </div>
           <Link href={bookingUrl || "/contact"} target={bookingUrl ? "_blank" : undefined} rel={bookingUrl ? "noopener noreferrer" : undefined}>
-            <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-2">
+            <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white ml-1">
               <AnimatedText key={`${language}-get-started`}>
                 {language === 'en' ? 'Get Started' : 'Inizia Ora'}
               </AnimatedText>
@@ -143,7 +143,11 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="lg:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <button
+          aria-label={mobileMenuOpen ? (language === 'it' ? 'Chiudi menu' : 'Close menu') : (language === 'it' ? 'Apri menu' : 'Open menu')}
+          className="lg:hidden text-gray-700 rounded-md p-2 hover:bg-gray-100 transition-colors"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>

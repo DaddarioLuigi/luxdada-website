@@ -30,6 +30,17 @@ export default function Home() {
   const statsInView = useInView(statsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
   const testimonialsInView = useInView(testimonialsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
   const [api, setApi] = useState<CarouselApi>()
+  const deliverySteps = isIt
+    ? [
+        { title: "Assessment", description: "Analizziamo processi, vincoli e priorità per definire un perimetro realistico." },
+        { title: "Implementation", description: "Sviluppo, integrazione e automazione con rilasci progressivi e verificabili." },
+        { title: "Adoption", description: "Formazione, monitoraggio e miglioramento continuo per risultati stabili nel tempo." },
+      ]
+    : [
+        { title: "Assessment", description: "We map processes, constraints, and priorities to define a realistic scope." },
+        { title: "Implementation", description: "Development, integration, and automation with progressive and testable releases." },
+        { title: "Adoption", description: "Training, monitoring, and continuous improvements to sustain business outcomes." },
+      ]
 
   useEffect(() => {
     let active = true
@@ -61,17 +72,20 @@ export default function Home() {
   }, [api])
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden pt-20">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="pt-16 pb-16 md:pt-20 md:pb-20 relative bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#293e72]/10 rounded-full blur-3xl"></div>
           <div className="absolute top-60 -left-20 w-60 h-60 bg-[#293e72]/5 rounded-full blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <motion.div className="lg:col-span-7" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <p className="inline-flex items-center rounded-full border border-[#293e72]/20 bg-white px-3 py-1 text-sm text-[#293e72] mb-6">
+                {isIt ? "Digitalizzazione, integrazione e AI applicata ai processi" : "Digitization, integration, and process-focused AI"}
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 text-balance">
                 {isIt ? (
                   <>
                     Digitalizziamo e automatizziamo i <span className="text-[#293e72]">processi</span>, con <span className="text-[#293e72]">AI</span> e visione <span className="text-[#293e72]">umana</span>
@@ -82,21 +96,34 @@ export default function Home() {
                   </>
                 )}
               </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-lg">
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl">
                 {isIt
                   ? 'Consulenza, integrazione tra sistemi, sviluppo software su misura e automazione intelligente: accompagniamo le imprese dalla mappa dei processi al risultato misurabile, con etica e trasparenza.'
                   : 'From process mapping to integration, bespoke software, and intelligent automation, we help enterprises turn fragmented workflows into scalable, measurable operations, ethically and transparently.'}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                   <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">{isIt ? 'Inizia Ora' : 'Get Started'}</Button>
                 </Link>
-                <Button
-                  variant="outline"
-                  className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
-                >
-                  {isIt ? 'Scopri di più' : 'Learn More'}
-                </Button>
+                <Link href="/solutions">
+                  <Button
+                    variant="outline"
+                    className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
+                  >
+                    {isIt ? 'Scopri di più' : 'Learn More'}
+                  </Button>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  isIt ? "Approccio orientato al ROI" : "ROI-oriented approach",
+                  isIt ? "Integrazione con sistemi esistenti" : "Integration with existing systems",
+                  isIt ? "Consegne progressive e misurabili" : "Progressive measurable delivery",
+                ].map((item) => (
+                  <div key={item} className="rounded-xl border border-gray-200 bg-white p-4">
+                    <p className="text-sm font-medium text-gray-700">{item}</p>
+                  </div>
+                ))}
               </div>
             </motion.div>
 
@@ -104,9 +131,9 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }} 
-              className="relative"
+              className="relative lg:col-span-5"
             >
-              <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative h-[420px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/70">
                 <Image
                   src="/neural-network-blueprint.png"
                   alt="AI Technology Visualization"
@@ -114,25 +141,15 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#293e72]/10 p-2 rounded-full">
-                    <Brain className="h-6 w-6 text-[#293e72]" />
+              <div className="mt-4 rounded-xl bg-white border border-gray-200 p-4 shadow-sm">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-gray-500">{isIt ? "Settori coperti" : "Sectors served"}</p>
+                    <p className="text-lg font-semibold text-gray-900">{isIt ? "Servizi, Finance, Operations" : "Services, Finance, Operations"}</p>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{isIt ? 'Basato su AI' : 'AI-Powered'}</p>
-                    <p className="text-xs text-gray-500">{isIt ? 'Soluzioni intelligenti' : 'Smart Solutions'}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="bg-[#293e72]/10 p-2 rounded-full">
-                    <Workflow className="h-6 w-6 text-[#293e72]" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">{isIt ? 'Processi digitali' : 'Digital workflows'}</p>
-                    <p className="text-xs text-gray-500">{isIt ? 'Dalla carta al sistema' : 'From paper to platform'}</p>
+                    <p className="text-xs uppercase tracking-wide text-gray-500">{isIt ? "Focus" : "Focus"}</p>
+                    <p className="text-lg font-semibold text-gray-900">{isIt ? "Efficienza & crescita" : "Efficiency & growth"}</p>
                   </div>
                 </div>
               </div>
@@ -142,9 +159,14 @@ export default function Home() {
       </section>
 
       {/* Trusted By Section */}
-      <section className="py-12 bg-white">
+      <section className="py-14 bg-white">
         <div className="container mx-auto px-4">
-          <div className="relative">
+          <div className="mb-6">
+            <p className="text-sm uppercase tracking-wide text-gray-500">
+              {isIt ? "Scelti da team che vogliono processi più solidi" : "Chosen by teams improving operational reliability"}
+            </p>
+          </div>
+          <div className="relative rounded-2xl border border-gray-200 bg-gray-50/70 p-3">
             <Carousel opts={{ align: "start", loop: true }} setApi={setApi}>
               <CarouselContent>
                 {logos.map((src) => (
@@ -182,6 +204,17 @@ export default function Home() {
                 : 'Workflow analysis, data integration, automation, and custom development: one partner to operationalize processes and free your teams for higher-value work.'}
             </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {deliverySteps.map((step) => (
+              <Card key={step.title} className="border border-gray-200 shadow-sm bg-white h-full">
+                <CardContent className="p-6">
+                  <p className="text-sm text-[#293e72] font-semibold mb-2">{step.title}</p>
+                  <p className="text-gray-600">{step.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -288,11 +321,13 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/solutions">
-                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
-                    {isIt ? 'Vedi come lo facciamo' : 'See how we deliver'} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
+                <div className="flex justify-center">
+                  <Link href="/solutions">
+                    <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
+                      {isIt ? 'Vedi come lo facciamo' : 'See how we deliver'} <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
               </motion.div>
             </div>
 
@@ -327,6 +362,14 @@ export default function Home() {
       {/* Stats Section */}
       <section className="py-20 bg-[#293e72]" ref={statsRef}>
         <div className="container mx-auto px-4">
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              {isIt ? "Risultati orientati al business" : "Business-oriented outcomes"}
+            </h2>
+            <p className="text-white/80 text-lg">
+              {isIt ? "Dal primo assessment al go-live, misuriamo impatto e adozione con indicatori concreti." : "From first assessment to go-live, we track impact and adoption through concrete metrics."}
+            </p>
+          </div>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             initial={{ opacity: 0, y: 20 }}
@@ -344,7 +387,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="text-left"
+                className="text-left rounded-xl bg-white/10 border border-white/20 p-6"
               >
                 <p className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</p>
                 <p className="text-lg text-white/80">{stat.label}</p>
@@ -364,20 +407,15 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {[
               {
                 title: isIt ? 'AI conversazionale su WhatsApp (RAG)' : 'Conversational AI on WhatsApp (RAG)',
                 category: isIt ? 'Assistenti AI' : 'AI Assistants',
                 image: "/neural-network-blueprint.png",
                 subtitle: isIt ? 'Risposte immediate e accurate su WhatsApp con Retrieval‑Augmented Generation orchestrato con n8n.' : 'Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n.',
+                client: "Virtus Ingegneria",
                 href: "/case-studies/rag-chatbot"
-              },
-              {
-                title: isIt ? 'Automazione documentale e integrazione ERP' : 'Document automation & ERP integration',
-                category: isIt ? 'Automazione' : 'Automation',
-                image: "/automated-assembly-line.png",
-                subtitle: isIt ? 'Classificazione documenti, workflow approvativi e sincronizzazione ordini–magazzino–fatturazione su sistemi esistenti.' : 'Document classification, approval workflows, and order–inventory–billing sync across your existing systems.'
               },
               {
                 title: isIt ? 'Digitalizzazione cartelle cliniche ed estrazione metriche' : 'Clinical records digitization and metric extraction',
@@ -386,6 +424,7 @@ export default function Home() {
                 subtitle: isIt
                   ? 'Da documenti clinici a fogli Excel strutturati: estrazione ripetibile di metriche e tracciabilità delle fonti.'
                   : 'From clinical documents to structured Excel: repeatable metric extraction with source traceability.',
+                client: "Fondazione Alfieri",
                 href: "/case-studies/clinical-records-extraction"
               },
             ].map((study, index) => (
@@ -417,6 +456,9 @@ export default function Home() {
                       {study.title}
                     </h3>
                     <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
+                    {"client" in study && study.client ? (
+                      <p className="text-sm font-medium text-[#293e72] mb-3">{study.client}</p>
+                    ) : null}
                     <span className="text-[#293e72] font-medium flex items-center">
                       {isIt ? 'Leggi il caso studio' : 'Read Case Study'} <ArrowRight className="ml-2 h-4 w-4" />
                     </span>
@@ -450,6 +492,9 @@ export default function Home() {
                     {study.title}
                   </h3>
                   <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
+                  {"client" in study && study.client ? (
+                    <p className="text-sm font-medium text-[#293e72] mb-3">{study.client}</p>
+                  ) : null}
                   <span className="text-[#293e72] font-medium flex items-center">
                     {isIt ? 'Leggi il caso studio' : 'Read Case Study'} <ArrowRight className="ml-2 h-4 w-4" />
                   </span>
@@ -459,19 +504,15 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-left mt-12">
-            <Button
-              variant="outline"
-              className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10"
-              onClick={() =>
-                toast({
-                  title: isIt ? 'Sito in costruzione' : 'Site under construction',
-                  description: isIt ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
-                })
-              }
-            >
-              {isIt ? 'Vedi tutti i casi studio' : 'View All Case Studies'} <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+          <div className="flex justify-center mt-12">
+            <Link href="/case-studies">
+              <Button
+                variant="outline"
+                className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10"
+              >
+                {isIt ? 'Vedi tutti i casi studio' : 'View All Case Studies'} <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -495,19 +536,34 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-5xl"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89545.77729942316!2d9.102486335546863!3d45.46426987107542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilano%2C%20Italy!5e0!3m2!1sen!2sit!4v1709647300000!5m2!1sen!2sit"
-                width="100%"
-                height="500"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full"
-              ></iframe>
+            <div className="lg:col-span-8">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89545.77729942316!2d9.102486335546863!3d45.46426987107542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1493f1275e7%3A0x3cffcd13c6740e8d!2sMilano%2C%20Italy!5e0!3m2!1sen!2sit!4v1709647300000!5m2!1sen!2sit"
+                  width="100%"
+                  height="500"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full"
+                ></iframe>
+              </div>
+            </div>
+            <div className="lg:col-span-4 rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">{isIt ? "Sede e collaborazione" : "Office & collaboration"}</h3>
+              <p className="text-gray-600 mb-6">
+                {isIt
+                  ? "Lavoriamo da Milano e in remoto con team in tutta Italia. Incontri operativi e workshop vengono pianificati in base alle priorità del progetto."
+                  : "We operate from Milan and remotely with teams across Italy. Workshops and operating sessions are planned around project priorities."}
+              </p>
+              <Link href="/contact">
+                <Button className="w-full bg-[#293e72] hover:bg-[#1e2e57] text-white">
+                  {isIt ? "Contattaci" : "Contact Us"}
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -516,7 +572,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl text-left">
+          <div className="max-w-5xl text-left rounded-2xl border border-white/20 bg-white/10 p-8 md:p-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -531,15 +587,17 @@ export default function Home() {
                   ? 'Raccontaci obiettivi e vincoli: ti proporremo un percorso concreto con integrazioni, software su misura e AI solo dove genera valore misurabile.'
                   : "Tell us your goals and constraints. We'll propose a concrete path: integrations, bespoke software, and AI only where it drives measurable value."}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-4">
               <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   {isIt ? 'Prenota una consulenza' : 'Schedule a Consultation'}
                 </Button>
               </Link>
+              <Link href="/solutions">
                 <Button variant="outline" className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   {isIt ? 'Scopri le nostre soluzioni' : 'View Our Solutions'}
                 </Button>
+              </Link>
               </div>
             </motion.div>
           </div>
