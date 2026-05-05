@@ -29,8 +29,8 @@ export default function SolutionsPage() {
   const solutionsRef = useRef(null)
   const industriesRef = useRef(null)
 
-  const solutionsInView = useInView(solutionsRef, { once: true, amount: 0.3 })
-  const industriesInView = useInView(industriesRef, { once: true, amount: 0.3 })
+  const solutionsInView = useInView(solutionsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const industriesInView = useInView(industriesRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
 
   return (
     <div className="pt-24">
@@ -58,7 +58,7 @@ export default function SolutionsPage() {
             className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Built for real-world operations</h2>
@@ -144,7 +144,7 @@ export default function SolutionsPage() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="w-full"
               >
@@ -177,7 +177,7 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Digitization that survives Monday morning</h2>
               <p className="text-lg text-gray-600 mb-6">
@@ -213,7 +213,7 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               className="relative"
             >
               <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
@@ -436,7 +436,7 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Implementation Process</h2>
               <p className="text-lg sm:text-xl text-gray-600">
@@ -494,7 +494,7 @@ export default function SolutionsPage() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="w-full"
               >
@@ -515,7 +515,7 @@ export default function SolutionsPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.5 }}
             >
               <p className="text-lg text-gray-600 mb-6">
@@ -547,7 +547,7 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Business?</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

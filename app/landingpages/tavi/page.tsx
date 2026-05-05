@@ -30,10 +30,10 @@ export default function TaviLandingPage() {
   const parametersRef = useRef(null)
   const benefitsRef = useRef(null)
   const conclusionRef = useRef(null)
-  const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
-  const parametersInView = useInView(parametersRef, { once: true, amount: 0.3 })
-  const benefitsInView = useInView(benefitsRef, { once: true, amount: 0.3 })
-  const conclusionInView = useInView(conclusionRef, { once: true, amount: 0.3 })
+  const featuresInView = useInView(featuresRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const parametersInView = useInView(parametersRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const benefitsInView = useInView(benefitsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const conclusionInView = useInView(conclusionRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -316,7 +316,7 @@ export default function TaviLandingPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
@@ -328,7 +328,7 @@ export default function TaviLandingPage() {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                     transition={{ duration: 0.4, delay: 0.05 * index }}
                     className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm"
                   >
@@ -443,7 +443,7 @@ export default function TaviLandingPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.8 }}
             >
               <div className="inline-flex items-center justify-center mb-6">

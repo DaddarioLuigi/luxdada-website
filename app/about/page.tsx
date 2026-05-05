@@ -12,9 +12,9 @@ export default function AboutPage() {
   const valuesRef = useRef(null)
   const teamRef = useRef(null)
 
-  const missionInView = useInView(missionRef, { once: true, amount: 0.3 })
-  const valuesInView = useInView(valuesRef, { once: true, amount: 0.3 })
-  const teamInView = useInView(teamRef, { once: true, amount: 0.3 })
+  const missionInView = useInView(missionRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const valuesInView = useInView(valuesRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const teamInView = useInView(teamRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
 
   return (
     <div className="pt-24">
@@ -43,7 +43,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
               <p className="text-lg text-gray-600 mb-6">
@@ -66,7 +66,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               className="relative"
             >
               <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
@@ -227,7 +227,7 @@ export default function AboutPage() {
             className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership Team</h2>
@@ -277,7 +277,7 @@ export default function AboutPage() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="w-full"
               >
@@ -322,7 +322,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Team</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

@@ -10,7 +10,7 @@ import { ArrowRight, Workflow, Briefcase, Factory, ShoppingBag, ChevronRight } f
 
 export default function CaseStudiesPage() {
   const casesRef = useRef(null)
-  const casesInView = useInView(casesRef, { once: true, amount: 0.3 })
+  const casesInView = useInView(casesRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
 
   const caseStudies = [
     {
@@ -183,7 +183,7 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Measurable Impact</h2>
               <p className="text-xl text-gray-600">
@@ -204,7 +204,7 @@ export default function CaseStudiesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
                 <Card className="border-none shadow-md h-full text-center p-8">
                   <CardContent className="p-0">
@@ -226,7 +226,7 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
               <p className="text-xl text-gray-600">
@@ -257,7 +257,7 @@ export default function CaseStudiesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
                 <Card className="border-none shadow-md h-full">
                   <CardContent className="p-8">
@@ -298,7 +298,7 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Achieve Similar Results?</h2>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">

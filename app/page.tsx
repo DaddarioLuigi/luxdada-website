@@ -26,9 +26,9 @@ export default function Home() {
     "/trustedby/aws.png",
   ])
 
-  const featuresInView = useInView(featuresRef, { once: true, amount: 0.3 })
-  const statsInView = useInView(statsRef, { once: true, amount: 0.3 })
-  const testimonialsInView = useInView(testimonialsRef, { once: true, amount: 0.3 })
+  const featuresInView = useInView(featuresRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const statsInView = useInView(statsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
+  const testimonialsInView = useInView(testimonialsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
   const [api, setApi] = useState<CarouselApi>()
 
   useEffect(() => {
@@ -256,7 +256,7 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                   {isIt ? 'Meno attività manuali, più valore per il business' : 'Less manual work, more business value'}
@@ -301,7 +301,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 className="relative"
               >
                 <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-xl">
@@ -391,7 +391,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 className="group"
               >
                 {study.href ? (
@@ -518,7 +518,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 {isIt ? 'Pronto a digitalizzare e automatizzare i tuoi processi?' : 'Ready to digitize and automate your operations?'}

@@ -344,7 +344,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
                 <Card className="border-none shadow-md h-full">
                   <CardContent className="p-6">
@@ -366,7 +366,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{isIt ? 'Pronto a trasformare il tuo business?' : 'Ready to Transform Your Business?'}</h2>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">

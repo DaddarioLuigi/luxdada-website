@@ -36,7 +36,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-6 text-gray-700 leading-relaxed">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.5 }}>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Overview</h2>
               <p className="mb-4">
                 We implemented a Retrieval‑Augmented Generation (RAG) chatbot that runs on WhatsApp. Users ask questions; the bot retrieves relevant content from a curated knowledge base and crafts answers with an LLM. Orchestration is handled by <strong>n8n</strong>, which keeps the solution modular, observable, and easy to extend.
@@ -72,7 +72,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
                 title: "3) Generation",
                 text: "The LLM answers with citations. Guardrails ensure tone, compliance, and safe completions.",
               }].map((c, i) => (
-                <motion.div key={c.title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.05 * i }} className="bg-white rounded-lg p-4 shadow-sm border">
+                <motion.div key={c.title} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.4, delay: 0.05 * i }} className="bg-white rounded-lg p-4 shadow-sm border">
                   <h4 className="font-semibold text-gray-900 mb-2">{c.title}</h4>
                   <p className="text-gray-600">{c.text}</p>
                 </motion.div>
@@ -82,19 +82,19 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
             {/* Simple flow diagram */}
             <div className="mt-8 rounded-lg bg-white p-6 border shadow-sm">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3 }}>
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.3 }}>
                   <Box label="WhatsApp User" />
                 </motion.div>
                 <Arrow />
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.05 }}>
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.3, delay: 0.05 }}>
                   <Box label="n8n Workflow" />
                 </motion.div>
                 <Arrow />
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.1 }}>
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.3, delay: 0.1 }}>
                   <Box label="Retriever + Vector DB" />
                 </motion.div>
                 <Arrow />
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.15 }}>
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.3, delay: 0.15 }}>
                   <Box label="LLM" />
                 </motion.div>
               </div>
@@ -107,7 +107,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-6 text-gray-700 leading-relaxed">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.5 }}>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Implementation with n8n</h2>
               <ol className="list-decimal pl-5 space-y-2">
                 <li>
@@ -175,7 +175,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
               <motion.svg
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
                 transition={{ duration: 0.6 }}
                 viewBox="0 0 420 180"
                 className="w-full h-48 md:h-40"
@@ -209,12 +209,12 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.h2 initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Want a WhatsApp assistant trained on your content?</motion.h2>
-            <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.05 }} className="text-lg text-gray-600 mb-6">We can help you ship quickly with n8n, RAG best practices, and robust guardrails.</motion.p>
+            <motion.h2 initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.5 }} className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Want a WhatsApp assistant trained on your content?</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }} transition={{ duration: 0.5, delay: 0.05 }} className="text-lg text-gray-600 mb-6">We can help you ship quickly with n8n, RAG best practices, and robust guardrails.</motion.p>
             <motion.a
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.5, delay: 0.1 }}
               href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
               target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
