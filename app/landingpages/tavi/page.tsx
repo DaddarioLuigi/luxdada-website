@@ -187,14 +187,14 @@ export default function TaviLandingPage() {
         </div>
         
         <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               <motion.div
-                className="inline-flex items-center justify-center mb-8"
+                className="inline-flex items-center justify-start mb-8"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -212,13 +212,13 @@ export default function TaviLandingPage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 {t.hero.title}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl leading-relaxed">
                 {t.hero.description}
               </p>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl">
                 {t.hero.description2}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -242,7 +242,7 @@ export default function TaviLandingPage() {
       <section id="features" className="py-20 bg-white" ref={featuresRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={featuresInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -255,7 +255,7 @@ export default function TaviLandingPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
             {t.features.items.map((feature, index) => {
               const icons = [
                 <ClipboardList className="h-8 w-8 text-[#293e72]" />,
@@ -287,7 +287,7 @@ export default function TaviLandingPage() {
           
           {/* Navigation Button */}
           <motion.div
-            className="text-center mt-12"
+            className="text-left mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={featuresInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -312,14 +312,14 @@ export default function TaviLandingPage() {
       {/* Detailed Parameters Section */}
       <section id="parameters" ref={parametersRef} className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-left">
                 {t.parameters.title}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -341,7 +341,7 @@ export default function TaviLandingPage() {
             
             {/* Navigation Button */}
             <motion.div
-              className="text-center mt-12"
+              className="text-left mt-12"
               initial={{ opacity: 0, y: 20 }}
               animate={parametersInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -368,7 +368,7 @@ export default function TaviLandingPage() {
       <section id="benefits" className="py-20 bg-white" ref={benefitsRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -381,7 +381,7 @@ export default function TaviLandingPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
             {t.benefits.items.map((benefit, index) => {
               const icons = [
                 <Shield className="h-8 w-8 text-[#293e72]" />,
@@ -414,7 +414,7 @@ export default function TaviLandingPage() {
           
           {/* Navigation Button */}
           <motion.div
-            className="text-center mt-12"
+            className="text-left mt-12"
             initial={{ opacity: 0, y: 20 }}
             animate={benefitsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.7 }}
@@ -439,14 +439,14 @@ export default function TaviLandingPage() {
       {/* Conclusion Section */}
       <section id="conclusion" ref={conclusionRef} className="py-20 bg-gradient-to-br from-[#293e72] to-[#1e2e57]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center justify-center mb-6">
+              <div className="inline-flex items-center justify-start mb-6">
                 <div className="bg-white/10 p-3 rounded-full">
                   <Brain className="h-8 w-8 text-white" />
                 </div>
@@ -460,7 +460,7 @@ export default function TaviLandingPage() {
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
                 {t.conclusion.text2}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

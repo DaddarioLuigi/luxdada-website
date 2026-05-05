@@ -16,7 +16,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
     <div className="pt-24">
       <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -43,9 +43,9 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <article className="max-w-3xl mx-auto space-y-6 text-gray-800 leading-[1.75] text-[17px]">
+          <article className="max-w-3xl space-y-6 text-gray-800 leading-[1.75] text-[17px]">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Premessa operativa e domanda di ricerca" : "Operational premise and research question"}
               </h2>
               <p>
@@ -61,7 +61,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Recupero semantico e similarità in spazio embedding" : "Semantic retrieval and similarity in embedding space"}
               </h2>
               <p>
@@ -95,7 +95,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Generazione condizionata e controllo della massa di probabilità" : "Conditional generation and probability-mass control"}
               </h2>
               <p>
@@ -120,7 +120,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Orchestrazione su n8n e canale WhatsApp" : "Orchestration on n8n and the WhatsApp channel"}
               </h2>
               <p>
@@ -145,7 +145,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Governance, osservabilità e conclusioni" : "Governance, observability, and conclusions"}
               </h2>
               <p>
@@ -170,7 +170,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
                   ? "Schema del flusso informativo (semplificato):"
                   : "Simplified information-flow sketch:"}
               </p>
-              <div className="rounded-lg border bg-gray-50 p-6 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-sm text-gray-800">
+              <div className="rounded-lg border bg-gray-50 p-6 flex flex-col md:flex-row items-start md:items-center justify-start gap-3 md:gap-6 text-sm text-gray-800">
                 <span className="rounded-md border bg-white px-3 py-2 shadow-sm">WhatsApp</span>
                 <span aria-hidden className="text-gray-400">
                   →
@@ -192,8 +192,8 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               {isIt ? "Indicatori evolutivi (esemplificativi)" : "Illustrative evolution of indicators"}
             </h2>
             <p className="text-gray-700 leading-relaxed mb-6">
@@ -244,7 +244,7 @@ export default function RagChatbotCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-white border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <Link href="/case-studies/clinical-records-extraction" className="text-[#293e72] font-medium hover:underline">
               ←{" "}
               {isIt

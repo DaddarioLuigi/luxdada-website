@@ -15,7 +15,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
     <div className="pt-24">
       <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -42,9 +42,9 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <article className="max-w-3xl mx-auto space-y-6 text-gray-800 leading-[1.75] text-[17px]">
+          <article className="max-w-3xl space-y-6 text-gray-800 leading-[1.75] text-[17px]">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Problema clinico-informatico" : "Clinical–informatics problem"}
               </h2>
               <p>
@@ -60,7 +60,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Pipeline cognitiva e schema di destinazione" : "Cognitive pipeline and destination schema"}
               </h2>
               <p>
@@ -104,7 +104,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt
                   ? "Valutazione estrattiva: precisione, richiamo e F₁"
                   : "Extraction evaluation: precision, recall, and F₁-score"}
@@ -127,7 +127,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Esportazione Excel e tracciabilità" : "Excel export and traceability"}
               </h2>
               <p>
@@ -150,7 +150,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-sora">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Riflessioni conclusive" : "Concluding remarks"}
               </h2>
               <p>
@@ -165,7 +165,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-gray-50 border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="max-w-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <Link href="/case-studies/rag-chatbot" className="text-[#293e72] font-medium hover:underline">
               ← {isIt ? "Caso studio: chatbot RAG su WhatsApp" : "Case study: RAG chatbot on WhatsApp"}
             </Link>

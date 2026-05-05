@@ -168,7 +168,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50" ref={featuresRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={featuresInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -344,7 +344,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={statsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="text-center"
+                className="text-left"
               >
                 <p className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</p>
                 <p className="text-lg text-white/80">{stat.label}</p>
@@ -357,7 +357,7 @@ export default function Home() {
       {/* Case Studies Preview */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-left max-w-3xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{isIt ? 'Storie di successo' : 'Success Stories'}</h2>
             <p className="text-xl text-gray-600">
               {isIt ? 'Scopri come le nostre soluzioni hanno trasformato aziende in diversi settori.' : 'See how our solutions have transformed businesses across industries.'}
@@ -459,7 +459,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-left mt-12">
             <Button
               variant="outline"
               className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10"
@@ -480,7 +480,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50" ref={testimonialsRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -495,7 +495,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-5xl mx-auto"
+            className="max-w-5xl"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <iframe
@@ -516,7 +516,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -526,12 +526,12 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 {isIt ? 'Pronto a digitalizzare e automatizzare i tuoi processi?' : 'Ready to digitize and automate your operations?'}
               </h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/80 mb-8 max-w-2xl">
                 {isIt
                   ? 'Raccontaci obiettivi e vincoli: ti proporremo un percorso concreto con integrazioni, software su misura e AI solo dove genera valore misurabile.'
                   : "Tell us your goals and constraints. We'll propose a concrete path: integrations, bespoke software, and AI only where it drives measurable value."}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
               <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   {isIt ? 'Prenota una consulenza' : 'Schedule a Consultation'}

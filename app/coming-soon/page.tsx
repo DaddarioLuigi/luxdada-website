@@ -161,35 +161,35 @@ export default function ComingSoonPage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center py-12 px-4">
+      <main className="flex-grow flex items-center justify-start py-12 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center lg:text-left"
+              className="text-left"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 <AnimatedText key={`${language}-title`}>
                   {translations[language].title}
                 </AnimatedText>
               </h1>
-              <p className="text-xl text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0">
+              <p className="text-xl text-gray-600 mb-10 max-w-lg">
                 <AnimatedText key={`${language}-subtitle`}>
                   {translations[language].subtitle}
                 </AnimatedText>
               </p>
 
               {/* Countdown Timer */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto lg:mx-0 mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 max-w-md mb-10">
                 {[
                   { label: translations[language].days, value: countdown.days },
                   { label: translations[language].hours, value: countdown.hours },
                   { label: translations[language].minutes, value: countdown.minutes },
                   { label: translations[language].seconds, value: countdown.seconds },
                 ].map((item, index) => (
-                  <div key={index} className="text-center">
+                  <div key={index} className="text-left">
                     <div className="bg-white rounded-lg shadow-md p-2 sm:p-4">
                       <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#293e72]">
                         <AnimatedText key={`${language}-countdown-${index}-value`}>
@@ -207,7 +207,7 @@ export default function ComingSoonPage() {
               </div>
 
               {/* Subscription Form */}
-              <form onSubmit={handleSubscribe} id="subscribe-form" className="max-w-md mx-auto lg:mx-0">
+              <form onSubmit={handleSubscribe} id="subscribe-form" className="max-w-md">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Input
                     type="email"
@@ -242,7 +242,7 @@ export default function ComingSoonPage() {
               </form>
 
               {/* Social Media Links */}
-              <div className="flex justify-center lg:justify-start space-x-6 mt-10">
+              <div className="flex justify-start space-x-6 mt-10">
                 <a href="#" className="text-gray-500 hover:text-[#293e72] transition-colors" aria-label="Facebook">
                   <Facebook size={24} />
                 </a>

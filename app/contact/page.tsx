@@ -62,7 +62,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 {isIt ? (
@@ -138,7 +138,7 @@ export default function ContactPage() {
               <Card className="border-none shadow-lg">
                 <CardContent className="p-8">
                   {isSubmitted ? (
-                    <div className="text-center py-8">
+                    <div className="text-left py-8">
                       <div className="bg-[#293e72]/10 p-4 rounded-full inline-flex items-center justify-center mb-6">
                         <CheckCircle className="h-12 w-12 text-[#293e72]" />
                       </div>
@@ -288,12 +288,12 @@ export default function ContactPage() {
       {/* FAQ Section */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="text-left max-w-3xl mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">{isIt ? 'Domande frequenti' : 'Frequently Asked Questions'}</h2>
             <p className="text-lg text-gray-600">{isIt ? 'Trova risposte alle domande più comuni su servizi e modalità di lavoro.' : 'Find answers to common questions about our services and process.'}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
             {(isIt
               ? [
                   {
@@ -361,7 +361,7 @@ export default function ContactPage() {
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -369,7 +369,7 @@ export default function ContactPage() {
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{isIt ? 'Pronto a trasformare il tuo business?' : 'Ready to Transform Your Business?'}</h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/80 mb-8 max-w-2xl">
                 {isIt
                   ? 'Prenota una consulenza con i nostri esperti per scoprire come l’AI e il digitale possono aiutarti a raggiungere i tuoi obiettivi.'
                   : 'Schedule a consultation with our experts to discuss how our AI and digital solutions can help you achieve your business goals.'}

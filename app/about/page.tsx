@@ -21,7 +21,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 About <span className="text-[#293e72]">Luxdada</span>
@@ -86,7 +86,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-20 bg-gray-50" ref={missionRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={missionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -167,7 +167,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-20 bg-white" ref={valuesRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={valuesInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -208,7 +208,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
               >
                 <Card className="border-none shadow-md hover-scale h-full">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-6 text-left">
                     <div className="bg-[#293e72]/10 p-3 rounded-full inline-block mb-4">{value.icon}</div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
                     <p className="text-gray-600">{value.description}</p>
@@ -224,7 +224,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-20 bg-gray-50" ref={teamRef}>
         <div className="container mx-auto px-4">
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-left max-w-3xl mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
@@ -317,7 +317,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-[#293e72]/80" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -325,7 +325,7 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Team</h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 max-w-2xl">
                 We're always looking for people who love shipping systems that work in the real world: process nerds,
                 integrators, and product-minded engineers welcome.
               </p>

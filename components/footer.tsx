@@ -68,11 +68,11 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-50 pt-16 pb-8">
+    <footer className="bg-gray-50 pt-16 pb-8 font-sora">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="font-sora text-2xl font-bold text-[#293e72] mb-4">
+            <h3 className="text-2xl font-bold text-[#293e72] mb-4">
               Luxdada
             </h3>
             <p className="text-gray-600 mb-4">
@@ -102,7 +102,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" onClick={handleUnavailableClick} className="text-gray-600 hover:text-[#293e72] transition-colors">
+                <Link href="/solutions" className="text-gray-600 hover:text-[#293e72] transition-colors">
                 {isIt ? 'Soluzioni' : 'Solutions'}
                 </Link>
               </li>
@@ -181,7 +181,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-200 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <p className="text-gray-600 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} Luxdada. {isIt ? 'Tutti i diritti riservati.' : 'All rights reserved.'} · {isIt ? 'P.IVA' : 'VAT'}: IT08275310723
             </p>

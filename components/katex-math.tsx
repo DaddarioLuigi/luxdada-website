@@ -14,7 +14,7 @@ export function KatexDisplay({ math }: { math: string }) {
   }, [math])
   return (
     <div
-      className="my-6 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50/80 px-4 py-4 text-center text-gray-900"
+      className="my-6 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50/80 px-4 py-4 text-left text-gray-900"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )

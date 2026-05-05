@@ -12,6 +12,11 @@ import { AnimatedText } from "./animated-text"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 
+/** Routes that are live (others still show “under construction”) */
+function isNavEnabled(href: string) {
+  return href === "/" || href === "/contact" || href === "/solutions"
+}
+
 const navItems = {
   en: [
     { name: "Home", href: "/" },
@@ -92,9 +97,9 @@ export default function Header() {
           {navItems[language].map((item) => (
             <Link
               key={item.name}
-              href={item.href === "/contact" ? item.href : "#"}
+              href={isNavEnabled(item.href) ? item.href : "#"}
               className="text-gray-700 hover:text-[#293e72] transition-colors font-medium"
-              onClick={item.href === "/contact" ? undefined : (e) => {
+              onClick={isNavEnabled(item.href) ? undefined : (e) => {
                 e.preventDefault()
                 toast({
                   title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
@@ -157,16 +162,20 @@ export default function Header() {
               {navItems[language].map((item) => (
                 <Link
                   key={item.name}
-                  href={item.href === "/contact" ? item.href : "#"}
+                  href={isNavEnabled(item.href) ? item.href : "#"}
                   className="text-gray-700 hover:text-[#293e72] py-2 transition-colors font-medium"
-                  onClick={item.href === "/contact" ? () => setMobileMenuOpen(false) : (e) => {
-                    e.preventDefault()
-                    setMobileMenuOpen(false)
-                    toast({
-                      title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
-                      description: language === 'it' ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
-                    })
-                  }}
+                  onClick={
+                    isNavEnabled(item.href)
+                      ? () => setMobileMenuOpen(false)
+                      : (e) => {
+                          e.preventDefault()
+                          setMobileMenuOpen(false)
+                          toast({
+                            title: language === 'it' ? 'Sito in costruzione' : 'Site under construction',
+                            description: language === 'it' ? 'Stiamo lavorando per te. Torna presto!' : 'We are working on it. Check back soon!'
+                          })
+                        }
+                  }
                 >
                   <AnimatedText key={`${language}-${item.name}`}>
                     {item.name}

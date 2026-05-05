@@ -106,7 +106,7 @@ export default function CaseStudiesPage() {
       {/* Hero Section */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Our <span className="text-[#293e72]">Success Stories</span>
@@ -178,7 +178,7 @@ export default function CaseStudiesPage() {
       {/* Results Overview Section */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-left max-w-3xl mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -206,7 +206,7 @@ export default function CaseStudiesPage() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
-                <Card className="border-none shadow-md h-full text-center p-8">
+                <Card className="border-none shadow-md h-full text-left p-8">
                   <CardContent className="p-0">
                     <div className="text-[#293e72] font-bold text-5xl mb-4">{stat.value}</div>
                     <p className="text-gray-700 font-medium">{stat.label}</p>
@@ -221,7 +221,7 @@ export default function CaseStudiesPage() {
       {/* Testimonials Section */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-left max-w-3xl mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -293,7 +293,7 @@ export default function CaseStudiesPage() {
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-[#293e72]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -301,7 +301,7 @@ export default function CaseStudiesPage() {
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Achieve Similar Results?</h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white/80 mb-8 max-w-2xl">
                 Contact us today to discuss how our AI and digital solutions can help you transform your business and
                 achieve measurable results.
               </p>
