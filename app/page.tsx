@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Brain, Code, LineChart, Workflow, Zap, Shield, ArrowRight, CheckCircle } from "lucide-react"
+import { Zap, ArrowRight, CheckCircle } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
@@ -41,6 +41,92 @@ export default function Home() {
         { title: "Implementation", description: "Development, integration, and automation with progressive and testable releases." },
         { title: "Adoption", description: "Training, monitoring, and continuous improvements to sustain business outcomes." },
       ]
+  const serviceCapabilities = isIt
+    ? [
+        {
+          label: "Process Design",
+          title: "Digitalizzazione dei processi",
+          detail: "Analisi As-Is / To-Be, standardizzazione operativa e riduzione dei passaggi manuali.",
+        },
+        {
+          label: "AI Strategy",
+          title: "Consulenza AI",
+          detail: "Valutazione use case e roadmap di adozione con focus su ROI, rischio e governance.",
+        },
+        {
+          label: "Engineering",
+          title: "Sviluppo software su misura",
+          detail: "Applicazioni, API e integrazioni tra sistemi legacy e piattaforme cloud.",
+        },
+        {
+          label: "Data Intelligence",
+          title: "Analisi dei dati",
+          detail: "Dashboard decisionali, KPI affidabili e modellazione di dati da fonti eterogenee.",
+        },
+        {
+          label: "Automation",
+          title: "Automazione dei processi",
+          detail: "Workflow operativi con orchestrazione end-to-end, controlli e gestione eccezioni.",
+        },
+        {
+          label: "Security",
+          title: "Integrazione sicura",
+          detail: "Connettivita tra ERP, CRM e tool verticali con attenzione a compliance e tracciabilita.",
+        },
+      ]
+    : [
+        {
+          label: "Process Design",
+          title: "Process digitization",
+          detail: "As-Is / To-Be analysis, operating standards, and reduction of manual handovers.",
+        },
+        {
+          label: "AI Strategy",
+          title: "AI consulting",
+          detail: "Use-case assessment and adoption roadmap with ROI, risk, and governance in scope.",
+        },
+        {
+          label: "Engineering",
+          title: "Custom software development",
+          detail: "Applications, APIs, and integrations across legacy systems and cloud platforms.",
+        },
+        {
+          label: "Data Intelligence",
+          title: "Data analytics",
+          detail: "Decision dashboards, reliable KPIs, and data modeling from heterogeneous sources.",
+        },
+        {
+          label: "Automation",
+          title: "Process automation",
+          detail: "End-to-end orchestration with controls, monitoring, and exception handling.",
+        },
+        {
+          label: "Security",
+          title: "Secure integration",
+          detail: "Connectivity across ERP, CRM, and vertical tools with compliance-first execution.",
+        },
+      ]
+  const engagementModel = isIt
+    ? {
+        title: "Modello di collaborazione",
+        subtitle: "Un framework operativo per iniziative di trasformazione digitale con obiettivi condivisi.",
+        phases: [
+          "Scoping con priorita business e metriche di impatto definite.",
+          "Sprint di delivery con milestone chiare e avanzamento trasparente.",
+          "Integrazione progressiva nei sistemi esistenti, senza bloccare l'operativita.",
+          "Governance continua su qualita, sicurezza e adozione da parte dei team.",
+        ],
+      }
+    : {
+        title: "Engagement model",
+        subtitle: "An operating framework for digital transformation initiatives with shared outcomes.",
+        phases: [
+          "Scoping with clear business priorities and impact metrics.",
+          "Delivery sprints with explicit milestones and transparent progress.",
+          "Progressive integration into existing systems without operational disruption.",
+          "Continuous governance on quality, security, and team adoption.",
+        ],
+      }
 
   useEffect(() => {
     let active = true
@@ -159,14 +245,9 @@ export default function Home() {
       </section>
 
       {/* Trusted By Section */}
-      <section className="py-14 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="mb-6">
-            <p className="text-sm uppercase tracking-wide text-gray-500">
-              {isIt ? "Scelti da team che vogliono processi più solidi" : "Chosen by teams improving operational reliability"}
-            </p>
-          </div>
-          <div className="relative rounded-2xl border border-gray-200 bg-gray-50/70 p-3">
+          <div className="relative">
             <Carousel opts={{ align: "start", loop: true }} setApi={setApi}>
               <CarouselContent>
                 {logos.map((src) => (
@@ -216,66 +297,60 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Workflow className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Digitalizzazione dei processi' : 'Process digitization',
-                description: isIt
-                  ? 'Mappatura dei flussi, ridisegno operativo e introduzione di strumenti digitali coerenti con il tuo modo di lavorare.'
-                  : 'Workflow mapping, operational redesign, and digital tooling aligned with how your organization actually works.',
-              },
-              {
-                icon: <Brain className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Consulenza AI' : 'AI Consulting',
-                description: isIt
-                  ? 'Use case con ROI chiaro: dove l’AI accelera decisioni e automazioni senza complessità inutile.'
-                  : 'ROI-led AI adoption, where models and automation accelerate decisions without needless complexity.',
-              },
-              {
-                icon: <Code className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Sviluppo software su misura' : 'Custom Software Development',
-                description: isIt
-                  ? 'Applicazioni, API e portali che collegano persone, dati e sistemi legacy in un’unica esperienza.'
-                  : 'Apps, APIs, and portals that connect people, data, and legacy systems into one coherent experience.',
-              },
-              {
-                icon: <LineChart className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Analisi dei dati' : 'Data Analytics',
-                description: isIt
-                  ? 'Trasforma i tuoi dati in insight azionabili con analitiche avanzate.'
-                  : 'Transform your data into actionable insights with our advanced analytics solutions.',
-              },
-              {
-                icon: <Zap className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Automazione dei processi' : 'Process Automation',
-                description: isIt
-                  ? 'Automatizza attività e workflow ripetitivi per aumentare la produttività e ridurre gli errori.'
-                  : 'Automate repetitive tasks and workflows to increase productivity and reduce errors.',
-              },
-              {
-                icon: <Shield className="h-8 w-8 text-[#293e72]" />,
-                title: isIt ? 'Integrazione sicura' : 'Secure Integration',
-                description: isIt
-                  ? 'API, middleware e connettori per far dialogare ERP, CRM e strumenti verticali senza compromettere sicurezza e compliance.'
-                  : 'APIs, middleware, and connectors so ERP, CRM, and line-of-business tools work as one, without compromising security or compliance.',
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-              >
-                <Card className="border-none shadow-md hover-scale h-full">
-                  <CardContent className="p-6">
-                    <div className="bg-[#293e72]/10 p-3 rounded-lg inline-block mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <motion.div
+              className="lg:col-span-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={featuresInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border border-gray-200 shadow-sm bg-white">
+                <CardContent className="p-0">
+                  <div className="px-6 py-5 border-b border-gray-100">
+                    <h3 className="text-2xl font-semibold text-gray-900">
+                      {isIt ? "Aree di intervento" : "Capability areas"}
+                    </h3>
+                  </div>
+                  <div className="divide-y divide-gray-100">
+                    {serviceCapabilities.map((item) => (
+                      <div key={item.title} className="px-6 py-5">
+                        <p className="text-xs uppercase tracking-wide text-[#293e72] font-semibold mb-1">{item.label}</p>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-1">{item.title}</h4>
+                        <p className="text-gray-600">{item.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+            <motion.div
+              className="lg:col-span-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={featuresInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Card className="border border-gray-200 shadow-sm bg-white h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">{engagementModel.title}</h3>
+                  <p className="text-gray-600 mb-6">{engagementModel.subtitle}</p>
+                  <ul className="space-y-4 mb-8">
+                    {engagementModel.phases.map((phase, index) => (
+                      <li key={phase} className="flex items-start gap-3">
+                        <span className="h-6 w-6 rounded-full bg-[#293e72]/10 text-[#293e72] flex items-center justify-center text-xs font-semibold">
+                          {index + 1}
+                        </span>
+                        <span className="text-gray-700">{phase}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/solutions">
+                    <Button className="w-full bg-[#293e72] hover:bg-[#1e2e57] text-white">
+                      {isIt ? "Approfondisci le soluzioni" : "Explore solutions"}
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -360,7 +435,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-[#293e72]" ref={statsRef}>
+      <section className="py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]" ref={statsRef}>
         <div className="container mx-auto px-4">
           <div className="mb-10 max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
@@ -407,7 +482,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
             {[
               {
                 title: isIt ? 'AI conversazionale su WhatsApp (RAG)' : 'Conversational AI on WhatsApp (RAG)',
@@ -570,9 +645,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#293e72]">
+      <section className="py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl text-left rounded-2xl border border-white/20 bg-white/10 p-8 md:p-10">
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -582,12 +657,12 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 {isIt ? 'Pronto a digitalizzare e automatizzare i tuoi processi?' : 'Ready to digitize and automate your operations?'}
               </h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl">
+              <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
                 {isIt
                   ? 'Raccontaci obiettivi e vincoli: ti proporremo un percorso concreto con integrazioni, software su misura e AI solo dove genera valore misurabile.'
                   : "Tell us your goals and constraints. We'll propose a concrete path: integrations, bespoke software, and AI only where it drives measurable value."}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
                 <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">
                   {isIt ? 'Prenota una consulenza' : 'Schedule a Consultation'}

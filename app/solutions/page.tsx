@@ -575,7 +575,7 @@ export default function SolutionsPage() {
                   </li>
                 ))}
               </ul>
-              <div className="flex justify-center">
+              <div className="flex justify-start">
                 <Link href="/contact">
                   <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white">
                     {digitizationSection.cta} <ArrowRight className="ml-2 h-4 w-4" />
@@ -728,7 +728,7 @@ export default function SolutionsPage() {
               transition={{ duration: 0.5 }}
             >
               <p className="text-lg text-gray-600 mb-6">{processFooter.text}</p>
-              <div className="flex justify-center">
+              <div className="flex justify-start">
                 <Link href="/contact">
                   <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">{processFooter.btn}</Button>
                 </Link>
@@ -738,13 +738,9 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 relative">
-        <div className="absolute inset-0 z-0">
-          <Image src="/join-team.png" alt="" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-[#293e72]/80" />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl text-left">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -752,8 +748,8 @@ export default function SolutionsPage() {
               viewport={viewportOpts}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{cta.title}</h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl">{cta.subtitle}</p>
-              <div className="flex justify-center">
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">{cta.subtitle}</p>
+              <div className="flex items-center justify-center">
                 <Link href="/contact">
                   <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">{cta.primary}</Button>
                 </Link>

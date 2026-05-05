@@ -290,12 +290,12 @@ export default function ContactPage() {
       {/* FAQ Section */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-left max-w-3xl mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">{isIt ? 'Domande frequenti' : 'Frequently Asked Questions'}</h2>
             <p className="text-lg text-gray-600">{isIt ? 'Trova risposte alle domande più comuni su servizi e modalità di lavoro.' : 'Find answers to common questions about our services and process.'}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {(isIt
               ? [
                   {
@@ -349,7 +349,7 @@ export default function ContactPage() {
                 viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
               >
                 <Card className="border-none shadow-md h-full">
-                  <CardContent className="p-6">
+                  <CardContent className="p-6 text-center">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{faq.question}</h3>
                     <p className="text-gray-600">{faq.answer}</p>
                   </CardContent>
@@ -361,9 +361,9 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-[#293e72]">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#293e72] via-[#2a416f] to-[#1f3156]">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl text-left">
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -371,7 +371,7 @@ export default function ContactPage() {
               viewport={{ once: true, amount: 0.12, margin: "0px 0px 200px 0px" }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{isIt ? 'Pronto a trasformare il tuo business?' : 'Ready to Transform Your Business?'}</h2>
-              <p className="text-xl text-white/80 mb-8 max-w-2xl">
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 {isIt
                   ? 'Prenota una consulenza con i nostri esperti per scoprire come l’AI e il digitale possono aiutarti a raggiungere i tuoi obiettivi.'
                   : 'Schedule a consultation with our experts to discuss how our AI and digital solutions can help you achieve your business goals.'}

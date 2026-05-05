@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
@@ -15,7 +16,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
     <div className="pt-24">
       <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl text-left">
+          <div className="max-w-4xl mx-auto text-left">
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -44,13 +45,28 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
             >
               {isIt ? "Cliente: Fondazione Alfieri" : "Client: Fondazione Alfieri"}
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-5"
+            >
+              <Image
+                src="/trustedby/fondazione-alfieri-logo.png"
+                alt={isIt ? "Logo Fondazione Alfieri" : "Fondazione Alfieri logo"}
+                width={280}
+                height={80}
+                className="h-12 w-auto max-w-[min(100%,280px)] object-contain object-left"
+                priority
+              />
+            </motion.div>
           </div>
         </div>
       </section>
 
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <article className="max-w-3xl space-y-6 text-gray-800 leading-[1.75] text-[17px]">
+          <article className="max-w-3xl mx-auto space-y-6 text-left text-gray-800 leading-[1.75] text-[17px]">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 {isIt ? "Problema clinico-informatico" : "Clinical–informatics problem"}
@@ -173,7 +189,7 @@ export default function ClinicalRecordsCaseStudy(): React.ReactElement {
 
       <section className="py-12 md:py-16 bg-gray-50 border-t">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl flex flex-col gap-6">
+          <div className="max-w-3xl mx-auto flex flex-col gap-6 text-left">
             <Link href="/case-studies/rag-chatbot" className="text-left text-[#293e72] font-medium hover:underline">
               ← {isIt ? "Caso studio: chatbot RAG su WhatsApp" : "Case study: RAG chatbot on WhatsApp"}
             </Link>
