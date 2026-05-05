@@ -19,6 +19,7 @@ const sora = Sora({
 import { LanguageProvider } from "@/lib/language-context"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import WhatsAppFab from "@/components/whatsapp-fab"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({
             <Header />
             <main className="min-h-screen">{children}</main>
             <Footer />
+            <WhatsAppFab />
             <Toaster />
           </LanguageProvider>
         </ThemeProvider>
