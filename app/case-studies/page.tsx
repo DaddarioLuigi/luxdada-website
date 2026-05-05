@@ -19,7 +19,7 @@ export default function CaseStudiesPage() {
       icon: <Workflow className="h-5 w-5" />,
       image: "/fintech-dashboard-overview.png",
       summary:
-        "Automated classification and routing of incoming policies and claims correspondence—cutting manual triage time and accelerating underwriting follow-up.",
+        "Automated classification and routing of incoming policies and claims correspondence, cutting manual triage time and accelerating underwriting follow-up.",
       results: [
         "68% reduction in manual sorting time",
         "41% faster case assignment to specialists",
@@ -76,7 +76,7 @@ export default function CaseStudiesPage() {
       icon: <Factory className="h-5 w-5" />,
       image: "/automated-assembly-line.png",
       summary:
-        "Connected technician dispatch, warehouse availability, and customer SLAs in one workflow—reducing emergency downtime and manual coordination.",
+        "Connected technician dispatch, warehouse availability, and customer SLAs in one workflow, reducing emergency downtime and manual coordination.",
       results: [
         "37% reduction in first-time fix delays",
         "29% lower expedited shipping costs",
@@ -112,7 +112,7 @@ export default function CaseStudiesPage() {
                 Our <span className="text-[#293e72]">Success Stories</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Examples of how digitization, integration, and automation projects moved operational KPIs—not slide-deck
+                Examples of how digitization, integration, and automation projects moved operational KPIs, not slide-deck
                 promises.
               </p>
             </motion.div>
@@ -239,7 +239,7 @@ export default function CaseStudiesPage() {
             {[
               {
                 quote:
-                  "Luxdada replaced months of fragmented spreadsheets with a workflow our teams actually use. They challenged our assumptions kindly—and shipped integrations we did not think were possible with our legacy stack.",
+                  "Luxdada replaced months of fragmented spreadsheets with a workflow our teams actually use. They challenged our assumptions kindly and shipped integrations we did not think were possible with our legacy stack.",
                 name: "Elena Marchetti",
                 title: "Head of Operations",
                 company: "NordLogistica S.r.l.",

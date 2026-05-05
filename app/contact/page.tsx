@@ -74,7 +74,7 @@ export default function ContactPage() {
               <p className="text-xl text-gray-600 mb-8">
                 {isIt
                   ? 'Vuoi digitalizzare un processo, integrare i sistemi o automatizzare il lavoro ripetitivo? Raccontaci dove partirà il progetto.'
-                  : "Need to digitize a workflow, connect systems, or automate repetitive work? Tell us where your project starts—we'll take it from there."}
+                  : "Need to digitize a workflow, connect systems, or automate repetitive work? Tell us where your project starts and we'll take it from there."}
               </p>
             </motion.div>
           </div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
               <p className="text-lg text-gray-600 mb-8">
                 {isIt
                   ? 'Compila il modulo: entro 24 ore ti richiamiamo per capire priorità, sistemi coinvolti e come possiamo supportarti su digitalizzazione, integrazione e automazione.'
-                  : "Fill out the form—within 24 hours we'll follow up to understand priorities, your stack, and how we can support digitization, integration, and automation."}
+                  : "Fill out the form. Within 24 hours we'll follow up to understand priorities, your stack, and how we can support digitization, integration, and automation."}
               </p>
 
               <div className="space-y-6 mb-8">
@@ -321,7 +321,7 @@ export default function ContactPage() {
                   {
                     question: 'What industries do you specialize in?',
                     answer:
-                      "We work with SMEs and mid-market teams across manufacturing, professional services, retail and e-commerce, logistics, and finance. Every engagement starts from operational reality—not a generic toolkit.",
+                      "We work with SMEs and mid-market teams across manufacturing, professional services, retail and e-commerce, logistics, and finance. Every engagement starts from operational reality, not a generic toolkit.",
                   },
                   {
                     question: 'How long does a typical project take?',
@@ -336,7 +336,7 @@ export default function ContactPage() {
                   {
                     question: 'How do you ensure data security and privacy?',
                     answer:
-                      "Data security is non-negotiable. We follow industry best practices, align with GDPR and sector-specific requirements where they apply, and design access control and audit trails into delivery—not as an afterthought.",
+                      "Data security is non-negotiable. We follow industry best practices, align with GDPR and sector-specific requirements where they apply, and design access control and audit trails into delivery, not as an afterthought.",
                   },
                 ]).map((faq, index) => (
               <motion.div

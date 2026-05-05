@@ -28,7 +28,7 @@ export default function AboutPage() {
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 We help organizations digitize workflows, automate what repeats, and integrate the tools they already
-                rely on—with pragmatic AI where it earns its place.
+                rely on, with pragmatic AI where it earns its place.
               </p>
             </motion.div>
           </div>
@@ -53,12 +53,12 @@ export default function AboutPage() {
               </p>
               <p className="text-lg text-gray-600 mb-6">
                 What began as a compact engineering-led team is now a partner for SMEs and mid-market firms across
-                finance, manufacturing, retail, and professional services—shipping measurable improvements to throughput,
+                finance, manufacturing, retail, and professional services, shipping measurable improvements to throughput,
                 quality of data, and time-to-close.
               </p>
               <p className="text-lg text-gray-600">
                 Today we stay deliberately hands-on: analysts and engineers sit with operators to remove friction from
-                everyday work—because transformation only counts when teams adopt it.
+                everyday work, because transformation only counts when teams adopt it.
               </p>
             </motion.div>
 
@@ -110,7 +110,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    To give every organization a credible path from fragmented processes to connected operations—through
+                    To give every organization a credible path from fragmented processes to connected operations through
                     honest assessments, solid integrations, and software built for how people actually work.
                   </p>
                   <ul className="space-y-3">
@@ -141,7 +141,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    To be recognized as the partner that ships durable digital operations—not slide decks—raising the
+                    To be recognized as the partner that ships durable digital operations (not slide decks), raising the
                     bar for transparency, craft, and outcomes in business technology services.
                   </p>
                   <ul className="space-y-3">
@@ -251,7 +251,7 @@ export default function AboutPage() {
               {
                 name: "David Patel",
                 title: "Director of Digital Transformation",
-                bio: "David leads enterprise discovery and delivery—aligning stakeholders, process owners, and engineering so digitization programs land with adoption.",
+                bio: "David leads enterprise discovery and delivery, aligning stakeholders, process owners, and engineering so digitization programs land with adoption.",
                 image: "/placeholder.svg?height=400&width=400&query=professional headshot of male technology director in business attire",
               },
               {
@@ -326,7 +326,7 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join Our Team</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                We're always looking for people who love shipping systems that work in the real world—process nerds,
+                We're always looking for people who love shipping systems that work in the real world: process nerds,
                 integrators, and product-minded engineers welcome.
               </p>
               <Button className="bg-white text-[#293e72] hover:bg-gray-100 px-8 py-6 text-lg">

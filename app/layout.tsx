@@ -22,7 +22,7 @@ import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: "Luxdada — Digitalizzazione e automazione dei processi aziendali",
+  title: "Luxdada: digitalizzazione e automazione dei processi aziendali",
   description:
     "Luxdada accompagna le imprese nella digitalizzazione dei processi: software su misura, integrazione sistemi, automazione e intelligenza artificiale con un approccio etico e centrato sulle persone.",
   generator: 'v0.dev',
@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
+    <html lang="it" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>

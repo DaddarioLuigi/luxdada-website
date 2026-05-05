@@ -63,8 +63,8 @@ export default function SolutionsPage() {
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Built for real-world operations</h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Strategy, integration, automation, and custom engineering—so processes run faster, data stays consistent,
-              and teams spend time on judgment—not copy-paste.
+              Strategy, integration, automation, and custom engineering so processes run faster, data stays consistent,
+              and teams spend time on judgment, not copy-paste.
             </p>
           </motion.div>
 
@@ -181,20 +181,20 @@ export default function SolutionsPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Digitization that survives Monday morning</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Pretty slides do not ship outcomes—we implement workflows people actually follow. That means crisp
+                Pretty slides do not ship outcomes; we implement workflows people actually follow. That means crisp
                 requirements, integrations that tolerate messy reality, and automation with observability when something
                 breaks.
               </p>
               <p className="text-lg text-gray-600 mb-6">
                 Whether you are modernizing back-office operations or orchestrating customer-facing journeys, we combine
-                business analysis and engineering so initiatives land with adoption—not shelfware.
+                business analysis and engineering so initiatives land with adoption, not shelfware.
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Single source of truth across CRM, ERP, and spreadsheets—without forcing a rip-and-replace",
+                  "Single source of truth across CRM, ERP, and spreadsheets, without forcing a rip-and-replace",
                   "Human-in-the-loop automation for exceptions and approvals",
                   "Operational metrics wired into dashboards leadership trusts",
-                  "Security, audit trails, and role-based access baked into delivery—not bolted on later",
+                  "Security, audit trails, and role-based access baked into delivery, not bolted on later",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start">
                     <CheckCircle className="h-6 w-6 text-[#293e72] mr-2 flex-shrink-0 mt-0.5" />
@@ -251,7 +251,7 @@ export default function SolutionsPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
             <p className="text-xl text-gray-600">
-              Patterns repeat across sectors—the stack changes. These snapshots show where we typically plug in first.
+              Patterns repeat across sectors; the stack changes. These snapshots show where we typically plug in first.
             </p>
           </motion.div>
 
@@ -288,7 +288,7 @@ export default function SolutionsPage() {
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Enterprise & professional services</h3>
                   <p className="text-lg text-gray-600 mb-6">
-                    Shared services, multi-entity reporting, and knowledge work at scale—we digitize approval chains,
+                    Shared services, multi-entity reporting, and knowledge work at scale. We digitize approval chains,
                     client delivery, and internal controls without slowing experts down.
                   </p>
                   <ul className="space-y-3 mb-6">

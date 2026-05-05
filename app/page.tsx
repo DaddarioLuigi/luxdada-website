@@ -68,15 +68,22 @@ export default function Home() {
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#293e72]/10 rounded-full blur-3xl"></div>
           <div className="absolute top-60 -left-20 w-60 h-60 bg-[#293e72]/5 rounded-full blur-3xl"></div>
         </div>
-        {/* Simple fixed clickable egg → Arcade */}
-        <Link href="/arcade" aria-label={isIt ? "Vai all'Arcade" : "Go to Arcade"} className="fixed z-40 bottom-6 right-6">
-          <div className="relative h-14 w-14 rounded-full bg-white border border-gray-200 shadow-xl flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
-            <span className="text-2xl" aria-hidden>🥚</span>
-            <span className="absolute -top-7 right-0 text-xs font-medium bg-[#293e72] text-white px-2 py-1 rounded-md shadow">
-              {isIt ? 'Gioca' : 'Play'}
+        <a
+          href="https://wa.me/393924842124"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={isIt ? "Scrivici su WhatsApp" : "Message us on WhatsApp"}
+          className="fixed z-40 bottom-6 right-6 group"
+        >
+          <div className="relative h-14 w-14 rounded-full bg-[#25D366] shadow-xl flex items-center justify-center hover:scale-105 transition-transform cursor-pointer text-white ring-2 ring-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-8 w-8" aria-hidden>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            <span className="absolute -top-8 right-0 whitespace-nowrap text-xs font-medium bg-[#293e72] text-white px-2 py-1 rounded-md shadow opacity-95 group-hover:opacity-100">
+              WhatsApp
             </span>
           </div>
-        </Link>
+        </a>
 
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -88,14 +95,14 @@ export default function Home() {
                   </>
                 ) : (
                   <>
-                    We <span className="text-[#293e72]">digitize</span> and <span className="text-[#293e72]">automate</span> how you work—with <span className="text-[#293e72]">AI</span> and a <span className="text-[#293e72]">human</span> lens
+                    We <span className="text-[#293e72]">digitize</span> and <span className="text-[#293e72]">automate</span> how you work with <span className="text-[#293e72]">AI</span> and a <span className="text-[#293e72]">human</span> lens
                   </>
                 )}
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-lg">
                 {isIt
                   ? 'Consulenza, integrazione tra sistemi, sviluppo software su misura e automazione intelligente: accompagniamo le imprese dalla mappa dei processi al risultato misurabile, con etica e trasparenza.'
-                  : 'From process mapping to integration, bespoke software, and intelligent automation—we help enterprises turn fragmented workflows into scalable, measurable operations—ethically and transparently.'}
+                  : 'From process mapping to integration, bespoke software, and intelligent automation, we help enterprises turn fragmented workflows into scalable, measurable operations, ethically and transparently.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
@@ -189,7 +196,7 @@ export default function Home() {
             <p className="text-xl text-gray-600">
               {isIt
                 ? 'Analisi dei flussi, integrazione dati, automazione e sviluppo su misura: un unico partner per rendere operativi i processi e liberare tempo per il valore.'
-                : 'Workflow analysis, data integration, automation, and custom development—one partner to operationalize processes and free your teams for higher-value work.'}
+                : 'Workflow analysis, data integration, automation, and custom development: one partner to operationalize processes and free your teams for higher-value work.'}
             </p>
           </motion.div>
 
@@ -207,7 +214,7 @@ export default function Home() {
                 title: isIt ? 'Consulenza AI' : 'AI Consulting',
                 description: isIt
                   ? 'Use case con ROI chiaro: dove l’AI accelera decisioni e automazioni senza complessità inutile.'
-                  : 'ROI-led AI adoption—where models and automation accelerate decisions without needless complexity.',
+                  : 'ROI-led AI adoption, where models and automation accelerate decisions without needless complexity.',
               },
               {
                 icon: <Code className="h-8 w-8 text-[#293e72]" />,
@@ -235,7 +242,7 @@ export default function Home() {
                 title: isIt ? 'Integrazione sicura' : 'Secure Integration',
                 description: isIt
                   ? 'API, middleware e connettori per far dialogare ERP, CRM e strumenti verticali senza compromettere sicurezza e compliance.'
-                  : 'APIs, middleware, and connectors so ERP, CRM, and line-of-business tools work as one—without compromising security or compliance.',
+                  : 'APIs, middleware, and connectors so ERP, CRM, and line-of-business tools work as one, without compromising security or compliance.',
               },
             ].map((feature, index) => (
               <motion.div
@@ -494,7 +501,7 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{isIt ? 'Vieni a trovarci a Milano' : 'Visit Us in Milano'}</h2>
             <p className="text-xl text-gray-600">
-              {isIt ? 'Ci trovi a Milano: incontriamo team e stakeholder per progettare digitalizzazione e automazione concretamente operative.' : "We're in Milano—working with your teams and stakeholders to ship digitization and automation that actually sticks."}
+              {isIt ? 'Ci trovi a Milano: incontriamo team e stakeholder per progettare digitalizzazione e automazione concretamente operative.' : "We're in Milano, working with your teams and stakeholders to ship digitization and automation that actually sticks."}
             </p>
           </motion.div>
 
@@ -535,8 +542,8 @@ export default function Home() {
               </h2>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 {isIt
-                  ? 'Raccontaci obiettivi e vincoli: ti proporremo un percorso concreto—integrazioni, software su misura e AI solo dove genera valore misurabile.'
-                  : "Tell us your goals and constraints—we'll propose a concrete path: integrations, bespoke software, and AI only where it drives measurable value."}
+                  ? 'Raccontaci obiettivi e vincoli: ti proporremo un percorso concreto con integrazioni, software su misura e AI solo dove genera valore misurabile.'
+                  : "Tell us your goals and constraints. We'll propose a concrete path: integrations, bespoke software, and AI only where it drives measurable value."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
