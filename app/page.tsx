@@ -314,17 +314,17 @@ export default function Home() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="absolute -top-16 left-[8%] h-72 w-72 rounded-full bg-[#3f63b8]/20 blur-3xl"
+              className="absolute -top-16 left-[8%] h-72 w-72 rounded-full bg-[#3f63b8]/30 blur-3xl"
               animate={{ x: [0, 42, -24, 0], y: [0, -24, 30, 0], scale: [1, 1.1, 0.95, 1] }}
               transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute top-[10%] right-[6%] h-96 w-96 rounded-full bg-[#7ba3e0]/22 blur-3xl"
+              className="absolute top-[10%] right-[6%] h-96 w-96 rounded-full bg-[#7ba3e0]/30 blur-3xl"
               animate={{ x: [0, -52, 28, 0], y: [0, 34, -22, 0], scale: [1, 0.92, 1.08, 1] }}
               transition={{ duration: 17, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute top-[28%] left-[34%] h-80 w-80 rounded-full bg-[#293e72]/16 blur-3xl"
+              className="absolute top-[28%] left-[34%] h-80 w-80 rounded-full bg-[#293e72]/24 blur-3xl"
               animate={{ x: [0, 24, -30, 0], y: [0, -28, 14, 0], scale: [1, 1.12, 0.94, 1] }}
               transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
             />
@@ -333,7 +333,7 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="py-24 md:py-32 bg-white border-b border-gray-200 relative z-10">
+      <section className="py-24 md:py-32 bg-transparent border-b border-gray-200 relative z-10">
         <div className="w-full px-4 md:px-8 lg:px-12 relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
