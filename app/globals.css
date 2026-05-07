@@ -131,3 +131,24 @@
   -webkit-text-fill-color: transparent;
   animation: gradientSweep 3.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+@keyframes heroCaretBlink {
+  0%,
+  46% {
+    opacity: 1;
+  }
+  54%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.95em;
+  margin-left: 0.14em;
+  vertical-align: -0.08em;
+  background: #293e72;
+  animation: heroCaretBlink 1.05s ease-in-out infinite;
+}

@@ -11,6 +11,11 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/lib/language-context"
 
+const HERO_TYPING_TEXT = "Reinventiamo i processi delle imprese con tecnologia, dati e intelligenza artificiale"
+const HERO_TYPING_BASE_DELAY = 52
+const HERO_TYPING_SPACE_DELAY = 34
+const HERO_TYPING_PUNCTUATION_DELAY = 220
+
 export default function Home() {
   const featuresRef = useRef(null)
   const statsRef = useRef(null)
@@ -28,6 +33,7 @@ export default function Home() {
 
   const [showIntro, setShowIntro] = useState(true)
   const [introShrink, setIntroShrink] = useState(false)
+  const [typedHeroText, setTypedHeroText] = useState("")
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
   const statsInView = useInView(statsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
@@ -190,6 +196,44 @@ export default function Home() {
   }, [showIntro])
 
   useEffect(() => {
+    if (showIntro) return
+    setTypedHeroText("")
+    let currentIndex = 0
+    let cancelled = false
+    let typingTimer: ReturnType<typeof setTimeout> | undefined
+
+    const typeNextCharacter = () => {
+      if (cancelled) return
+      currentIndex += 1
+      setTypedHeroText(HERO_TYPING_TEXT.slice(0, currentIndex))
+
+      if (currentIndex >= HERO_TYPING_TEXT.length) {
+        return
+      }
+
+      const nextCharacter = HERO_TYPING_TEXT[currentIndex]
+      const randomVariation = Math.floor(Math.random() * 26)
+      const nextDelay = /[,.!?]/.test(nextCharacter)
+        ? HERO_TYPING_PUNCTUATION_DELAY
+        : nextCharacter === " "
+          ? HERO_TYPING_SPACE_DELAY
+          : HERO_TYPING_BASE_DELAY + randomVariation
+
+      typingTimer = setTimeout(typeNextCharacter, nextDelay)
+    }
+
+    const startDelay = setTimeout(() => {
+      typeNextCharacter()
+    }, 340)
+
+    return () => {
+      cancelled = true
+      clearTimeout(startDelay)
+      if (typingTimer) clearTimeout(typingTimer)
+    }
+  }, [showIntro])
+
+  useEffect(() => {
     let active = true
     fetch('/api/trustedby')
       .then((r) => r.json())
@@ -240,63 +284,19 @@ export default function Home() {
         )}
       </AnimatePresence>
       {/* Hero Section */}
-      <section className="pt-20 pb-20 md:pt-28 md:pb-24 relative bg-white border-b border-gray-200">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-32 -right-32 w-72 h-72 bg-[#293e72]/5 rounded-full blur-3xl"></div>
-        </div>
-        <div className="container mx-auto px-4 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <motion.div className="lg:col-span-7" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <p className="text-xs tracking-[0.16em] font-semibold text-[#293e72] mb-5">
-                {isIt ? "LUXDADA · DIGITAL TRANSFORMATION" : "LUXDADA · DIGITAL TRANSFORMATION"}
-              </p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-gray-900 leading-[1.05] mb-6 text-balance">
-                {isIt ? (
-                  <>
-                    Reinventiamo i <span className="text-[#293e72]">processi</span> delle imprese con tecnologia, dati e <span className="text-[#293e72]">intelligenza artificiale</span>
-                  </>
-                ) : (
-                  <>
-                    We reinvent <span className="text-[#293e72]">enterprise operations</span> with technology, data, and <span className="text-[#293e72]">artificial intelligence</span>
-                  </>
-                )}
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl">
-                {isIt
-                  ? "Uniamo strategia operativa, integrazione sistemi e delivery software per trasformazioni concrete, misurabili e sostenibili nel tempo."
-                  : "We combine operational strategy, systems integration, and software delivery to build concrete, measurable, and sustainable transformation outcomes."}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"} target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined} rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}>
-                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">{isIt ? 'Inizia Ora' : 'Get Started'}</Button>
-                </Link>
-                <Link href="/solutions">
-                  <Button
-                    variant="outline"
-                    className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
-                  >
-                    {isIt ? 'Scopri di più' : 'Learn More'}
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }} 
-              className="relative lg:col-span-5"
-            >
-              <div className="relative h-[420px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/70">
-                <Image
-                  src="/neural-network-blueprint.png"
-                  alt="AI Technology Visualization"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
+      <section className="py-24 md:py-32 bg-white border-b border-gray-200">
+        <div className="w-full px-4 md:px-8 lg:px-12">
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={showIntro ? { opacity: 0, y: 18 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="font-sora text-4xl md:text-6xl lg:text-7xl font-semibold text-[#0f1b3d] leading-[1.08] max-w-none min-h-[3.5em]"
+          >
+            {typedHeroText}
+            {!showIntro && typedHeroText.length < HERO_TYPING_TEXT.length ? (
+              <span className="hero-caret" />
+            ) : null}
+          </motion.h1>
         </div>
       </section>
 
