@@ -15,6 +15,7 @@ const HERO_TYPING_TEXT = "Reinventiamo i processi delle imprese con tecnologia, 
 const HERO_TYPING_BASE_DELAY = 52
 const HERO_TYPING_SPACE_DELAY = 34
 const HERO_TYPING_PUNCTUATION_DELAY = 220
+const HERO_KEYWORDS = ["processi", "tecnologia", "dati", "intelligenza artificiale"]
 
 export default function Home() {
   const featuresRef = useRef(null)
@@ -34,6 +35,23 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(true)
   const [introShrink, setIntroShrink] = useState(false)
   const [typedHeroText, setTypedHeroText] = useState("")
+
+  const renderHeroTypingText = (text: string) => {
+    const ranges = HERO_KEYWORDS.flatMap((keyword) => {
+      const startIndex = HERO_TYPING_TEXT.indexOf(keyword)
+      if (startIndex === -1) return []
+      return [{ start: startIndex, end: startIndex + keyword.length }]
+    })
+
+    return text.split("").map((char, index) => {
+      const isKeyword = ranges.some((range) => index >= range.start && index < range.end)
+      return (
+        <span key={`hero-char-${index}`} className={isKeyword ? "text-[#293e72]" : undefined}>
+          {char}
+        </span>
+      )
+    })
+  }
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
   const statsInView = useInView(statsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
@@ -290,13 +308,37 @@ export default function Home() {
             initial={{ opacity: 0, y: 18 }}
             animate={showIntro ? { opacity: 0, y: 18 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-sora text-4xl md:text-6xl lg:text-7xl font-semibold text-[#0f1b3d] leading-[1.08] max-w-none min-h-[3.5em]"
+            className="font-sora text-4xl md:text-6xl lg:text-7xl font-semibold text-[#0f1b3d] leading-[1.08] max-w-none min-h-[3.5em] whitespace-pre-wrap"
           >
-            {typedHeroText}
+            {renderHeroTypingText(typedHeroText)}
             {!showIntro && typedHeroText.length < HERO_TYPING_TEXT.length ? (
               <span className="hero-caret" />
             ) : null}
           </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={showIntro ? { opacity: 0, y: 16 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 flex flex-col sm:flex-row gap-4"
+          >
+            <Link
+              href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
+              target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
+              rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
+            >
+              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">
+                Inizia Ora
+              </Button>
+            </Link>
+            <Link href="/solutions">
+              <Button
+                variant="outline"
+                className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
+              >
+                Scopri di più
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
