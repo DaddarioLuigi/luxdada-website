@@ -129,5 +129,5 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientSweep 2s ease-in-out forwards;
+  animation: gradientSweep 3.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

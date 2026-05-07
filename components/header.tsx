@@ -78,7 +78,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <span className="text-2xl font-bold text-[#293e72] tracking-tight">Luxdada</span>
+          <span className="text-2xl font-bold text-[#293e72] tracking-tight font-sora">Luxdada</span>
         </Link>
 
         {/* Desktop Navigation */}

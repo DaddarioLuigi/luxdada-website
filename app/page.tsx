@@ -181,8 +181,8 @@ export default function Home() {
 
   useEffect(() => {
     if (!showIntro) return
-    const shrinkTimer = setTimeout(() => setIntroShrink(true), 2200)
-    const hideTimer = setTimeout(() => setShowIntro(false), 3000)
+    const shrinkTimer = setTimeout(() => setIntroShrink(true), 3200)
+    const hideTimer = setTimeout(() => setShowIntro(false), 4300)
     return () => {
       clearTimeout(shrinkTimer)
       clearTimeout(hideTimer)
@@ -229,10 +229,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <motion.span
-              className="hero-intro-text text-6xl md:text-8xl lg:text-9xl font-bold select-none"
+              className="hero-intro-text text-6xl md:text-8xl lg:text-9xl font-bold select-none font-sora"
               initial={{ scale: 1, opacity: 1 }}
               animate={introShrink ? { scale: 0.3, opacity: 0 } : { scale: 1, opacity: 1 }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             >
               Luxdada
             </motion.span>
