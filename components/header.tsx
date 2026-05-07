@@ -5,7 +5,6 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
-import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 import { useToast } from "@/hooks/use-toast"
@@ -79,11 +78,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logo_uff.png"
-            alt="Luxdada Logo"
-            width={150}
-          />
+          <span className="text-2xl font-bold text-[#293e72] tracking-tight">Luxdada</span>
         </Link>
 
         {/* Desktop Navigation */}

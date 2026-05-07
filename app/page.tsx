@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Zap, ArrowRight, CheckCircle } from "lucide-react"
@@ -25,6 +25,9 @@ export default function Home() {
     "/trustedby/virtusingegneria (1).png",
     "/trustedby/aws.png",
   ])
+
+  const [showIntro, setShowIntro] = useState(true)
+  const [introShrink, setIntroShrink] = useState(false)
 
   const featuresInView = useInView(featuresRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
   const statsInView = useInView(statsRef, { once: true, amount: 0.12, margin: "0px 0px 200px 0px" })
@@ -177,6 +180,16 @@ export default function Home() {
       ]
 
   useEffect(() => {
+    if (!showIntro) return
+    const shrinkTimer = setTimeout(() => setIntroShrink(true), 2200)
+    const hideTimer = setTimeout(() => setShowIntro(false), 3000)
+    return () => {
+      clearTimeout(shrinkTimer)
+      clearTimeout(hideTimer)
+    }
+  }, [showIntro])
+
+  useEffect(() => {
     let active = true
     fetch('/api/trustedby')
       .then((r) => r.json())
@@ -207,6 +220,25 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden pt-20">
+      {/* Hero Intro Overlay */}
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            className="fixed inset-0 z-[60] bg-white flex items-center justify-center"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.span
+              className="hero-intro-text text-6xl md:text-8xl lg:text-9xl font-bold select-none"
+              initial={{ scale: 1, opacity: 1 }}
+              animate={introShrink ? { scale: 0.3, opacity: 0 } : { scale: 1, opacity: 1 }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+            >
+              Luxdada
+            </motion.span>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Hero Section */}
       <section className="pt-20 pb-20 md:pt-28 md:pb-24 relative bg-white border-b border-gray-200">
         <div className="absolute inset-0 overflow-hidden">

@@ -102,3 +102,32 @@
 .hover-scale:hover {
   transform: scale(1.03);
 }
+
+@keyframes gradientSweep {
+  0% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: -100% center;
+  }
+}
+
+.hero-intro-text {
+  background: linear-gradient(
+    90deg,
+    #293e72 0%,
+    #293e72 20%,
+    #4a6eb5 35%,
+    #7ba3e0 45%,
+    #a8ccff 50%,
+    #7ba3e0 55%,
+    #4a6eb5 65%,
+    #293e72 80%,
+    #293e72 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientSweep 2s ease-in-out forwards;
+}
