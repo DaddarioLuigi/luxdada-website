@@ -35,6 +35,7 @@ export default function Home() {
   const [showIntro, setShowIntro] = useState(true)
   const [introShrink, setIntroShrink] = useState(false)
   const [typedHeroText, setTypedHeroText] = useState("")
+  const [heroTypingDone, setHeroTypingDone] = useState(false)
 
   const renderHeroTypingText = (text: string) => {
     const ranges = HERO_KEYWORDS.flatMap((keyword) => {
@@ -216,6 +217,7 @@ export default function Home() {
   useEffect(() => {
     if (showIntro) return
     setTypedHeroText("")
+    setHeroTypingDone(false)
     let currentIndex = 0
     let cancelled = false
     let typingTimer: ReturnType<typeof setTimeout> | undefined
@@ -226,6 +228,7 @@ export default function Home() {
       setTypedHeroText(HERO_TYPING_TEXT.slice(0, currentIndex))
 
       if (currentIndex >= HERO_TYPING_TEXT.length) {
+        setHeroTypingDone(true)
         return
       }
 
@@ -302,8 +305,35 @@ export default function Home() {
         )}
       </AnimatePresence>
       {/* Hero Section */}
-      <section className="py-24 md:py-32 bg-white border-b border-gray-200">
-        <div className="w-full px-4 md:px-8 lg:px-12">
+      <section className="py-24 md:py-32 bg-white border-b border-gray-200 relative overflow-hidden">
+        <AnimatePresence>
+          {heroTypingDone && (
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <motion.div
+                className="absolute -top-28 left-[8%] h-72 w-72 rounded-full bg-[#3f63b8]/20 blur-3xl"
+                animate={{ x: [0, 34, -20, 0], y: [0, -18, 28, 0], scale: [1, 1.08, 0.96, 1] }}
+                transition={{ duration: 16, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute top-[18%] right-[6%] h-96 w-96 rounded-full bg-[#7ba3e0]/20 blur-3xl"
+                animate={{ x: [0, -46, 22, 0], y: [0, 30, -20, 0], scale: [1, 0.94, 1.05, 1] }}
+                transition={{ duration: 19, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute -bottom-36 left-1/3 h-80 w-80 rounded-full bg-[#293e72]/16 blur-3xl"
+                animate={{ x: [0, 20, -26, 0], y: [0, -24, 10, 0], scale: [1, 1.1, 0.95, 1] }}
+                transition={{ duration: 22, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <div className="w-full px-4 md:px-8 lg:px-12 relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={showIntro ? { opacity: 0, y: 18 } : { opacity: 1, y: 0 }}
@@ -315,30 +345,35 @@ export default function Home() {
               <span className="hero-caret" />
             ) : null}
           </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={showIntro ? { opacity: 0, y: 16 } : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 flex flex-col sm:flex-row gap-4"
-          >
-            <Link
-              href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
-              target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
-              rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
-            >
-              <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">
-                Inizia Ora
-              </Button>
-            </Link>
-            <Link href="/solutions">
-              <Button
-                variant="outline"
-                className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
+          <AnimatePresence>
+            {heroTypingDone && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-10 flex flex-col sm:flex-row gap-4"
               >
-                Scopri di più
-              </Button>
-            </Link>
-          </motion.div>
+                <Link
+                  href={process.env.NEXT_PUBLIC_BOOKING_URL || "/contact"}
+                  target={process.env.NEXT_PUBLIC_BOOKING_URL ? "_blank" : undefined}
+                  rel={process.env.NEXT_PUBLIC_BOOKING_URL ? "noopener noreferrer" : undefined}
+                >
+                  <Button className="bg-[#293e72] hover:bg-[#1e2e57] text-white px-8 py-6 text-lg">
+                    Inizia Ora
+                  </Button>
+                </Link>
+                <Link href="/solutions">
+                  <Button
+                    variant="outline"
+                    className="border-[#293e72] text-[#293e72] hover:bg-[#293e72]/10 px-8 py-6 text-lg"
+                  >
+                    Scopri di più
+                  </Button>
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
@@ -629,6 +664,7 @@ export default function Home() {
                 image: "/neural-network-blueprint.png",
                 subtitle: isIt ? 'Risposte immediate e accurate su WhatsApp con Retrieval‑Augmented Generation orchestrato con n8n.' : 'Instant, accurate answers on WhatsApp using Retrieval‑Augmented Generation orchestrated with n8n.',
                 client: "Virtus Ingegneria",
+                clientLogo: "/trustedby/virtusingegneria (1).png",
                 href: "/case-studies/rag-chatbot"
               },
               {
@@ -639,6 +675,7 @@ export default function Home() {
                   ? 'Da documenti clinici a fogli Excel strutturati: estrazione ripetibile di metriche e tracciabilità delle fonti.'
                   : 'From clinical documents to structured Excel: repeatable metric extraction with source traceability.',
                 client: "Fondazione Alfieri",
+                clientLogo: "/trustedby/fondazione-alfieri-logo.png",
                 href: "/case-studies/clinical-records-extraction"
               },
             ].map((study, index) => (
@@ -671,7 +708,19 @@ export default function Home() {
                     </h3>
                     <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
                     {"client" in study && study.client ? (
-                      <p className="text-sm font-medium text-[#293e72] mb-3">{study.client}</p>
+                      <div className="mb-3">
+                        <p className="text-sm font-medium text-[#293e72]">{study.client}</p>
+                        {"clientLogo" in study && study.clientLogo ? (
+                          <div className="relative mt-2 h-10 w-36">
+                            <Image
+                              src={study.clientLogo}
+                              alt={`${study.client} logo`}
+                              fill
+                              className="object-contain object-left"
+                            />
+                          </div>
+                        ) : null}
+                      </div>
                     ) : null}
                     <span className="text-[#293e72] font-medium flex items-center">
                       {isIt ? 'Leggi il caso studio' : 'Read Case Study'} <ArrowRight className="ml-2 h-4 w-4" />
@@ -707,7 +756,19 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-600 mb-3">{study.subtitle || "See how we transformed operations and improved efficiency."}</p>
                   {"client" in study && study.client ? (
-                    <p className="text-sm font-medium text-[#293e72] mb-3">{study.client}</p>
+                    <div className="mb-3">
+                      <p className="text-sm font-medium text-[#293e72]">{study.client}</p>
+                      {"clientLogo" in study && study.clientLogo ? (
+                        <div className="relative mt-2 h-10 w-36">
+                          <Image
+                            src={study.clientLogo}
+                            alt={`${study.client} logo`}
+                            fill
+                            className="object-contain object-left"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
                   ) : null}
                   <span className="text-[#293e72] font-medium flex items-center">
                     {isIt ? 'Leggi il caso studio' : 'Read Case Study'} <ArrowRight className="ml-2 h-4 w-4" />
