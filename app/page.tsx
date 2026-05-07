@@ -163,6 +163,8 @@ export default function Home() {
           title: "Virtus Ingegneria accelera il supporto con AI conversazionale su WhatsApp",
           detail:
             "Un assistente RAG integrato nei processi operativi per ridurre tempi di risposta e migliorare coerenza informativa.",
+          client: "Virtus Ingegneria",
+          clientLogo: "/trustedby/virtusingegneria (1).png",
           href: "/case-studies/rag-chatbot",
         },
         {
@@ -170,6 +172,8 @@ export default function Home() {
           title: "Fondazione Alfieri digitalizza le cartelle cliniche e standardizza le metriche",
           detail:
             "Dalla documentazione clinica a dataset strutturati, con tracciabilita delle fonti e governance del dato.",
+          client: "Fondazione Alfieri",
+          clientLogo: "/trustedby/fondazione-alfieri-logo.png",
           href: "/case-studies/clinical-records-extraction",
         },
         {
@@ -177,6 +181,8 @@ export default function Home() {
           title: "Trusted Shops integra sistemi e automazione nel ciclo e-commerce",
           detail:
             "Sincronizzazione tra processi commerciali e operativi per una gestione piu affidabile e scalabile.",
+          client: "Trusted Shops",
+          clientLogo: "/trustedby/Trusted-shops-logo.png",
           href: "/contact",
         },
       ]
@@ -186,6 +192,8 @@ export default function Home() {
           title: "Virtus Ingegneria speeds up support with conversational AI on WhatsApp",
           detail:
             "A workflow-embedded RAG assistant to reduce response times and improve information consistency.",
+          client: "Virtus Ingegneria",
+          clientLogo: "/trustedby/virtusingegneria (1).png",
           href: "/case-studies/rag-chatbot",
         },
         {
@@ -193,6 +201,8 @@ export default function Home() {
           title: "Fondazione Alfieri digitizes clinical records and standardizes key metrics",
           detail:
             "From clinical documentation to structured datasets with source traceability and stronger data governance.",
+          client: "Fondazione Alfieri",
+          clientLogo: "/trustedby/fondazione-alfieri-logo.png",
           href: "/case-studies/clinical-records-extraction",
         },
         {
@@ -200,6 +210,8 @@ export default function Home() {
           title: "Trusted Shops aligns integrations and automation across commerce operations",
           detail:
             "Synchronization across commercial and operational workflows for more reliable and scalable execution.",
+          client: "Trusted Shops",
+          clientLogo: "/trustedby/Trusted-shops-logo.png",
           href: "/contact",
         },
       ]
@@ -429,6 +441,17 @@ export default function Home() {
                     <p className="text-xs tracking-[0.14em] font-semibold text-[#293e72] mb-3">{story.label}</p>
                     <h3 className="text-2xl font-semibold text-gray-900 mb-3">{story.title}</h3>
                     <p className="text-gray-600 mb-6 flex-1">{story.detail}</p>
+                    <div className="mb-5">
+                      <p className="text-sm font-medium text-[#293e72]">{story.client}</p>
+                      <div className="relative mt-2 h-10 w-36">
+                        <Image
+                          src={story.clientLogo}
+                          alt={`${story.client} logo`}
+                          fill
+                          className="object-contain object-left"
+                        />
+                      </div>
+                    </div>
                     <Link href={story.href} className="text-[#293e72] font-medium inline-flex items-center">
                       {isIt ? "Scopri di più" : "Learn more"} <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
