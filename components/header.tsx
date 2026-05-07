@@ -72,30 +72,11 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 bg-white/55 backdrop-blur-md border-b border-gray-200/70 overflow-hidden",
+        "fixed top-0 w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-gray-200/80",
         isScrolled ? "py-4" : "py-5",
       )}
     >
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <motion.div
-          className="absolute -top-20 left-[4%] h-48 w-48 rounded-full bg-[#3f63b8]/30 blur-3xl"
-          animate={{ x: [0, 32, -18, 0], y: [0, -12, 20, 0], scale: [1, 1.08, 0.95, 1] }}
-          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -top-12 right-[10%] h-56 w-56 rounded-full bg-[#7ba3e0]/28 blur-3xl"
-          animate={{ x: [0, -34, 16, 0], y: [0, 22, -10, 0], scale: [1, 0.94, 1.06, 1] }}
-          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-2 left-[45%] h-44 w-44 rounded-full bg-[#293e72]/20 blur-3xl"
-          animate={{ x: [0, 16, -24, 0], y: [0, -14, 12, 0], scale: [1, 1.05, 0.96, 1] }}
-          transition={{ duration: 18, repeat: Number.POSITIVE_INFINITY, repeatType: "mirror", ease: "easeInOut" }}
-        />
-      </div>
-      <div className="absolute inset-0 bg-white/62 pointer-events-none z-10" />
-
-      <div className="container mx-auto px-4 flex items-center justify-between relative z-20">
+      <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <span className="text-2xl font-bold text-[#293e72] tracking-tight font-sora">Luxdada</span>
         </Link>
@@ -154,7 +135,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white/95 backdrop-blur-md w-full overflow-hidden relative z-20"
+            className="lg:hidden bg-white w-full overflow-hidden"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               {navItems[language].map((item) => (
